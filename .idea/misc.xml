@@ -3,7 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/account_svg.xml" value="0.14635416666666667" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/bottom_state.xml" value="0.14635416666666667" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/history_icon_svg.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_24_edit.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_shape.xml" value="0.14635416666666667" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/shape.xml" value="0.14635416666666667" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/tf_svg.xml" value="0.14635416666666667" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/topup_icon_svg.xml" value="0.2703125" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/topup_svg.xml" value="0.2703125" />
       </map>
     </option>
   </component>

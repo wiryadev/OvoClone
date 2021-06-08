@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Ovo Clone</string>
+    <string name="primary_button">Primary Button</string>
+    <string name="primary_image">Primary Image</string>
+    <string name="next">Next</string>
+    <string name="top_up">Top Up</string>
+    <string name="transfer">Transfer</string>
+    <string name="history">History</string>
 </resources>

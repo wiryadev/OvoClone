@@ -19,6 +19,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -29,7 +30,7 @@ import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.theme.Gray600
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
-import com.wiryadev.ovoclone.ui.theme.Purple200
+import com.wiryadev.ovoclone.ui.theme.Purple150
 import com.wiryadev.ovoclone.ui.theme.Purple500
 
 private const val BIG_BUTTON_HEIGHT = 48
@@ -84,7 +85,7 @@ fun RavierButton(
 }
 
 @Composable
-fun TextButton(
+private fun TextButton(
     text: String,
     color: Color,
 ) {
@@ -112,7 +113,7 @@ sealed class ButtonType(
     )
 
     object Secondary : ButtonType(
-        backgroundColor = Purple200,
+        backgroundColor = Purple150,
         contentColor = Purple500,
     )
 
@@ -142,13 +143,13 @@ fun ButtonPreview() {
             RavierButton(
                 onClick = {  },
                 modifier = Modifier.fillMaxWidth(),
-                text = "Primary Fixed",
+                text = stringResource(id = R.string.primary_button),
                 buttonType = ButtonType.Primary,
             )
             RavierButton(
                 onClick = {  },
                 modifier = Modifier.fillMaxWidth(),
-                text = "Primary Image",
+                text = stringResource(R.string.primary_image),
                 buttonType = ButtonType.Primary,
                 icon = R.drawable.ic_24_edit,
             )
@@ -161,7 +162,7 @@ fun ButtonPreview() {
             RavierButton(
                 onClick = {  },
                 modifier = Modifier.wrapContentSize(),
-                text = "Primary Image",
+                text = stringResource(id = R.string.primary_image),
                 buttonType = ButtonType.Primary,
                 icon = R.drawable.ic_24_edit,
             )

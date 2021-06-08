@@ -10,7 +10,8 @@ import com.wiryadev.ovoclone.R
 
 // Set of Material typography styles to start with
 val OvoFontFamily = FontFamily(
-    Font(R.font.eina_bold, FontWeight.Bold)
+    Font(R.font.eina_bold, FontWeight.Bold),
+    Font(R.font.sf_pro_regular, FontWeight.Normal)
 )
 val Typography = Typography(
     body1 = TextStyle(
