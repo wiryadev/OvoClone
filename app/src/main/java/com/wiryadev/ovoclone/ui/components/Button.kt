@@ -28,10 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
-import com.wiryadev.ovoclone.ui.theme.Gray600
-import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
-import com.wiryadev.ovoclone.ui.theme.Purple150
-import com.wiryadev.ovoclone.ui.theme.Purple500
+import com.wiryadev.ovoclone.ui.theme.*
 
 private const val BIG_BUTTON_HEIGHT = 48
 
@@ -125,6 +122,11 @@ sealed class ButtonType(
     object Ghost : ButtonType(
         backgroundColor = Color.Transparent,
         contentColor = Gray600,
+    )
+
+    object GhostSecondary : ButtonType(
+        backgroundColor = Color.Transparent,
+        contentColor = Teal500,
     )
 }
 
