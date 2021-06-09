@@ -59,4 +59,11 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:${rootProject.extra["compose_version"]}")
 
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha07")
+
+    // Accompanist
+    val accompanistVersion = "0.11.1"
+    implementation("com.google.accompanist:accompanist-systemuicontroller:$accompanistVersion")
+    implementation("com.google.accompanist:accompanist-coil:$accompanistVersion")
+    implementation("com.google.accompanist:accompanist-insets:$accompanistVersion")
+    implementation("com.google.accompanist:accompanist-insets-ui:$accompanistVersion")
 }

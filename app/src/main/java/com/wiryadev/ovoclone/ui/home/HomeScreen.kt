@@ -5,18 +5,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -26,6 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.ButtonType
 import com.wiryadev.ovoclone.ui.components.GridCategories
@@ -117,7 +116,8 @@ fun ExcitingUpdateItem(
         ) {
             Image(
                 painter = painterResource(id = image),
-                contentDescription = title
+                contentDescription = title,
+                modifier = Modifier.height(96.dp)
             )
             Spacer(
                 modifier = Modifier.height(8.dp)
@@ -283,9 +283,9 @@ fun HomeScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Purple150)
+            .background(Purple100)
             .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         MainSection()
@@ -327,5 +327,14 @@ fun HomeScreen() {
 @Preview
 @Composable
 fun PreviewHome() {
-    HomeScreen()
+    val systemUiController = rememberSystemUiController()
+    SideEffect {
+        systemUiController.setStatusBarColor(Purple600)
+    }
+
+    OvoCloneTheme {
+        ProvideWindowInsets {
+            HomeScreen()
+        }
+    }
 }

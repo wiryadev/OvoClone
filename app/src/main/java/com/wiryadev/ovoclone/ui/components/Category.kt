@@ -68,7 +68,7 @@ fun CategoryGridItem(
     onClick: () -> Unit,
     @DrawableRes image: Int,
     text: String,
-    size: Dp = 24.dp,
+    size: Dp = 32.dp,
 ) {
     Column(
         modifier = Modifier
@@ -96,7 +96,7 @@ fun CategoryGridItem(
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .width(
-                    if (size > 24.dp) {
+                    if (size > 32.dp) {
                         size + 12.dp
                     } else {
                         Dp.Unspecified
