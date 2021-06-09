@@ -11,8 +11,9 @@ val Purple700 = Color(0xFF331B64)
 val Purple900 = Color(0xFF1F103C)
 val Teal200 = Color(0xFF00C6CE)
 
+val Orange500 = Color(0xFFFFBA08)
+
 val Gray600 = Color(0xFF666666)
 val Gray700 = Color(0xFF444444)
 
 val BlackText = Color(0xFF231E2E)
-val WhiteText = Color(0xFFF0EBFA)

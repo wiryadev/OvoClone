@@ -3,11 +3,9 @@ package com.wiryadev.ovoclone.ui.components
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,30 +27,35 @@ import com.wiryadev.ovoclone.ui.theme.Shapes
 private val CategoryGridIconSize = 48.dp
 
 @Composable
-fun HighlightedCategories() {
+fun HighlightedCategories(
+    modifier: Modifier = Modifier
+) {
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.White),
+        modifier = modifier
+            .fillMaxWidth(),
         shape = Shapes.medium,
         elevation = 6.dp,
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp),
+                .background(Color.White)
+                .padding(vertical = 4.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceAround,
         ) {
             CategoryGridItem(
+                onClick = { },
                 image = R.drawable.ic_topup_transparent,
                 text = stringResource(id = R.string.top_up)
             )
             CategoryGridItem(
+                onClick = { },
                 image = R.drawable.ic_transfer,
                 text = stringResource(id = R.string.transfer)
             )
             CategoryGridItem(
+                onClick = { },
                 image = R.drawable.ic_history,
                 text = stringResource(id = R.string.history)
             )
@@ -62,21 +65,26 @@ fun HighlightedCategories() {
 
 @Composable
 fun CategoryGridItem(
+    onClick: () -> Unit,
     @DrawableRes image: Int,
     text: String,
     size: Dp = 24.dp,
 ) {
     Column(
         modifier = Modifier
-            .background(Color.Transparent),
-        verticalArrangement = Arrangement.spacedBy(4.dp),
+            .background(Color.Transparent)
+            .padding(vertical = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Image(
-            painter = painterResource(id = image),
-            contentDescription = text,
-            modifier = Modifier.size(size)
-        )
+        IconButton(
+            onClick = onClick
+        ) {
+            Image(
+                painter = painterResource(id = image),
+                contentDescription = text,
+                modifier = Modifier.size(size),
+            )
+        }
         Text(
             text = text,
             color = Gray700,
@@ -100,13 +108,13 @@ fun CategoryGridItem(
 }
 
 @Composable
-fun GridCategories() {
+fun GridCategories(
+    modifier: Modifier = Modifier
+) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-//            .wrapContentHeight()
             .padding(vertical = 8.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Row(
             modifier = Modifier
@@ -115,21 +123,25 @@ fun GridCategories() {
             horizontalArrangement = Arrangement.SpaceAround,
         ) {
             CategoryGridItem(
+                onClick = { },
                 image = R.drawable.ic_pln,
                 text = "PLN",
                 size = CategoryGridIconSize
             )
             CategoryGridItem(
+                onClick = { },
                 image = R.drawable.ic_pulse,
                 text = "Pulsa",
                 size = CategoryGridIconSize
             )
             CategoryGridItem(
+                onClick = { },
                 image = R.drawable.ic_data_plan,
                 text = "Paket Data",
                 size = CategoryGridIconSize
             )
             CategoryGridItem(
+                onClick = { },
                 image = R.drawable.ic_invest_new,
                 text = "Invest",
                 size = CategoryGridIconSize
@@ -142,21 +154,25 @@ fun GridCategories() {
             horizontalArrangement = Arrangement.SpaceAround,
         ) {
             CategoryGridItem(
+                onClick = { },
                 image = R.drawable.bpjs_icon_svg,
                 text = "BPJS",
                 size = CategoryGridIconSize
             )
             CategoryGridItem(
+                onClick = { },
                 image = R.drawable.internet_icon_svg,
                 text = "Internet & TV Kabel",
                 size = CategoryGridIconSize
             )
             CategoryGridItem(
+                onClick = { },
                 image = R.drawable.air_icon_svg,
                 text = "Air PDAM",
                 size = CategoryGridIconSize
             )
             CategoryGridItem(
+                onClick = { },
                 image = R.drawable.lainnya_icon_svg,
                 text = "Lainnya",
                 size = CategoryGridIconSize
@@ -216,7 +232,11 @@ fun ServicePreview() {
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             Box(Modifier.background(Color.White)) {
-                CategoryGridItem(image = R.drawable.ic_pln, text = "PLN")
+                CategoryGridItem(
+                    onClick = { },
+                    image = R.drawable.ic_pln,
+                    text = "PLN"
+                )
             }
             Box(Modifier.background(Color.White)) {
                 CategoryItemRow(image = R.drawable.ic_pln, text = "PLN")
