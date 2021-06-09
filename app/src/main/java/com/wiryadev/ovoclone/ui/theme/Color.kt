@@ -13,3 +13,6 @@ val Teal200 = Color(0xFF00C6CE)
 
 val Gray600 = Color(0xFF666666)
 val Gray700 = Color(0xFF444444)
+
+val BlackText = Color(0xFF231E2E)
+val WhiteText = Color(0xFFF0EBFA)
