@@ -1,13 +1,10 @@
 package com.wiryadev.ovoclone.ui.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -17,7 +14,6 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
-import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.theme.Teal500
 
 val dealsImages = listOf(
@@ -32,7 +28,6 @@ val dealsImages = listOf(
 fun PromoImage(
     imageUrl: String,
     width: Dp,
-    index: Int,
 ) {
     Image(
         painter = rememberCoilPainter(
@@ -43,9 +38,6 @@ fun PromoImage(
         ),
         contentDescription = "Promotion Image",
         modifier = Modifier
-            .padding(
-                start = if (index == 0) 24.dp else 0.dp
-            )
             .size(
                 height = 128.dp,
                 width = width,
@@ -56,23 +48,23 @@ fun PromoImage(
 @ExperimentalPagerApi
 @Composable
 fun SpecialPromos(
-    width: Dp,
+    itemWidth: Dp,
 ) {
     val pagerState = rememberPagerState(pageCount = dealsImages.size)
 
-    // TODO: ViewPager still Buggy as hell
-    Column {
+    Column(
+        modifier = Modifier.fillMaxWidth()
+    ) {
         HorizontalPager(
             state = pagerState,
-            itemSpacing = 4.dp,
-            horizontalAlignment = Alignment.Start,
-            modifier = Modifier.fillMaxWidth(),
+            itemSpacing = 16.dp,
+            modifier = Modifier
+                .fillMaxWidth(),
         ) { page ->
             // Our page content
             PromoImage(
                 imageUrl = dealsImages[page],
-                width = width,
-                index = page
+                width = itemWidth,
             )
         }
 

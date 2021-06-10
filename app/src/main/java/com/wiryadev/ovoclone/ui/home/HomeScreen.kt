@@ -273,7 +273,7 @@ fun BaseHomeSurface(
             if (viewAllEnable) {
                 RavierButton(
                     onClick = { },
-                    text = "View All",
+                    text = "Lihat Semua",
                     buttonType = ButtonType.GhostSecondary,
                     height = 32.dp
                 )
@@ -330,7 +330,7 @@ fun ExcitingUpdateSection() {
 
 @ExperimentalPagerApi
 @Composable
-fun SpecialPromo() {
+fun SpecialPromoSection() {
     BaseHomeSurface(
         title = "Info dan Promo Spesial",
         viewAllEnable = true,
@@ -338,14 +338,14 @@ fun SpecialPromo() {
     ) {
         BoxWithConstraints {
             SpecialPromos(
-                width = this.maxWidth * 0.8f
+                itemWidth = this.maxWidth - (2 * 24).dp
             )
         }
     }
 }
 
 @Composable
-fun YourFinancial() {
+fun YourFinancialSection() {
     BaseHomeSurface(
         title = "Finansial Kamu",
     ) {
@@ -458,8 +458,8 @@ fun HomeScreen() {
         ) {
             Spacer(Modifier.statusBarsHeight(additional = 40.dp))
             MainSection()
-            SpecialPromo()
-            YourFinancial()
+            SpecialPromoSection()
+            YourFinancialSection()
             ExcitingUpdateSection()
         }
         ActionBar()
