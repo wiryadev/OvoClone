@@ -25,25 +25,25 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.theme.*
-
-private const val BIG_BUTTON_HEIGHT = 48
 
 @Composable
 fun RavierButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     text: String,
-    buttonType: ButtonType,
-    shape: Shape = RoundedCornerShape(50),
+    buttonType: ButtonType = ButtonType.Primary,
+    height: Dp = 48.dp,
+    shape: Shape = RoundedCornerShape(24.dp),
     @DrawableRes icon: Int? = null,
 ) {
     Surface(
         modifier = modifier
-            .height(BIG_BUTTON_HEIGHT.dp)
+            .height(height)
             .clip(shape = shape),
         elevation = 8.dp,
     ) {

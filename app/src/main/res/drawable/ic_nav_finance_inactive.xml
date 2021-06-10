@@ -11,6 +11,7 @@
         android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
     <path
         android:fillAlpha="0.3"
+        android:fillColor="@color/ic_nav_finance_inactive_0"
         android:fillType="evenOdd"
         android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
     <path

@@ -11,9 +11,11 @@
         android:pathData="M4,2h7.172a2,2 0,0 1,1.414 0.586l8.293,8.293a3,3 0,0 1,0 4.242L15.12,20.88a3,3 0,0 1,-4.242 0L2.586,12.586A2,2 0,0 1,2 11.172L2,4a2,2 0,0 1,2 -2z" />
     <path
         android:fillAlpha="0.3"
+        android:fillColor="@color/ic_nav_deals_inactive_0"
         android:fillType="evenOdd"
         android:pathData="M4,2h7.172a2,2 0,0 1,1.414 0.586l8.293,8.293a3,3 0,0 1,0 4.242L15.12,20.88a3,3 0,0 1,-4.242 0L2.586,12.586A2,2 0,0 1,2 11.172L2,4a2,2 0,0 1,2 -2z" />
     <path
-        android:fillColor="#00FFFFFF"
+        android:fillColor="#ffffffff"
+        android:fillType="evenOdd"
         android:pathData="M7,7m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
 </vector>

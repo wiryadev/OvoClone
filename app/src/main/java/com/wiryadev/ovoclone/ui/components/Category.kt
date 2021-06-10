@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.theme.Gray700
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
+import com.wiryadev.ovoclone.ui.theme.Purple700
 import com.wiryadev.ovoclone.ui.theme.Shapes
 
 private val CategoryGridIconSize = 48.dp
@@ -30,6 +31,7 @@ private val CategoryGridIconSize = 48.dp
 fun HighlightedCategories(
     modifier: Modifier = Modifier
 ) {
+    val textColor = Purple700
     Card(
         modifier = modifier
             .fillMaxWidth(),
@@ -47,17 +49,20 @@ fun HighlightedCategories(
             CategoryGridItem(
                 onClick = { },
                 image = R.drawable.ic_topup_transparent,
-                text = stringResource(id = R.string.top_up)
+                text = stringResource(id = R.string.top_up),
+                textColor = textColor,
             )
             CategoryGridItem(
                 onClick = { },
                 image = R.drawable.ic_transfer,
-                text = stringResource(id = R.string.transfer)
+                text = stringResource(id = R.string.transfer),
+                textColor = textColor,
             )
             CategoryGridItem(
                 onClick = { },
                 image = R.drawable.ic_history,
-                text = stringResource(id = R.string.history)
+                text = stringResource(id = R.string.history),
+                textColor = textColor,
             )
         }
     }
@@ -68,6 +73,7 @@ fun CategoryGridItem(
     onClick: () -> Unit,
     @DrawableRes image: Int,
     text: String,
+    textColor: Color = Gray700,
     size: Dp = 32.dp,
 ) {
     Column(
@@ -77,7 +83,7 @@ fun CategoryGridItem(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         IconButton(
-            onClick = onClick
+            onClick = onClick,
         ) {
             Image(
                 painter = painterResource(id = image),
@@ -87,7 +93,51 @@ fun CategoryGridItem(
         }
         Text(
             text = text,
-            color = Gray700,
+            color = textColor,
+            style = TextStyle(
+                fontWeight = FontWeight.Normal,
+                fontSize = 12.sp,
+                lineHeight = 18.sp,
+            ),
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .width(
+                    if (size > 32.dp) {
+                        size + 12.dp
+                    } else {
+                        Dp.Unspecified
+                    }
+                ),
+            textAlign = TextAlign.Center,
+        )
+    }
+}
+
+@Composable
+fun CategoryGridItemTest(
+    onClick: () -> Unit,
+    @DrawableRes image: Int,
+    text: String,
+    textColor: Color = Gray700,
+    size: Dp = 32.dp,
+) {
+    Column(
+        modifier = Modifier
+            .background(Color.Transparent)
+            .padding(vertical = 8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+            Image(
+                painter = painterResource(id = image),
+                contentDescription = text,
+                modifier = Modifier.size(size)
+                    .clickable(
+                        onClick = onClick
+                    ),
+            )
+        Text(
+            text = text,
+            color = textColor,
             style = TextStyle(
                 fontWeight = FontWeight.Normal,
                 fontSize = 12.sp,
@@ -233,6 +283,13 @@ fun ServicePreview() {
         ) {
             Box(Modifier.background(Color.White)) {
                 CategoryGridItem(
+                    onClick = { },
+                    image = R.drawable.ic_pln,
+                    text = "PLN"
+                )
+            }
+            Box(Modifier.background(Color.White)) {
+                CategoryGridItemTest(
                     onClick = { },
                     image = R.drawable.ic_pln,
                     text = "PLN"

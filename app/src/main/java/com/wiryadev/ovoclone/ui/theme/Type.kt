@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
 
 // Set of Material typography styles to start with
-val OvoFontFamily = FontFamily(
+val RavierFont = FontFamily(
     Font(R.font.eina_bold, FontWeight.Bold),
     Font(R.font.sf_pro_regular, FontWeight.Normal)
 )
