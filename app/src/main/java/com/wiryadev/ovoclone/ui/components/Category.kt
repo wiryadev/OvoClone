@@ -25,7 +25,7 @@ import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
 import com.wiryadev.ovoclone.ui.theme.Purple700
 import com.wiryadev.ovoclone.ui.theme.Shapes
 
-private val CategoryGridIconSize = 48.dp
+private val CategoryGridIconSize = 36.dp
 
 @Composable
 fun HighlightedCategories(
@@ -42,7 +42,10 @@ fun HighlightedCategories(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.White)
-                .padding(vertical = 4.dp),
+                .padding(
+                    top = 4.dp,
+                    bottom = 8.dp,
+                ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceAround,
         ) {
@@ -74,12 +77,12 @@ fun CategoryGridItem(
     @DrawableRes image: Int,
     text: String,
     textColor: Color = Gray700,
-    size: Dp = 32.dp,
+    size: Dp = 24.dp,
 ) {
     Column(
         modifier = Modifier
             .background(Color.Transparent)
-            .padding(vertical = 8.dp),
+            .padding(vertical = 4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         IconButton(
@@ -100,9 +103,9 @@ fun CategoryGridItem(
                 lineHeight = 18.sp,
             ),
             modifier = Modifier
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = 4.dp)
                 .width(
-                    if (size > 32.dp) {
+                    if (size > 24.dp) {
                         size + 12.dp
                     } else {
                         Dp.Unspecified

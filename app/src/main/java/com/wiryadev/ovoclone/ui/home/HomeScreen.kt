@@ -42,7 +42,7 @@ fun PriceSection(
             color = Purple150,
             style = TextStyle(
                 fontWeight = FontWeight.Bold,
-                fontSize = 14.sp,
+                fontSize = 12.sp,
                 lineHeight = 22.sp,
             ),
         )
@@ -52,7 +52,7 @@ fun PriceSection(
                 color = Color.White,
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
+                    fontSize = 14.sp,
                     lineHeight = 22.sp,
                 ),
             )
@@ -61,7 +61,7 @@ fun PriceSection(
                 color = Color.White,
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
-                    fontSize = 30.sp,
+                    fontSize = 24.sp,
                     lineHeight = 22.sp,
                 ),
             )
@@ -74,7 +74,7 @@ fun PriceSection(
                 color = Purple150,
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
+                    fontSize = 12.sp,
                     lineHeight = 22.sp,
                 ),
             )
@@ -83,7 +83,7 @@ fun PriceSection(
                 color = Orange500,
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
+                    fontSize = 12.sp,
                     lineHeight = 22.sp,
                 ),
             )
@@ -108,8 +108,8 @@ fun ExcitingUpdateItem(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(260.dp)
-                .background(Color.White),
+                .background(Color.White)
+                .padding(bottom = 8.dp),
         ) {
             Image(
                 painter = painterResource(id = image),
@@ -149,7 +149,8 @@ fun ExcitingUpdateItem(
                 RavierButton(
                     onClick = { },
                     text = actionText,
-                    buttonType = ButtonType.GhostSecondary
+                    buttonType = ButtonType.GhostSecondary,
+                    height = 32.dp
                 )
             }
         }
