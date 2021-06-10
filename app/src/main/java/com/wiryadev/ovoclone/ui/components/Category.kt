@@ -114,7 +114,7 @@ fun GridCategories(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp),
+            .padding(vertical = 16.dp),
     ) {
         Row(
             modifier = Modifier
