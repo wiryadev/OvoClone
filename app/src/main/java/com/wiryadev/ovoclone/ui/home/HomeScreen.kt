@@ -24,12 +24,10 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.accompanist.insets.statusBarsHeight
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.wiryadev.ovoclone.R
-import com.wiryadev.ovoclone.ui.components.ButtonType
-import com.wiryadev.ovoclone.ui.components.GridCategories
-import com.wiryadev.ovoclone.ui.components.HighlightedCategories
-import com.wiryadev.ovoclone.ui.components.RavierButton
+import com.wiryadev.ovoclone.ui.components.*
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
@@ -274,22 +272,27 @@ fun ExcitingUpdateSection(
                 )
             }
         }
-
     }
 }
 
 @Composable
 fun HomeScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Purple100)
-            .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
+    Box(
+        modifier = Modifier.fillMaxSize()
     ) {
-        MainSection()
-        ExcitingUpdateSection()
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Purple100)
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Spacer(Modifier.statusBarsHeight(additional = 36.dp))
+            MainSection()
+            ExcitingUpdateSection()
+        }
+        ActionBar()
     }
 }
 
