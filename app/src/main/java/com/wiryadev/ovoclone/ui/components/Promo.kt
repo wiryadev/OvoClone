@@ -44,7 +44,7 @@ fun PromoImage(
         contentDescription = "Promotion Image",
         modifier = Modifier
             .padding(
-                start = if (index == 0) 24.dp else Dp.Unspecified
+                start = if (index == 0) 24.dp else 0.dp
             )
             .size(
                 height = 128.dp,
