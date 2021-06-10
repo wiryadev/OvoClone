@@ -6,6 +6,7 @@ import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
@@ -42,6 +43,10 @@ fun OvoCloneTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composab
     SideEffect {
         sysUiController.setStatusBarColor(
             color = Purple600
+        )
+        sysUiController.setNavigationBarColor(
+            color = Color.White,
+            darkIcons = true,
         )
     }
 

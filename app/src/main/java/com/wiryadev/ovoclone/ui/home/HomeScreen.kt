@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.google.accompanist.insets.statusBarsHeight
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.*
 import com.wiryadev.ovoclone.ui.theme.*
@@ -231,20 +232,32 @@ fun BaseHomeSurface(
     subtitle: String? = null,
     viewAllEnable: Boolean = false,
     verticalPadding: Dp = 24.dp,
-    content: @Composable () -> Unit
+    contentHorizontalPadding: Dp? = null,
+    content: @Composable () -> Unit,
 ) {
+    val contentPaddingValues = if (contentHorizontalPadding != null) {
+        PaddingValues(start = 24.dp)
+    } else {
+        PaddingValues(all = 0.dp)
+    }
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
             .padding(
                 vertical = verticalPadding,
-                horizontal = 24.dp,
+                horizontal = if (contentHorizontalPadding != null) {
+                    0.dp
+                } else {
+                    24.dp
+                },
             ),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(contentPaddingValues),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
@@ -261,7 +274,8 @@ fun BaseHomeSurface(
                 RavierButton(
                     onClick = { },
                     text = "View All",
-                    buttonType = ButtonType.GhostSecondary
+                    buttonType = ButtonType.GhostSecondary,
+                    height = 32.dp
                 )
             }
         }
@@ -314,6 +328,22 @@ fun ExcitingUpdateSection() {
     }
 }
 
+@ExperimentalPagerApi
+@Composable
+fun SpecialPromo() {
+    BaseHomeSurface(
+        title = "Info dan Promo Spesial",
+        viewAllEnable = true,
+        contentHorizontalPadding = 0.dp,
+    ) {
+        BoxWithConstraints {
+            SpecialPromos(
+                width = this.maxWidth * 0.8f
+            )
+        }
+    }
+}
+
 @Composable
 fun YourFinancial() {
     BaseHomeSurface(
@@ -335,22 +365,23 @@ fun YourFinancial() {
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Row(
-                        modifier = Modifier.wrapContentWidth(),
+                        modifier = Modifier
+                            .wrapContentWidth()
+                            .height(IntrinsicSize.Min)
+                            .background(Color.White),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Image(
                             painter = painterResource(id = R.drawable.logo_ovo_purple),
                             contentDescription = "Logo Ovo",
                         )
-                        Text(
-                            text = "|",
-                            style = TextStyle(
-                                color = Purple600,
-                                fontFamily = RavierFont,
-                                fontWeight = FontWeight.Normal,
-                                fontSize = 30.sp,
-                            ),
-                            modifier = Modifier.padding(horizontal = 8.dp)
+                        Divider(
+                            color = Purple600,
+                            modifier = Modifier
+                                .padding(horizontal = 8.dp)
+                                .fillMaxHeight()
+                                .width(1.dp)
+
                         )
                         Text(
                             text = "Invest",
@@ -401,7 +432,7 @@ fun YourFinancial() {
                         modifier = Modifier.fillMaxWidth(0.6f),
                     )
                     RavierButton(
-                        onClick = {  },
+                        onClick = { },
                         text = "Mulai",
                         height = 32.dp,
                     )
@@ -411,6 +442,7 @@ fun YourFinancial() {
     }
 }
 
+@ExperimentalPagerApi
 @Composable
 fun HomeScreen() {
     Box(
@@ -424,8 +456,9 @@ fun HomeScreen() {
             verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Spacer(Modifier.statusBarsHeight(additional = 42.dp))
+            Spacer(Modifier.statusBarsHeight(additional = 40.dp))
             MainSection()
+            SpecialPromo()
             YourFinancial()
             ExcitingUpdateSection()
         }
@@ -464,17 +497,11 @@ fun HomeScreen() {
 //    }
 //}
 
+@ExperimentalPagerApi
 @Preview
 @Composable
 fun PreviewHome() {
-//    val systemUiController = rememberSystemUiController()
-//    SideEffect {
-//        systemUiController.setStatusBarColor(Purple600)
-//    }
-
     OvoCloneTheme {
-//        ProvideWindowInsets {
         HomeScreen()
-//        }
     }
 }
