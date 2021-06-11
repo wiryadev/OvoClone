@@ -6,7 +6,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -25,14 +28,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.Dimens.CARD_SHADOW
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X0_5
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_5
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
-import com.wiryadev.ovoclone.ui.theme.Gray700
-import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
-import com.wiryadev.ovoclone.ui.theme.Purple700
-import com.wiryadev.ovoclone.ui.theme.Shapes
+import com.wiryadev.ovoclone.ui.theme.*
 
 private val CategoryGridIconSize = SPACE_X6
 
@@ -41,6 +43,7 @@ fun HighlightedCategories(
     modifier: Modifier = Modifier
 ) {
     val textColor = Purple700
+
     Card(
         modifier = modifier
             .fillMaxWidth(),
@@ -52,7 +55,7 @@ fun HighlightedCategories(
                 .fillMaxWidth()
                 .background(Color.White)
                 .padding(
-                    vertical = SPACE_X1
+                    vertical = 10.dp
                 ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceAround,
@@ -85,12 +88,12 @@ fun CategoryGridItem(
     @DrawableRes image: Int,
     text: String,
     textColor: Color = Gray700,
-    size: Dp = 32.dp,
+    size: Dp = SPACE_X3,
 ) {
     Column(
         modifier = Modifier
             .background(Color.Transparent)
-            .padding(vertical = 4.dp),
+            .padding(vertical = SPACE_X0_5),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Box(
@@ -110,11 +113,14 @@ fun CategoryGridItem(
                 modifier = Modifier.size(size),
             )
         }
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(
+            modifier = Modifier.height(SPACE_X0_5)
+        )
         Text(
             text = text,
             color = textColor,
             style = TextStyle(
+                fontFamily = RavierFont,
                 fontWeight = FontWeight.Normal,
                 fontSize = 12.sp,
                 lineHeight = 18.sp,
@@ -140,12 +146,13 @@ fun GridCategories(
         modifier = modifier
             .fillMaxWidth()
             .padding(vertical = SPACE_X2),
+        verticalArrangement = Arrangement.spacedBy(SPACE_X1)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
             verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.SpaceAround,
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             CategoryGridItem(
                 onClick = { },
@@ -176,7 +183,7 @@ fun GridCategories(
             modifier = Modifier
                 .fillMaxWidth(),
             verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.SpaceAround,
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             CategoryGridItem(
                 onClick = { },
@@ -214,7 +221,7 @@ fun CategoryItemRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp),
+            .padding(vertical = SPACE_X1),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
@@ -230,12 +237,13 @@ fun CategoryItemRow(
                 text = text,
                 color = Gray700,
                 style = TextStyle(
+                    fontFamily = RavierFont,
                     fontWeight = FontWeight.Normal,
                     fontSize = 14.sp,
                     lineHeight = 18.sp,
+                    textAlign = TextAlign.Center,
                 ),
                 modifier = Modifier.padding(horizontal = 16.dp),
-                textAlign = TextAlign.Center,
             )
             Icon(
                 painter = painterResource(id = R.drawable.ic_arrow),

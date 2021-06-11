@@ -7,7 +7,9 @@ object Dimens {
     val SPACE_X4 = 32.dp
     val SPACE_X3 = 24.dp
     val SPACE_X2 = 16.dp
+    val SPACE_X1_5 = 12.dp
     val SPACE_X1 = 8.dp
+    val SPACE_X0_5 = 4.dp
 
     val CARD_SHADOW = 5.dp
 }

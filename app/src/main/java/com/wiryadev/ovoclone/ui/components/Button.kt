@@ -90,13 +90,14 @@ private fun TextButton(
         text = text,
         color = color,
         style = TextStyle(
+            fontFamily = RavierFont,
             fontWeight = FontWeight.Bold,
             fontSize = 12.sp,
             lineHeight = 18.sp,
+            textAlign = TextAlign.Center,
         ),
         modifier = Modifier.padding(horizontal = 16.dp),
-        textAlign = TextAlign.Center,
-        maxLines = 1
+        maxLines = 1,
     )
 }
 

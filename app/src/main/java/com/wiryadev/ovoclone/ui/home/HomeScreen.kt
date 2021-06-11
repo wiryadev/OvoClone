@@ -33,7 +33,6 @@ import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
@@ -48,9 +47,10 @@ fun PriceSection(
             text = "OVO Cash",
             color = Purple150,
             style = TextStyle(
+                fontFamily = RavierFont,
                 fontWeight = FontWeight.Bold,
                 fontSize = 12.sp,
-                lineHeight = 22.sp,
+                lineHeight = 18.sp,
             ),
         )
         Row {
@@ -58,6 +58,7 @@ fun PriceSection(
                 text = "Rp",
                 color = Color.White,
                 style = TextStyle(
+                    fontFamily = RavierFont,
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.sp,
                     lineHeight = 22.sp,
@@ -67,9 +68,9 @@ fun PriceSection(
                 text = "1.300",
                 color = Color.White,
                 style = TextStyle(
+                    fontFamily = RavierFont,
                     fontWeight = FontWeight.Bold,
                     fontSize = 24.sp,
-                    lineHeight = 22.sp,
                 ),
             )
         }
@@ -80,9 +81,10 @@ fun PriceSection(
                 text = "OVO Points",
                 color = Purple150,
                 style = TextStyle(
+                    fontFamily = RavierFont,
                     fontWeight = FontWeight.Bold,
                     fontSize = 12.sp,
-                    lineHeight = 22.sp,
+                    lineHeight = 18.sp,
                 ),
             )
             Text(
@@ -91,7 +93,7 @@ fun PriceSection(
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
                     fontSize = 12.sp,
-                    lineHeight = 22.sp,
+                    lineHeight = 18.sp,
                 ),
             )
         }
@@ -130,42 +132,49 @@ fun ExcitingUpdateItem(
             )
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                    .fillMaxSize()
+                    .padding(horizontal = SPACE_X1),
+                verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Text(
-                    text = title,
-                    color = BlackText,
-                    style = TextStyle(
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp,
-                        lineHeight = 22.sp,
-                        textAlign = TextAlign.Start,
-                    ),
-                )
-                Text(
-                    text = subtitle,
-                    color = BlackText,
-                    style = TextStyle(
-                        fontWeight = FontWeight.Normal,
-                        fontSize = 12.sp,
-                        lineHeight = 18.sp,
-                        textAlign = TextAlign.Start,
-                    ),
-                    maxLines = 3,
-                )
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(SPACE_X1)
+                ) {
+                    Text(
+                        text = title,
+                        color = BlackText,
+                        style = TextStyle(
+                            fontFamily = RavierFont,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp,
+                            lineHeight = 22.sp,
+                        ),
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    Text(
+                        text = subtitle,
+                        color = BlackText,
+                        style = TextStyle(
+                            fontFamily = RavierFont,
+                            fontWeight = FontWeight.Normal,
+                            fontSize = 12.sp,
+                            lineHeight = 18.sp,
+                        ),
+                        maxLines = 3,
+                    )
+                }
                 RavierButton(
                     onClick = { },
                     text = actionText,
                     buttonType = ButtonType.GhostSecondary,
-                    height = 32.dp
+                    height = 32.dp,
                 )
             }
         }
     }
 }
+
+private val IMAGE_HEIGHT = 84.dp
 
 @Composable
 fun MainSection() {
@@ -198,16 +207,20 @@ fun MainSection() {
                     id = R.drawable.rima_header_top_eid
                 ),
                 contentDescription = "Background Image",
-                contentScale = ContentScale.FillWidth,
-                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.FillBounds,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IMAGE_HEIGHT),
             )
             Image(
                 painter = painterResource(
                     id = R.drawable.rima_header_bottom_eid
                 ),
                 contentDescription = "Background Image",
-                contentScale = ContentScale.FillWidth,
-                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.FillBounds,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IMAGE_HEIGHT),
             )
         }
         PriceSection(
@@ -222,7 +235,7 @@ fun MainSection() {
             modifier = Modifier
                 .padding(horizontal = SPACE_X2)
                 .constrainAs(highlightedCategories) {
-                    top.linkTo(priceSection.bottom, SPACE_X6)
+                    top.linkTo(priceSection.bottom, SPACE_X3)
                     bottom.linkTo(backgroundImage.bottom)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
@@ -279,6 +292,7 @@ fun BaseHomeSurface(
                 text = title,
                 color = BlackText,
                 style = TextStyle(
+                    fontFamily = RavierFont,
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
@@ -326,15 +340,15 @@ fun ExcitingUpdateSection() {
                 ExcitingUpdateItem(
                     image = R.drawable.help,
                     title = "Pusat Bantuan",
-                    subtitle = "Punya kendala atau pertanyaan terkait OVO? kamu bisa kirim di sini",
+                    subtitle = "Punya kendala atau pertanyaan terkait OVO? Kamu bisa kirim di sini",
                     actionText = "Lihat Bantuan",
                     width = itemWidth,
                 )
                 ExcitingUpdateItem(
-                    image = R.drawable.asuransi,
-                    title = "Perlindungan COVID-19",
-                    subtitle = "Dapatkan Perlindungan COVID-19 Bebas Biaya",
-                    actionText = "Daftar Sekarang",
+                    image = R.drawable.edukasi_investasi,
+                    title = "Edukasi Investasi",
+                    subtitle = "Tips Keuangan Cegah Quarter-Life Crisis",
+                    actionText = "Cari tahu!",
                     width = itemWidth,
                 )
             }
@@ -424,7 +438,9 @@ fun YourFinancialSection() {
                                 fontSize = 14.sp,
                             )
                         )
-                        Spacer(modifier = Modifier.width(SPACE_X1))
+                        Spacer(
+                            modifier = Modifier.width(SPACE_X1)
+                        )
                         Image(
                             painter = painterResource(id = R.drawable.ic_bareksa_logo),
                             contentDescription = "Bareksa Logo",
@@ -483,37 +499,6 @@ fun HomeScreen() {
         ActionBar()
     }
 }
-
-//@Preview
-//@Composable
-//fun PreviewPrice() {
-//    OvoCloneTheme {
-//        Column(
-//            modifier = Modifier.fillMaxWidth(),
-//            verticalArrangement = Arrangement.spacedBy(16.dp)
-//        ) {
-//            PriceSection()
-//            BoxWithConstraints {
-//                ExcitingUpdateItem(
-//                    image = R.drawable.help,
-//                    title = "Pusat Bantuan",
-//                    subtitle = "Punya kendala atau pertanyaan terkait OVO? kamu bisa kirim di sini",
-//                    actionText = "Lihat Bantuan",
-//                    width = this.maxWidth / 2
-//                )
-//            }
-//            ExcitingUpdateSection()
-//        }
-//    }
-//}
-//
-//@Preview
-//@Composable
-//fun PreviewMainSection() {
-//    OvoCloneTheme {
-//        MainSection()
-//    }
-//}
 
 @ExperimentalPagerApi
 @Preview
