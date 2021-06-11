@@ -17,6 +17,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -27,10 +28,12 @@ import com.google.accompanist.insets.statusBarsHeight
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.*
+import com.wiryadev.ovoclone.ui.components.Dimens.CARD_SHADOW
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
@@ -107,6 +110,7 @@ fun ExcitingUpdateItem(
         modifier = Modifier
             .width(width),
         shape = Shapes.medium,
+        elevation = CARD_SHADOW,
     ) {
         Column(
             modifier = Modifier
@@ -136,8 +140,9 @@ fun ExcitingUpdateItem(
                     color = BlackText,
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp,
+                        fontSize = 14.sp,
                         lineHeight = 24.sp,
+                        textAlign = TextAlign.Start,
                     ),
                 )
                 Text(
@@ -147,6 +152,7 @@ fun ExcitingUpdateItem(
                         fontWeight = FontWeight.Normal,
                         fontSize = 12.sp,
                         lineHeight = 18.sp,
+                        textAlign = TextAlign.Start,
                     ),
                     maxLines = 3,
                 )
@@ -188,13 +194,17 @@ fun MainSection() {
                 }
         ) {
             Image(
-                painter = painterResource(id = R.drawable.rima_header_top_eid),
+                painter = painterResource(
+                    id = R.drawable.rima_header_top_eid
+                ),
                 contentDescription = "Background Image",
                 contentScale = ContentScale.FillWidth,
                 modifier = Modifier.fillMaxWidth(),
             )
             Image(
-                painter = painterResource(id = R.drawable.rima_header_bottom_eid),
+                painter = painterResource(
+                    id = R.drawable.rima_header_bottom_eid
+                ),
                 contentDescription = "Background Image",
                 contentScale = ContentScale.FillWidth,
                 modifier = Modifier.fillMaxWidth(),
@@ -205,7 +215,6 @@ fun MainSection() {
                 .padding(horizontal = SPACE_X2)
                 .constrainAs(priceSection) {
                     top.linkTo(parent.top)
-                    bottom.linkTo(highlightedCategories.top)
                     start.linkTo(parent.start)
                 }
         )
@@ -213,7 +222,7 @@ fun MainSection() {
             modifier = Modifier
                 .padding(horizontal = SPACE_X2)
                 .constrainAs(highlightedCategories) {
-                    top.linkTo(backgroundImage.bottom)
+                    top.linkTo(priceSection.bottom, SPACE_X6)
                     bottom.linkTo(backgroundImage.bottom)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
@@ -354,7 +363,10 @@ fun YourFinancialSection() {
     BaseHomeSurface(
         title = "Finansial Kamu",
     ) {
-        Card {
+        Card(
+            shape = Shapes.medium,
+            elevation = CARD_SHADOW,
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -419,7 +431,7 @@ fun YourFinancialSection() {
                         )
                     }
                 }
-                Divider(thickness = 1.dp, color = Gray600)
+                Divider(thickness = 1.dp, color = Gray200)
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -457,7 +469,7 @@ fun HomeScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Purple100)
+                .background(Gray200)
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,

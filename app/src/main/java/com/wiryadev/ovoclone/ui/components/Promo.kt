@@ -1,7 +1,10 @@
 package com.wiryadev.ovoclone.ui.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,7 +17,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
-import com.wiryadev.ovoclone.ui.theme.Gray600
+import com.wiryadev.ovoclone.ui.theme.Gray200
 import com.wiryadev.ovoclone.ui.theme.Teal500
 
 val dealsImages = listOf(
@@ -72,7 +75,7 @@ fun SpecialPromos(
         HorizontalPagerIndicator(
             pagerState = pagerState,
             activeColor = Teal500,
-            inactiveColor = Gray600,
+            inactiveColor = Gray200,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(

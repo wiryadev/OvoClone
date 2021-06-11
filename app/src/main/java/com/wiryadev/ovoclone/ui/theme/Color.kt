@@ -20,6 +20,7 @@ val Teal900 = Color(0xFF003033)
 
 val Orange500 = Color(0xFFFFBA08)
 
+val Gray200 = Color(0xFFF4F4F4)
 val Gray600 = Color(0xFF666666)
 val Gray700 = Color(0xFF444444)
 
