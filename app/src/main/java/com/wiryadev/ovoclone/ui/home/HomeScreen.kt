@@ -17,7 +17,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -253,78 +252,10 @@ fun MainSection() {
     }
 }
 
-@Composable
-fun BaseHomeSurface(
-    title: String,
-    subtitle: String? = null,
-    viewAllEnable: Boolean = false,
-    verticalPadding: Dp = SPACE_X2,
-    contentHorizontalPadding: Dp? = null,
-    content: @Composable () -> Unit,
-) {
-    val contentPaddingValues = if (contentHorizontalPadding != null) {
-        PaddingValues(start = SPACE_X2)
-    } else {
-        PaddingValues(all = 0.dp)
-    }
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.White)
-            .padding(
-                vertical = verticalPadding,
-                horizontal = if (contentHorizontalPadding != null) {
-                    0.dp
-                } else {
-                    SPACE_X2
-                },
-            ),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(contentPaddingValues),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-            Text(
-                text = title,
-                color = BlackText,
-                style = TextStyle(
-                    fontFamily = RavierFont,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
-                    lineHeight = 24.sp,
-                ),
-            )
-            if (viewAllEnable) {
-                RavierButton(
-                    onClick = { },
-                    text = "Lihat Semua",
-                    buttonType = ButtonType.GhostSecondary,
-                    height = 32.dp
-                )
-            }
-        }
-        if (subtitle != null) {
-            Text(
-                text = subtitle,
-                color = BlackText,
-                style = TextStyle(
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 12.sp,
-                    lineHeight = 18.sp,
-                ),
-            )
-        }
-        content()
-    }
-}
 
 @Composable
 fun ExcitingUpdateSection() {
-    BaseHomeSurface(
+    BaseSurface(
         title = "Yang Menarik di OVO",
         subtitle = "Jangan ngaku update kalau belum coba fitur ini",
         verticalPadding = SPACE_X3,
@@ -359,7 +290,7 @@ fun ExcitingUpdateSection() {
 @ExperimentalPagerApi
 @Composable
 fun SpecialPromoSection() {
-    BaseHomeSurface(
+    BaseSurface(
         title = "Info dan Promo Spesial",
         viewAllEnable = true,
         contentHorizontalPadding = 0.dp,
@@ -374,7 +305,7 @@ fun SpecialPromoSection() {
 
 @Composable
 fun YourFinancialSection() {
-    BaseHomeSurface(
+    BaseSurface(
         title = "Finansial Kamu",
     ) {
         Card(

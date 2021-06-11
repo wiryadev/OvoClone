@@ -4,6 +4,7 @@ import androidx.compose.ui.unit.dp
 
 object Dimens {
     val SPACE_X6 = 48.dp
+    val SPACE_X5 = 40.dp
     val SPACE_X4 = 32.dp
     val SPACE_X3 = 24.dp
     val SPACE_X2 = 16.dp

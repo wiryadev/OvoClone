@@ -13,6 +13,7 @@ val RavierFont = FontFamily(
     Font(R.font.eina_bold, FontWeight.Bold),
     Font(R.font.sf_pro_regular, FontWeight.Normal)
 )
+
 val Typography = Typography(
     body1 = TextStyle(
         fontFamily = FontFamily.Default,
