@@ -27,6 +27,10 @@ import com.google.accompanist.insets.statusBarsHeight
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.*
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
@@ -103,11 +107,11 @@ fun ExcitingUpdateItem(
         modifier = Modifier
             .width(width),
         shape = Shapes.medium,
-        elevation = 6.dp
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .height(240.dp)
                 .background(Color.White)
                 .padding(bottom = 8.dp),
         ) {
@@ -198,7 +202,7 @@ fun MainSection() {
         }
         PriceSection(
             modifier = Modifier
-                .padding(horizontal = 24.dp)
+                .padding(horizontal = SPACE_X2)
                 .constrainAs(priceSection) {
                     top.linkTo(parent.top)
                     bottom.linkTo(highlightedCategories.top)
@@ -207,7 +211,7 @@ fun MainSection() {
         )
         HighlightedCategories(
             modifier = Modifier
-                .padding(horizontal = 24.dp)
+                .padding(horizontal = SPACE_X2)
                 .constrainAs(highlightedCategories) {
                     top.linkTo(backgroundImage.bottom)
                     bottom.linkTo(backgroundImage.bottom)
@@ -217,9 +221,9 @@ fun MainSection() {
         )
         GridCategories(
             modifier = Modifier
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = SPACE_X2)
                 .constrainAs(gridCategories) {
-                    top.linkTo(highlightedCategories.bottom, 16.dp)
+                    top.linkTo(highlightedCategories.bottom, SPACE_X1)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 }
@@ -232,12 +236,12 @@ fun BaseHomeSurface(
     title: String,
     subtitle: String? = null,
     viewAllEnable: Boolean = false,
-    verticalPadding: Dp = 24.dp,
+    verticalPadding: Dp = SPACE_X2,
     contentHorizontalPadding: Dp? = null,
     content: @Composable () -> Unit,
 ) {
     val contentPaddingValues = if (contentHorizontalPadding != null) {
-        PaddingValues(start = 24.dp)
+        PaddingValues(start = SPACE_X2)
     } else {
         PaddingValues(all = 0.dp)
     }
@@ -250,7 +254,7 @@ fun BaseHomeSurface(
                 horizontal = if (contentHorizontalPadding != null) {
                     0.dp
                 } else {
-                    24.dp
+                    SPACE_X2
                 },
             ),
         verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -300,10 +304,10 @@ fun ExcitingUpdateSection() {
     BaseHomeSurface(
         title = "Yang Menarik di OVO",
         subtitle = "Jangan ngaku update kalau belum coba fitur ini",
-        verticalPadding = 32.dp,
+        verticalPadding = SPACE_X3,
     ) {
         BoxWithConstraints {
-            val itemWidth = (this.maxWidth - 16.dp) / 2
+            val itemWidth = (this.maxWidth - SPACE_X2) / 2
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -339,7 +343,7 @@ fun SpecialPromoSection() {
     ) {
         BoxWithConstraints {
             SpecialPromos(
-                itemWidth = this.maxWidth - (2 * 24).dp
+                itemWidth = this.maxWidth - SPACE_X4
             )
         }
     }
@@ -350,14 +354,12 @@ fun YourFinancialSection() {
     BaseHomeSurface(
         title = "Finansial Kamu",
     ) {
-        Card(
-            elevation = 6.dp
-        ) {
+        Card {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
+                    .padding(vertical = SPACE_X2),
+                verticalArrangement = Arrangement.spacedBy(SPACE_X2),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Column(
@@ -379,7 +381,7 @@ fun YourFinancialSection() {
                         Divider(
                             color = Purple600,
                             modifier = Modifier
-                                .padding(horizontal = 8.dp)
+                                .padding(horizontal = SPACE_X1)
                                 .fillMaxHeight()
                                 .width(1.dp)
 
@@ -394,6 +396,9 @@ fun YourFinancialSection() {
                             )
                         )
                     }
+                    Spacer(
+                        modifier = Modifier.height(8.dp)
+                    )
                     Row(
                         modifier = Modifier.wrapContentWidth(),
                         verticalAlignment = Alignment.CenterVertically,
@@ -407,7 +412,7 @@ fun YourFinancialSection() {
                                 fontSize = 14.sp,
                             )
                         )
-                        Spacer(modifier = Modifier.width(8.dp))
+                        Spacer(modifier = Modifier.width(SPACE_X1))
                         Image(
                             painter = painterResource(id = R.drawable.ic_bareksa_logo),
                             contentDescription = "Bareksa Logo",
@@ -435,7 +440,7 @@ fun YourFinancialSection() {
                     RavierButton(
                         onClick = { },
                         text = "Mulai",
-                        height = 32.dp,
+                        height = SPACE_X4,
                     )
                 }
             }
@@ -457,7 +462,7 @@ fun HomeScreen() {
             verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Spacer(Modifier.statusBarsHeight(additional = 40.dp))
+            Spacer(Modifier.statusBarsHeight(additional = 48.dp))
             MainSection()
             SpecialPromoSection()
             YourFinancialSection()

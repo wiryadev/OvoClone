@@ -20,6 +20,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
 import com.wiryadev.ovoclone.ui.theme.Gray700
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
 import com.wiryadev.ovoclone.ui.theme.Purple700
@@ -103,10 +106,9 @@ fun CategoryGridItem(
                 lineHeight = 18.sp,
             ),
             modifier = Modifier
-                .padding(horizontal = 4.dp)
                 .width(
-                    if (size > 24.dp) {
-                        size + 12.dp
+                    if (size > SPACE_X3) {
+                        size + SPACE_X2
                     } else {
                         Dp.Unspecified
                     }
@@ -127,7 +129,9 @@ fun CategoryGridItemTest(
     Column(
         modifier = Modifier
             .background(Color.Transparent)
-            .padding(vertical = 8.dp),
+            .padding(
+                all = SPACE_X1
+            ),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
             Image(
@@ -147,10 +151,9 @@ fun CategoryGridItemTest(
                 lineHeight = 18.sp,
             ),
             modifier = Modifier
-                .padding(horizontal = 16.dp)
                 .width(
                     if (size > 32.dp) {
-                        size + 12.dp
+                        size + SPACE_X2
                     } else {
                         Dp.Unspecified
                     }
@@ -167,7 +170,7 @@ fun GridCategories(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 16.dp),
+            .padding(vertical = SPACE_X2),
     ) {
         Row(
             modifier = Modifier
@@ -280,8 +283,7 @@ fun ServicePreview() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colors.background)
-                .padding(16.dp),
+                .background(MaterialTheme.colors.background),
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             Box(Modifier.background(Color.White)) {

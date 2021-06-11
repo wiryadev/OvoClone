@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.statusBarsPadding
 import com.wiryadev.ovoclone.R
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.theme.Purple600
 
 @Composable
@@ -35,7 +36,7 @@ fun ActionBar() {
                 contentDescription = "Ovo Logo",
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
-                    .padding(start = 16.dp),
+                    .padding(start = SPACE_X1),
             )
             IconButton(
                 onClick = { /* todo */ },

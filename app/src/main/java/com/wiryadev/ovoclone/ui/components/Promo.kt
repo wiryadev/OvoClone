@@ -14,6 +14,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
+import com.wiryadev.ovoclone.ui.theme.Gray600
 import com.wiryadev.ovoclone.ui.theme.Teal500
 
 val dealsImages = listOf(
@@ -71,6 +72,7 @@ fun SpecialPromos(
         HorizontalPagerIndicator(
             pagerState = pagerState,
             activeColor = Teal500,
+            inactiveColor = Gray600,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(
