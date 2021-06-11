@@ -141,7 +141,7 @@ fun ExcitingUpdateItem(
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
                         fontSize = 14.sp,
-                        lineHeight = 24.sp,
+                        lineHeight = 22.sp,
                         textAlign = TextAlign.Start,
                     ),
                 )
