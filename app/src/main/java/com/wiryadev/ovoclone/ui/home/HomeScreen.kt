@@ -30,8 +30,10 @@ import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.*
 import com.wiryadev.ovoclone.ui.components.Dimens.CARD_SHADOW
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
@@ -327,37 +329,13 @@ fun YourFinancialSection() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    Row(
-                        modifier = Modifier
-                            .wrapContentWidth()
-                            .height(IntrinsicSize.Min)
-                            .background(Color.White),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.logo_ovo_purple),
-                            contentDescription = "Logo Ovo",
-                        )
-                        Divider(
-                            color = Purple600,
-                            modifier = Modifier
-                                .padding(horizontal = SPACE_X1)
-                                .fillMaxHeight()
-                                .width(1.dp)
-
-                        )
-                        Text(
-                            text = "Invest",
-                            style = TextStyle(
-                                color = Purple600,
-                                fontFamily = RavierFont,
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 24.sp,
-                            )
-                        )
-                    }
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_ovo_invest_new),
+                        contentDescription = "Logo Ovo",
+                        modifier = Modifier.padding(top = SPACE_X1)
+                    )
                     Spacer(
-                        modifier = Modifier.height(8.dp)
+                        modifier = Modifier.height(SPACE_X1_HALF)
                     )
                     Row(
                         modifier = Modifier.wrapContentWidth(),
@@ -435,6 +413,7 @@ fun HomeScreen() {
                 painter = painterResource(id = R.drawable.ic_logo_ovo_white),
                 contentDescription = "Ovo Logo",
                 modifier = Modifier
+                    .height(SPACE_X2_HALF)
                     .padding(start = SPACE_X1_QUARTER),
             )
         }
