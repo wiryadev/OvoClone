@@ -8,7 +8,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
-import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,9 +24,7 @@ import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X5
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X7
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X8
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
@@ -125,7 +122,6 @@ fun FinanceBox(
     }
 }
 
-@Preview
 @Composable
 fun FinanceScreen() {
     Box(
@@ -189,5 +185,13 @@ fun PreviewFinanceBox() {
             sponsorImage = R.drawable.ic_taralite_logo,
             sponsorName = "Bareksa"
         )
+    }
+}
+
+@Preview
+@Composable
+fun PreviewFinanceScreen() {
+    OvoCloneTheme {
+        FinanceScreen()
     }
 }

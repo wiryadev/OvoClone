@@ -49,16 +49,18 @@ fun RavierButton(
     ) {
         Row(
             Modifier
-                .indication(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = rememberRipple()
-                )
                 .background(
                     color = buttonType.backgroundColor
                 )
                 .clickable(
                     onClick = onClick,
-                    role = Role.Button
+                    role = Role.Button,
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = if (buttonType == ButtonType.GhostSecondary) {
+                        null
+                    } else {
+                        rememberRipple()
+                    }
                 )
                 .padding(
                     horizontal = 16.dp
@@ -186,6 +188,12 @@ fun ButtonPreview() {
                 modifier = Modifier.wrapContentWidth(),
                 text = "Ghost Medium",
                 buttonType = ButtonType.Ghost,
+            )
+            RavierButton(
+                onClick = {  },
+                modifier = Modifier.wrapContentWidth(),
+                text = "Ghost Medium",
+                buttonType = ButtonType.GhostSecondary,
             )
         }
     }

@@ -40,7 +40,7 @@ import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
-fun PriceSection(
+fun BalanceSection(
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -171,7 +171,7 @@ fun ExcitingUpdateItem(
                     onClick = { },
                     text = actionText,
                     buttonType = ButtonType.GhostSecondary,
-                    height = 32.dp,
+                    height = SPACE_X4,
                 )
             }
         }
@@ -181,7 +181,7 @@ fun ExcitingUpdateItem(
 private val IMAGE_HEIGHT = 84.dp
 
 @Composable
-fun MainSection() {
+fun BalanceTransactionSection() {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
@@ -227,7 +227,7 @@ fun MainSection() {
                     .height(IMAGE_HEIGHT),
             )
         }
-        PriceSection(
+        BalanceSection(
             modifier = Modifier
                 .padding(horizontal = SPACE_X2)
                 .constrainAs(priceSection) {
@@ -235,7 +235,7 @@ fun MainSection() {
                     start.linkTo(parent.start)
                 }
         )
-        HighlightedCategories(
+        TransactionSection(
             modifier = Modifier
                 .padding(horizontal = SPACE_X2)
                 .constrainAs(highlightedCategories) {
@@ -245,7 +245,7 @@ fun MainSection() {
                     end.linkTo(parent.end)
                 }
         )
-        GridCategories(
+        FavoriteMenuSection(
             modifier = Modifier
                 .padding(horizontal = SPACE_X2)
                 .constrainAs(gridCategories) {
@@ -403,7 +403,7 @@ fun HomeScreen() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Spacer(Modifier.statusBarsHeight(additional = SPACE_X6))
-            MainSection()
+            BalanceTransactionSection()
             SpecialPromoSection()
             YourFinancialSection()
             ExcitingUpdateSection()

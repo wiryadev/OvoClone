@@ -10,7 +10,6 @@ import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -32,17 +31,17 @@ import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
 import com.wiryadev.ovoclone.ui.theme.*
 
 private val CategoryGridIconSize = SPACE_X6
 
 @Composable
-fun HighlightedCategories(
+fun TransactionSection(
     modifier: Modifier = Modifier
 ) {
-    val textColor = Purple700
+    val textColor = Purple600
 
     Card(
         modifier = modifier
@@ -62,19 +61,19 @@ fun HighlightedCategories(
         ) {
             CategoryGridItem(
                 onClick = { },
-                image = R.drawable.ic_topup_transparent,
+                image = R.drawable.rico_action_topup_s,
                 text = stringResource(id = R.string.top_up),
                 textColor = textColor,
             )
             CategoryGridItem(
                 onClick = { },
-                image = R.drawable.ic_transfer,
+                image = R.drawable.rico_action_transfer_s,
                 text = stringResource(id = R.string.transfer),
                 textColor = textColor,
             )
             CategoryGridItem(
                 onClick = { },
-                image = R.drawable.ic_history,
+                image = R.drawable.rico_action_history_s,
                 text = stringResource(id = R.string.history),
                 textColor = textColor,
             )
@@ -88,7 +87,7 @@ fun CategoryGridItem(
     @DrawableRes image: Int,
     text: String,
     textColor: Color = Gray700,
-    size: Dp = SPACE_X3,
+    size: Dp = SPACE_X4,
 ) {
     Column(
         modifier = Modifier
@@ -103,7 +102,7 @@ fun CategoryGridItem(
                     enabled = true,
                     role = Role.Button,
                     interactionSource = remember { MutableInteractionSource() },
-                    indication = rememberRipple(bounded = false, radius = SPACE_X2)
+                    indication = null,
                 )
                 .size(size)
         ) {
@@ -128,7 +127,7 @@ fun CategoryGridItem(
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .width(
-                    if (size > SPACE_X3) {
+                    if (size > SPACE_X4) {
                         size + SPACE_X2
                     } else {
                         Dp.Unspecified
@@ -139,7 +138,7 @@ fun CategoryGridItem(
 }
 
 @Composable
-fun GridCategories(
+fun FavoriteMenuSection(
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -273,8 +272,8 @@ fun ServicePreview() {
             Box(Modifier.background(Color.White)) {
                 CategoryItemRow(image = R.drawable.ic_pln, text = "PLN")
             }
-            HighlightedCategories()
-            GridCategories()
+            TransactionSection()
+            FavoriteMenuSection()
         }
     }
 }
