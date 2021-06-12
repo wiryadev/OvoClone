@@ -257,7 +257,6 @@ fun BalanceTransactionSection() {
     }
 }
 
-
 @Composable
 fun ExcitingUpdateSection() {
     BaseSurface(
