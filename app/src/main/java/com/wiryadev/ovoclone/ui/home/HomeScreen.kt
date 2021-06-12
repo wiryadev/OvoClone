@@ -8,6 +8,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,9 +30,11 @@ import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.*
 import com.wiryadev.ovoclone.ui.components.Dimens.CARD_SHADOW
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
@@ -418,16 +421,23 @@ fun HomeScreen() {
                 .fillMaxSize()
                 .background(Gray200)
                 .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(SPACE_X1),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Spacer(Modifier.statusBarsHeight(additional = 48.dp))
+            Spacer(Modifier.statusBarsHeight(additional = SPACE_X6))
             MainSection()
             SpecialPromoSection()
             YourFinancialSection()
             ExcitingUpdateSection()
         }
-        ActionBar()
+        ActionBar {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_logo_ovo_white),
+                contentDescription = "Ovo Logo",
+                modifier = Modifier
+                    .padding(start = SPACE_X1_QUARTER),
+            )
+        }
     }
 }
 

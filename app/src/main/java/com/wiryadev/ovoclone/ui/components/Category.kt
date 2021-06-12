@@ -28,9 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.Dimens.CARD_SHADOW
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X0_5
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_5
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
@@ -55,7 +55,7 @@ fun HighlightedCategories(
                 .fillMaxWidth()
                 .background(Color.White)
                 .padding(
-                    vertical = 10.dp
+                    vertical = SPACE_X1_QUARTER
                 ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceAround,
@@ -93,7 +93,7 @@ fun CategoryGridItem(
     Column(
         modifier = Modifier
             .background(Color.Transparent)
-            .padding(vertical = SPACE_X0_5),
+            .padding(vertical = SPACE_HALF),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Box(
@@ -114,7 +114,7 @@ fun CategoryGridItem(
             )
         }
         Spacer(
-            modifier = Modifier.height(SPACE_X0_5)
+            modifier = Modifier.height(SPACE_HALF)
         )
         Text(
             text = text,

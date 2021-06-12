@@ -20,7 +20,9 @@ import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.theme.Purple600
 
 @Composable
-fun ActionBar() {
+fun ActionBar(
+    content: @Composable () -> Unit
+) {
     TopAppBar(
         modifier = Modifier.statusBarsPadding(),
         backgroundColor = Purple600,
@@ -29,21 +31,16 @@ fun ActionBar() {
     ) {
         Row(
             modifier = Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Icon(
-                painter = painterResource(id = R.drawable.logo_ovo),
-                contentDescription = "Ovo Logo",
-                modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .padding(start = SPACE_X1),
-            )
+            content()
             IconButton(
-                onClick = { /* todo */ },
+                onClick = {  },
                 modifier = Modifier.align(Alignment.CenterVertically)
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_bell),
+                    painter = painterResource(id = R.drawable.ic_notification_dark_normal),
                     contentDescription = "Notification",
                     tint = Color.White,
                 )
@@ -55,5 +52,12 @@ fun ActionBar() {
 @Preview
 @Composable
 fun PreviewActionBar() {
-    ActionBar()
+    ActionBar {
+        Icon(
+            painter = painterResource(id = R.drawable.ic_logo_ovo_white),
+            contentDescription = "Ovo Logo",
+            modifier = Modifier
+                .padding(start = SPACE_X1),
+        )
+    }
 }
