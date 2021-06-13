@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph
@@ -135,85 +136,70 @@ fun RavierBottomBar(
 
         val currentSection = sections.first { it.route == currentRoute }
 
-        RavierBottomNavigation(
-            modifier = Modifier
-                .fillMaxWidth(),
-            backgroundColor = Color.White,
-            elevation = 0.dp
+        ConstraintLayout(
+            modifier = Modifier.fillMaxWidth()
+                .background(MaterialTheme.colors.surface.copy(alpha = 0.5f))
         ) {
-            items.forEach { item ->
-                val selected = item == currentSection
+            val (bottomNavigation, scanButton) = createRefs()
 
-                BottomNavigationItem(
-                    selected = selected,
-                    alwaysShowLabel = true,
-                    icon = {
-                        if (item != HomeSection.SCAN) {
+            RavierBottomNavigation(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colors.surface.copy(alpha = 0.5f))
+                    .constrainAs(bottomNavigation) {
+                        bottom.linkTo(parent.bottom)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    },
+                backgroundColor = Color.White,
+            ) {
+                items.forEach { item ->
+                    val selected = item == currentSection
+
+                    BottomNavigationItem(
+                        selected = selected,
+                        alwaysShowLabel = true,
+                        icon = {
                             ImageBottomBar(
                                 icon = if (selected) item.iconOnSelected else item.icon,
                                 description = stringResource(id = item.title)
                             )
-                        } else {
-                            Box(
-                                modifier = Modifier
-                                    .background(Color.White)
-                                    .padding(Dimens.SPACE_HALF)
-                            ) {
-                                Box(
-                                    modifier = Modifier
-                                        .clip(CircleShape)
-                                        .background(
-                                            brush = Brush.horizontalGradient(
-                                                colors = listOf(
-                                                    Color(0xffa056e9),
-                                                    Color(0xff361dc0)
-                                                )
-                                            )
-                                        )
-                                        .padding(SPACE_X1)
-                                        .align(Alignment.Center),
-                                    contentAlignment = Alignment.Center,
-                                ) {
-                                    ImageBottomBar(
-                                        icon = item.icon,
-                                        description = stringResource(id = item.title)
-                                    )
+                        },
+                        label = {
+                            Text(
+                                text = stringResource(item.title),
+                                color = if (selected) Color(0xFF361DC0) else LocalContentColor.current.copy(
+                                    alpha = LocalContentAlpha.current
+                                ),
+                                style = TextStyle(
+                                    fontFamily = RavierFont,
+                                    fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal
+                                ),
+                                maxLines = 1,
+                            )
+                        },
+                        onClick = {
+                            if (item.route != currentRoute) {
+                                navController.navigate(item.route) {
+                                    launchSingleTop = true
+                                    restoreState = true
+                                    popUpTo(findStartDestination(navController.graph).id) {
+                                        saveState = true
+                                    }
                                 }
                             }
-                        }
-                    },
-                    label = {
-                        Text(
-                            text = stringResource(item.title),
-                            color = if (selected) Color(0xFF361DC0) else LocalContentColor.current.copy(
-                                alpha = LocalContentAlpha.current
-                            ),
-                            style = TextStyle(
-                                fontFamily = RavierFont,
-                                fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal
-                            ),
-                            maxLines = 1,
-                        )
-                    },
-                    onClick = {
-                        if (item.route != currentRoute) {
-                            navController.navigate(item.route) {
-                                launchSingleTop = true
-                                restoreState = true
-                                popUpTo(findStartDestination(navController.graph).id) {
-                                    saveState = true
-                                }
-                            }
-                        }
-                    },
-                    modifier = if (item == HomeSection.SCAN) {
-                        Modifier
-                            .zIndex(SPACE_X6.value)
-                    } else {
-                        Modifier
-                    }
-                )
+                        },
+                    )
+                }
             }
+            ScanButton(
+                modifier = Modifier.constrainAs(scanButton) {
+                    top.linkTo(bottomNavigation.top)
+                    bottom.linkTo(bottomNavigation.top)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+            )
         }
     }
 }
@@ -227,6 +213,38 @@ fun ImageBottomBar(
         painter = painterResource(id = icon),
         contentDescription = description,
     )
+}
+
+@Composable
+fun ScanButton(
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier
+            .background(Color.White)
+            .padding(Dimens.SPACE_HALF)
+    ) {
+        Box(
+            modifier = Modifier
+                .clip(CircleShape)
+                .background(
+                    brush = Brush.horizontalGradient(
+                        colors = listOf(
+                            Color(0xffa056e9),
+                            Color(0xff361dc0)
+                        )
+                    )
+                )
+                .padding(SPACE_X1)
+                .align(Alignment.Center),
+            contentAlignment = Alignment.Center,
+        ) {
+            ImageBottomBar(
+                icon = HomeSection.SCAN.icon,
+                description = stringResource(id = HomeSection.SCAN.title)
+            )
+        }
+    }
 }
 
 private val NavGraph.startDestination: NavDestination?
