@@ -136,70 +136,49 @@ fun RavierBottomBar(
 
         val currentSection = sections.first { it.route == currentRoute }
 
-        ConstraintLayout(
-            modifier = Modifier.fillMaxWidth()
-                .background(MaterialTheme.colors.surface.copy(alpha = 0.5f))
+        RavierBottomNavigation(
+            modifier = Modifier
+                .fillMaxWidth(),
+            backgroundColor = Color.White,
         ) {
-            val (bottomNavigation, scanButton) = createRefs()
+            items.forEach { item ->
+                val selected = item == currentSection
 
-            RavierBottomNavigation(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(MaterialTheme.colors.surface.copy(alpha = 0.5f))
-                    .constrainAs(bottomNavigation) {
-                        bottom.linkTo(parent.bottom)
-                        start.linkTo(parent.start)
-                        end.linkTo(parent.end)
+                BottomNavigationItem(
+                    selected = selected,
+                    alwaysShowLabel = true,
+                    icon = {
+                        ImageBottomBar(
+                            icon = if (selected) item.iconOnSelected else item.icon,
+                            description = stringResource(id = item.title)
+                        )
                     },
-                backgroundColor = Color.White,
-            ) {
-                items.forEach { item ->
-                    val selected = item == currentSection
-
-                    BottomNavigationItem(
-                        selected = selected,
-                        alwaysShowLabel = true,
-                        icon = {
-                            ImageBottomBar(
-                                icon = if (selected) item.iconOnSelected else item.icon,
-                                description = stringResource(id = item.title)
-                            )
-                        },
-                        label = {
-                            Text(
-                                text = stringResource(item.title),
-                                color = if (selected) Color(0xFF361DC0) else LocalContentColor.current.copy(
-                                    alpha = LocalContentAlpha.current
-                                ),
-                                style = TextStyle(
-                                    fontFamily = RavierFont,
-                                    fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal
-                                ),
-                                maxLines = 1,
-                            )
-                        },
-                        onClick = {
-                            if (item.route != currentRoute) {
-                                navController.navigate(item.route) {
-                                    launchSingleTop = true
-                                    restoreState = true
-                                    popUpTo(findStartDestination(navController.graph).id) {
-                                        saveState = true
-                                    }
+                    label = {
+                        Text(
+                            text = stringResource(item.title),
+                            color = if (selected) Color(0xFF361DC0) else LocalContentColor.current.copy(
+                                alpha = LocalContentAlpha.current
+                            ),
+                            style = TextStyle(
+                                fontFamily = RavierFont,
+                                fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal
+                            ),
+                            maxLines = 1,
+                        )
+                    },
+                    onClick = {
+                        if (item.route != currentRoute && item != HomeSection.SCAN) {
+                            navController.navigate(item.route) {
+                                launchSingleTop = true
+                                restoreState = true
+                                popUpTo(findStartDestination(navController.graph).id) {
+                                    saveState = true
                                 }
                             }
-                        },
-                    )
-                }
+                        }
+                    },
+                )
             }
-            ScanButton(
-                modifier = Modifier.constrainAs(scanButton) {
-                    top.linkTo(bottomNavigation.top)
-                    bottom.linkTo(bottomNavigation.top)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-            )
         }
     }
 }
@@ -221,6 +200,7 @@ fun ScanButton(
 ) {
     Box(
         modifier = modifier
+            .clip(CircleShape)
             .background(Color.White)
             .padding(Dimens.SPACE_HALF)
     ) {

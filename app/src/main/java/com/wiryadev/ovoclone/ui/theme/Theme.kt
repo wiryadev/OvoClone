@@ -7,6 +7,7 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
+import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
@@ -31,7 +32,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun OvoCloneTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+fun OvoCloneTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     val colors = if (darkTheme) {
         LightColorPalette
     } else {
@@ -54,6 +55,10 @@ fun OvoCloneTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composab
         colors = colors,
         typography = Typography,
         shapes = Shapes,
-        content = content
+        content = {
+            ProvideWindowInsets {
+                content()
+            }
+        }
     )
 }

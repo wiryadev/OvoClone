@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.FabPosition
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -12,6 +13,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.wiryadev.ovoclone.ui.home.HomeSection
 import com.wiryadev.ovoclone.ui.home.RavierBottomBar
 import com.wiryadev.ovoclone.ui.home.RavierNavGraph
+import com.wiryadev.ovoclone.ui.home.ScanButton
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
 
 @ExperimentalPagerApi
@@ -30,7 +32,12 @@ class MainActivity : ComponentActivity() {
                             navController = navController,
                             items = items,
                         )
-                    }
+                    },
+                    floatingActionButton = {
+                        ScanButton()
+                    },
+                    floatingActionButtonPosition = FabPosition.Center,
+                    isFloatingActionButtonDocked = true,
                 ) { paddingValues ->
                     RavierNavGraph(
                         navController = navController,

@@ -69,4 +69,5 @@ dependencies {
     implementation("com.google.accompanist:accompanist-insets-ui:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-pager:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-pager-indicators:$accompanistVersion")
+    implementation("com.google.accompanist:accompanist-flowlayout:$accompanistVersion")
 }
