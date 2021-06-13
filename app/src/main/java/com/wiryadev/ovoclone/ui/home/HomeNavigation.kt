@@ -4,10 +4,14 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -20,10 +24,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.zIndex
-import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph
@@ -34,8 +34,8 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.Dimens
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X7
+import com.wiryadev.ovoclone.ui.components.RavierBottomNavigation
+import com.wiryadev.ovoclone.ui.components.RavierBottomNavigationItem
 import com.wiryadev.ovoclone.ui.theme.RavierFont
 
 enum class HomeSection(
@@ -96,32 +96,6 @@ fun NavGraphBuilder.addHomeGraph() {
 }
 
 @Composable
-private fun RavierBottomNavigation(
-    modifier: Modifier = Modifier,
-    backgroundColor: Color = Color.White,
-    contentColor: Color = contentColorFor(backgroundColor),
-    elevation: Dp = SPACE_X1,
-    content: @Composable RowScope.() -> Unit
-) {
-    Surface(
-        color = backgroundColor,
-        contentColor = contentColor,
-        elevation = elevation,
-        modifier = modifier
-    ) {
-        Row(
-            Modifier
-                .zIndex(SPACE_X6.value)
-                .fillMaxWidth()
-                .height(SPACE_X7)
-                .selectableGroup(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            content = content
-        )
-    }
-}
-
-@Composable
 fun RavierBottomBar(
     navController: NavController,
     items: Array<HomeSection>,
@@ -144,9 +118,8 @@ fun RavierBottomBar(
             items.forEach { item ->
                 val selected = item == currentSection
 
-                BottomNavigationItem(
+                RavierBottomNavigationItem(
                     selected = selected,
-                    alwaysShowLabel = true,
                     icon = {
                         ImageBottomBar(
                             icon = if (selected) item.iconOnSelected else item.icon,
@@ -166,7 +139,7 @@ fun RavierBottomBar(
                             maxLines = 1,
                         )
                     },
-                    onClick = {
+                    onSelected = {
                         if (item.route != currentRoute && item != HomeSection.SCAN) {
                             navController.navigate(item.route) {
                                 launchSingleTop = true
