@@ -6,4 +6,10 @@
     <string name="top_up">Top Up</string>
     <string name="transfer">Transfer</string>
     <string name="history">History</string>
+
+    <string name="home">Home</string>
+    <string name="deals">Deals</string>
+    <string name="scan">Scan</string>
+    <string name="finance">Finance</string>
+    <string name="profile">Profile</string>
 </resources>

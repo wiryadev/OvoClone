@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun DealsScreen() {
+fun ScanScreen() {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
