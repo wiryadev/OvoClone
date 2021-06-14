@@ -34,7 +34,9 @@ class MainActivity : ComponentActivity() {
                         )
                     },
                     floatingActionButton = {
-                        ScanButton()
+                        ScanButton(
+                            navController = navController,
+                        )
                     },
                     floatingActionButtonPosition = FabPosition.Center,
                     isFloatingActionButtonDocked = true,

@@ -4,11 +4,12 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.Text
@@ -22,6 +23,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
@@ -172,6 +174,7 @@ fun ImageBottomBar(
 
 @Composable
 fun ScanButton(
+    navController: NavController,
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -191,6 +194,20 @@ fun ScanButton(
                         )
                     )
                 )
+                .clickable(
+                    indication = null,
+                    onClick = {
+                        navController.navigate(HomeSection.SCAN.route) {
+                            launchSingleTop = true
+                            restoreState = true
+                            popUpTo(findStartDestination(navController.graph).id) {
+                                saveState = true
+                            }
+                        }
+                    },
+                    role = Role.Button,
+                    interactionSource = remember { MutableInteractionSource() },
+                )
                 .padding(SPACE_X1)
                 .align(Alignment.Center),
             contentAlignment = Alignment.Center,
@@ -209,21 +226,3 @@ private val NavGraph.startDestination: NavDestination?
 private tailrec fun findStartDestination(graph: NavDestination): NavDestination {
     return if (graph is NavGraph) findStartDestination(graph.startDestination!!) else graph
 }
-
-//@Preview
-//@Composable
-//fun PreviewBottomBar() {
-//    OvoCloneTheme {
-//        val navController = rememberNavController()
-//        Scaffold {
-//            Column(
-//                modifier = Modifier.fillMaxSize()
-//            ) {
-//                RavierBottomBar(
-//                    navController = navController,
-//                    items = HomeSection.values(),
-//                )
-//            }
-//        }
-//    }
-//}
