@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.zIndex
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import kotlin.math.max
 import kotlin.math.roundToInt
@@ -33,7 +34,7 @@ fun RavierBottomNavigation(
     modifier: Modifier = Modifier,
     backgroundColor: Color = Color.White,
     contentColor: Color = contentColorFor(backgroundColor),
-    elevation: Dp = Dimens.SPACE_X1,
+    elevation: Dp = SPACE_X1,
     content: @Composable RowScope.() -> Unit
 ) {
     Surface(
@@ -88,11 +89,11 @@ fun RowScope.RavierBottomNavigationItem(
             BottomNavigationItemBaselineLayout(
                 icon = icon,
                 label = styledLabel,
-                iconPositionAnimationProgress = 1f
             )
         }
     }
 }
+
 @Composable
 private fun BottomNavigationTransition(
     selected: Boolean,
@@ -120,7 +121,6 @@ private fun BottomNavigationTransition(
 private fun BottomNavigationItemBaselineLayout(
     icon: @Composable () -> Unit,
     label: @Composable (() -> Unit)?,
-    iconPositionAnimationProgress: Float
 ) {
     Layout(
         {
@@ -129,7 +129,7 @@ private fun BottomNavigationItemBaselineLayout(
                 Box(
                     Modifier
                         .layoutId("label")
-                        .alpha(iconPositionAnimationProgress)
+                        .alpha(IconPositionAnimationProgress)
                         .padding(horizontal = BottomNavigationItemHorizontalPadding)
                 ) { label() }
             }
@@ -153,7 +153,6 @@ private fun BottomNavigationItemBaselineLayout(
                 labelPlaceable!!,
                 iconPlaceable,
                 constraints,
-                iconPositionAnimationProgress
             )
         }
     }
@@ -175,12 +174,9 @@ private fun MeasureScope.placeLabelAndIcon(
     labelPlaceable: Placeable,
     iconPlaceable: Placeable,
     constraints: Constraints,
-    /*@FloatRange(from = 0.0, to = 1.0)*/
-    iconPositionAnimationProgress: Float
 ): MeasureResult {
     val height = constraints.maxHeight
 
-    // TODO: consider multiple lines of text here, not really supported by spec but we should
     // have a better strategy than overlapping the icon and label
     val baseline = labelPlaceable[LastBaseline]
 
@@ -206,12 +202,10 @@ private fun MeasureScope.placeLabelAndIcon(
     // When selected the icon is above the unselected position, so we will animate moving
     // downwards from the selected state, so when progress is 1, the total distance is 0, and we
     // are at the selected state.
-    val offset = (iconDistance * (1 - iconPositionAnimationProgress)).roundToInt()
+    val offset = (iconDistance * (1 - IconPositionAnimationProgress)).roundToInt()
 
     return layout(containerWidth, height) {
-        if (iconPositionAnimationProgress != 0f) {
-            labelPlaceable.placeRelative(labelX, labelY + offset)
-        }
+        labelPlaceable.placeRelative(labelX, labelY + offset)
         iconPlaceable.placeRelative(iconX, selectedIconY + offset)
     }
 }
@@ -220,6 +214,8 @@ private val BottomNavigationAnimationSpec = TweenSpec<Float>(
     durationMillis = 300,
     easing = FastOutSlowInEasing
 )
+
+private const val IconPositionAnimationProgress = 1f
 
 private val CombinedItemTextBaseline = SPACE_X1_HALF
 
