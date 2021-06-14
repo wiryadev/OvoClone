@@ -13,13 +13,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.wiryadev.ovoclone.ui.components.Dimens
 import com.wiryadev.ovoclone.ui.home.*
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
 import com.wiryadev.ovoclone.ui.theme.RavierFont
@@ -123,10 +121,6 @@ fun TestBottomNav() {
                 currentSection,
                 currentRoute = null,
             )
-        }
-        
-        BottomNavigation() {
-            
         }
     }
 }

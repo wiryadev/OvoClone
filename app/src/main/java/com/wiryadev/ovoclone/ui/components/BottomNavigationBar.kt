@@ -64,6 +64,8 @@ fun RavierBottomNavigation(
     }
 }
 
+// BottomNavigation code mostly coming from default BottomNavigation
+// with removal of some unnecessary stuff
 @Composable
 fun RowScope.RavierBottomNavigationItem(
     selected: Boolean,

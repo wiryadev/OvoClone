@@ -53,7 +53,7 @@ fun OvoCloneTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composab
 
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = RavierTypography,
         shapes = Shapes,
         content = {
             ProvideWindowInsets {

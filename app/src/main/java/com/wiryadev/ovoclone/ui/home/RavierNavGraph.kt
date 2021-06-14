@@ -38,7 +38,7 @@ fun RavierNavGraph(
             addHomeGraph(navController)
         }
         composable(
-            route = "${MainDestinations.DETAIL_ROUTE}/${HomeSection.SCAN.route}",
+            route = "${MainDestinations.MAIN_ROUTE}/${HomeSection.SCAN.route}",
         ) {
             ScanScreen()
         }

@@ -6,22 +6,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Card
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.google.accompanist.insets.statusBarsHeight
@@ -50,32 +44,18 @@ fun BalanceSection(
         Text(
             text = "OVO Cash",
             color = Purple150,
-            style = TextStyle(
-                fontFamily = RavierFont,
-                fontWeight = FontWeight.Bold,
-                fontSize = 12.sp,
-                lineHeight = 18.sp,
-            ),
+            style = MaterialTheme.typography.h6,
         )
         Row {
             Text(
                 text = "Rp",
                 color = Color.White,
-                style = TextStyle(
-                    fontFamily = RavierFont,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
-                    lineHeight = 22.sp,
-                ),
+                style = MaterialTheme.typography.h5,
             )
             Text(
                 text = "1.300",
                 color = Color.White,
-                style = TextStyle(
-                    fontFamily = RavierFont,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 24.sp,
-                ),
+                style = MaterialTheme.typography.h2,
             )
         }
         Row(
@@ -84,21 +64,12 @@ fun BalanceSection(
             Text(
                 text = "OVO Points",
                 color = Purple150,
-                style = TextStyle(
-                    fontFamily = RavierFont,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 12.sp,
-                    lineHeight = 18.sp,
-                ),
+                style = MaterialTheme.typography.h6,
             )
             Text(
                 text = "219.846",
                 color = Orange500,
-                style = TextStyle(
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 12.sp,
-                    lineHeight = 18.sp,
-                ),
+                style = MaterialTheme.typography.h6,
             )
         }
     }
@@ -123,7 +94,7 @@ fun ExcitingUpdateItem(
                 .fillMaxWidth()
                 .height(240.dp)
                 .background(Color.White)
-                .padding(bottom = 8.dp),
+                .padding(bottom = SPACE_X1),
         ) {
             Image(
                 painter = painterResource(id = image),
@@ -147,23 +118,13 @@ fun ExcitingUpdateItem(
                     Text(
                         text = title,
                         color = BlackText,
-                        style = TextStyle(
-                            fontFamily = RavierFont,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 14.sp,
-                            lineHeight = 22.sp,
-                        ),
+                        style = MaterialTheme.typography.h5,
                         modifier = Modifier.fillMaxWidth(),
                     )
                     Text(
                         text = subtitle,
                         color = BlackText,
-                        style = TextStyle(
-                            fontFamily = RavierFont,
-                            fontWeight = FontWeight.Normal,
-                            fontSize = 12.sp,
-                            lineHeight = 18.sp,
-                        ),
+                        style = MaterialTheme.typography.caption,
                         maxLines = 3,
                     )
                 }
@@ -342,12 +303,7 @@ fun YourFinancialSection() {
                     ) {
                         Text(
                             text = "Powered by",
-                            style = TextStyle(
-                                color = Gray600,
-                                fontFamily = RavierFont,
-                                fontWeight = FontWeight.Normal,
-                                fontSize = 14.sp,
-                            )
+                            style = MaterialTheme.typography.body2,
                         )
                         Spacer(
                             modifier = Modifier.width(SPACE_X1)
@@ -368,12 +324,8 @@ fun YourFinancialSection() {
                 ) {
                     Text(
                         text = "Saatnya kamu mulai investasi dengan yang aman dan pasti",
-                        style = TextStyle(
-                            color = Gray600,
-                            fontFamily = RavierFont,
-                            fontWeight = FontWeight.Normal,
-                            fontSize = 12.sp,
-                        ),
+                        color = Gray600,
+                        style = MaterialTheme.typography.caption,
                         modifier = Modifier.fillMaxWidth(0.6f),
                     )
                     RavierButton(

@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalContentColor
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -91,7 +92,7 @@ fun NavGraphBuilder.addHomeGraph(
         DealsScreen()
     }
     composable(HomeSection.SCAN.route) {
-        navController.navigate("${MainDestinations.DETAIL_ROUTE}/${HomeSection.SCAN.route}")
+        navController.navigate("${MainDestinations.MAIN_ROUTE}/${HomeSection.SCAN.route}")
     }
     composable(HomeSection.FINANCE.route) {
         FinanceScreen()
@@ -145,11 +146,8 @@ fun RavierBottomBar(
                             color = if (selected) Color(0xFF361DC0) else LocalContentColor.current.copy(
                                 alpha = LocalContentAlpha.current
                             ),
-                            style = TextStyle(
-                                fontFamily = RavierFont,
+                            style = MaterialTheme.typography.caption.copy(
                                 fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
-                                fontSize = 12.sp,
-                                lineHeight = 18.sp,
                             ),
                             maxLines = 1,
                         )
@@ -209,7 +207,7 @@ fun ScanButton(
                     .clickable(
                         indication = null,
                         onClick = {
-                            navController.navigate("${MainDestinations.DETAIL_ROUTE}/${HomeSection.SCAN.route}")
+                            navController.navigate("${MainDestinations.MAIN_ROUTE}/${HomeSection.SCAN.route}")
                         },
                         role = Role.Button,
                         interactionSource = remember { MutableInteractionSource() },

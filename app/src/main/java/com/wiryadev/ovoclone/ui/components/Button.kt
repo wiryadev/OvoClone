@@ -7,6 +7,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
@@ -90,14 +92,8 @@ private fun TextButton(
     Text(
         text = text,
         color = color,
-        style = TextStyle(
-            fontFamily = RavierFont,
-            fontWeight = FontWeight.Bold,
-            fontSize = 12.sp,
-            lineHeight = 18.sp,
-            textAlign = TextAlign.Center,
-        ),
-        modifier = Modifier.padding(horizontal = 16.dp),
+        style = MaterialTheme.typography.button,
+        modifier = Modifier.padding(horizontal = SPACE_X2),
         maxLines = 1,
     )
 }
