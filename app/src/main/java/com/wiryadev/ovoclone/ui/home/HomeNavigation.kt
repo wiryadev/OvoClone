@@ -174,41 +174,44 @@ fun ImageBottomBar(
 @Composable
 fun ScanButton(
     navController: NavController,
+    visible: Boolean,
     modifier: Modifier = Modifier,
 ) {
-    Box(
-        modifier = modifier
-            .clip(CircleShape)
-            .background(Color.White)
-            .padding(Dimens.SPACE_HALF)
-    ) {
+    if (visible) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .clip(CircleShape)
-                .background(
-                    brush = Brush.horizontalGradient(
-                        colors = listOf(
-                            Color(0xffa056e9),
-                            Color(0xff361dc0)
+                .background(Color.White)
+                .padding(Dimens.SPACE_HALF)
+        ) {
+            Box(
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(
+                                Color(0xffa056e9),
+                                Color(0xff361dc0)
+                            )
                         )
                     )
+                    .clickable(
+                        indication = null,
+                        onClick = {
+                            navController.navigate("${MainDestinations.DETAIL_ROUTE}/${HomeSection.SCAN.route}")
+                        },
+                        role = Role.Button,
+                        interactionSource = remember { MutableInteractionSource() },
+                    )
+                    .padding(SPACE_X1)
+                    .align(Alignment.Center),
+                contentAlignment = Alignment.Center,
+            ) {
+                ImageBottomBar(
+                    icon = HomeSection.SCAN.icon,
+                    description = stringResource(id = HomeSection.SCAN.title)
                 )
-                .clickable(
-                    indication = null,
-                    onClick = {
-                        navController.navigate("${MainDestinations.DETAIL_ROUTE}/${HomeSection.SCAN.route}")
-                    },
-                    role = Role.Button,
-                    interactionSource = remember { MutableInteractionSource() },
-                )
-                .padding(SPACE_X1)
-                .align(Alignment.Center),
-            contentAlignment = Alignment.Center,
-        ) {
-            ImageBottomBar(
-                icon = HomeSection.SCAN.icon,
-                description = stringResource(id = HomeSection.SCAN.title)
-            )
+            }
         }
     }
 }
