@@ -11,7 +11,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X7
+import com.wiryadev.ovoclone.ui.components.Dimens.BottomNavigationHeight
 import com.wiryadev.ovoclone.ui.home.HomeSection
 import com.wiryadev.ovoclone.ui.home.RavierBottomBar
 import com.wiryadev.ovoclone.ui.home.RavierNavGraph
@@ -35,6 +35,10 @@ class MainActivity : ComponentActivity() {
                         )
                     },
                 ) { paddingValues ->
+
+                    // paddingBottom should be set to [BottomNavigationHeight]
+                    // if use the default paddingValues, it will left additional space
+                    // that make transparency of the bottomBar does not work
                     RavierNavGraph(
                         navController = navController,
                         paddingValues = PaddingValues(
@@ -45,7 +49,7 @@ class MainActivity : ComponentActivity() {
                                 layoutDirection = LayoutDirection.Ltr
                             ),
                             top = paddingValues.calculateTopPadding(),
-                            bottom = SPACE_X7,
+                            bottom = BottomNavigationHeight,
                         ),
                     )
                 }

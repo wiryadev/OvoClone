@@ -28,7 +28,7 @@ import com.google.accompanist.insets.statusBarsHeight
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.*
-import com.wiryadev.ovoclone.ui.components.Dimens.CARD_SHADOW
+import com.wiryadev.ovoclone.ui.components.Dimens.CardShadowElevation
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_QUARTER
@@ -116,7 +116,7 @@ fun ExcitingUpdateItem(
         modifier = Modifier
             .width(width),
         shape = Shapes.medium,
-        elevation = CARD_SHADOW,
+        elevation = CardShadowElevation,
     ) {
         Column(
             modifier = Modifier
@@ -314,7 +314,7 @@ fun YourFinancialSection() {
     ) {
         Card(
             shape = Shapes.medium,
-            elevation = CARD_SHADOW,
+            elevation = CardShadowElevation,
         ) {
             Column(
                 modifier = Modifier

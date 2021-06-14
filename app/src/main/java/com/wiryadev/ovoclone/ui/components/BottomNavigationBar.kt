@@ -23,8 +23,8 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.zIndex
+import com.wiryadev.ovoclone.ui.components.Dimens.BottomNavigationHeight
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X7
 import kotlin.math.max
 import kotlin.math.roundToInt
 
@@ -35,12 +35,15 @@ fun RavierBottomNavigation(
     backgroundColor: Color = Color.White,
     content: @Composable RowScope.() -> Unit
 ) {
+    // Container to make positioning of the Box and Row possible
     BoxWithConstraints(
         modifier = modifier
             .fillMaxWidth()
             .background(Color.Transparent)
             .wrapContentHeight()
     ) {
+
+        // Background for the container, height should be set to [BottomNavigationHeight]
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -48,6 +51,8 @@ fun RavierBottomNavigation(
                 .background(backgroundColor)
                 .align(Alignment.BottomCenter)
         )
+
+        // Container for the actual content, zIndex should be higher than the Background box
         Row(
             modifier = Modifier
                 .zIndex(BottomNavigationHeight.value)
@@ -198,7 +203,6 @@ private val BottomNavigationAnimationSpec = TweenSpec<Float>(
     durationMillis = 300,
     easing = FastOutSlowInEasing
 )
-private val BottomNavigationHeight = SPACE_X7
 
 private const val IconPositionAnimationProgress = 1f
 

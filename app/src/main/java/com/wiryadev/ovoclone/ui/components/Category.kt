@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
-import com.wiryadev.ovoclone.ui.components.Dimens.CARD_SHADOW
+import com.wiryadev.ovoclone.ui.components.Dimens.CardShadowElevation
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_QUARTER
@@ -47,7 +47,7 @@ fun TransactionSection(
         modifier = modifier
             .fillMaxWidth(),
         shape = Shapes.medium,
-        elevation = CARD_SHADOW,
+        elevation = CardShadowElevation,
     ) {
         Row(
             modifier = Modifier
