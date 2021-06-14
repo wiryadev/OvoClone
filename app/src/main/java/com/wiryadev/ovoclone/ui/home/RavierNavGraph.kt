@@ -1,9 +1,10 @@
 package com.wiryadev.ovoclone.ui.home
 
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -20,14 +21,15 @@ object MainDestinations {
 @ExperimentalPagerApi
 @Composable
 fun RavierNavGraph(
-    modifier: Modifier = Modifier,
+    paddingValues: PaddingValues,
     navController: NavHostController = rememberNavController(),
     startDestination: String = MainDestinations.MAIN_ROUTE,
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination,
-        modifier = modifier
+        modifier = Modifier.fillMaxSize()
+            .padding(paddingValues = paddingValues)
     ) {
         navigation(
             route = startDestination,

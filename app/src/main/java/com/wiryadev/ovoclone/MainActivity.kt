@@ -3,19 +3,18 @@ package com.wiryadev.ovoclone
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.FabPosition
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.material.Scaffold
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.wiryadev.ovoclone.ui.home.*
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X7
+import com.wiryadev.ovoclone.ui.home.HomeSection
+import com.wiryadev.ovoclone.ui.home.RavierBottomBar
+import com.wiryadev.ovoclone.ui.home.RavierNavGraph
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
 
 @ExperimentalPagerApi
@@ -26,8 +25,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             val items = remember { HomeSection.values() }
             val navController = rememberNavController()
-            val navBackStackEntry by navController.currentBackStackEntryAsState()
-            val currentRoute = navBackStackEntry?.destination?.route
 
             OvoCloneTheme {
                 Scaffold(
@@ -37,18 +34,19 @@ class MainActivity : ComponentActivity() {
                             items = items,
                         )
                     },
-                    floatingActionButton = {
-                        ScanButton(
-                            navController = navController,
-                            visible = currentRoute != "${MainDestinations.DETAIL_ROUTE}/${HomeSection.SCAN.route}"
-                        )
-                    },
-                    floatingActionButtonPosition = FabPosition.Center,
-                    isFloatingActionButtonDocked = true,
                 ) { paddingValues ->
                     RavierNavGraph(
                         navController = navController,
-                        modifier = Modifier.padding(paddingValues),
+                        paddingValues = PaddingValues(
+                            start = paddingValues.calculateStartPadding(
+                                layoutDirection = LayoutDirection.Ltr
+                            ),
+                            end = paddingValues.calculateEndPadding(
+                                layoutDirection = LayoutDirection.Ltr
+                            ),
+                            top = paddingValues.calculateTopPadding(),
+                            bottom = SPACE_X7,
+                        ),
                     )
                 }
             }

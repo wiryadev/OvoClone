@@ -3,6 +3,7 @@ package com.wiryadev.ovoclone.ui.components
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
@@ -21,11 +22,9 @@ import androidx.compose.ui.layout.*
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Constraints
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.zIndex
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X7
 import kotlin.math.max
 import kotlin.math.roundToInt
 
@@ -34,21 +33,25 @@ import kotlin.math.roundToInt
 fun RavierBottomNavigation(
     modifier: Modifier = Modifier,
     backgroundColor: Color = Color.White,
-    contentColor: Color = contentColorFor(backgroundColor),
-    elevation: Dp = SPACE_X2,
     content: @Composable RowScope.() -> Unit
 ) {
-    Surface(
-        color = backgroundColor,
-        contentColor = contentColor,
-        elevation = elevation,
+    BoxWithConstraints(
         modifier = modifier
+            .fillMaxWidth()
+            .background(Color.Transparent)
+            .wrapContentHeight()
     ) {
-        Row(
-            Modifier
-                .zIndex(Dimens.SPACE_X6.value)
+        Box(
+            modifier = Modifier
                 .fillMaxWidth()
-                .height(Dimens.SPACE_X7)
+                .height(BottomNavigationHeight)
+                .background(backgroundColor)
+                .align(Alignment.BottomCenter)
+        )
+        Row(
+            modifier = Modifier
+                .zIndex(BottomNavigationHeight.value)
+                .fillMaxWidth()
                 .selectableGroup(),
             horizontalArrangement = Arrangement.SpaceBetween,
             content = content
@@ -195,6 +198,7 @@ private val BottomNavigationAnimationSpec = TweenSpec<Float>(
     durationMillis = 300,
     easing = FastOutSlowInEasing
 )
+private val BottomNavigationHeight = SPACE_X7
 
 private const val IconPositionAnimationProgress = 1f
 

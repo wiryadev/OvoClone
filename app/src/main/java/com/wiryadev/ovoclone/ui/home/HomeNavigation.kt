@@ -7,7 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.LocalContentAlpha
@@ -26,8 +26,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.*
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
+import androidx.navigation.NavGraph
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -112,21 +116,28 @@ fun RavierBottomBar(
 
         val currentSection = sections.first { it.route == currentRoute }
 
-        RavierBottomNavigation(
-            modifier = Modifier
-                .fillMaxWidth(),
-            backgroundColor = Color.White,
-        ) {
+        RavierBottomNavigation {
             items.forEach { item ->
                 val selected = item == currentSection
 
                 RavierBottomNavigationItem(
+                    modifier = Modifier
+                        .align(Alignment.Bottom)
+                        .then(
+                            Modifier.height(
+                                if (item == HomeSection.SCAN) 84.dp else 56.dp
+                            )
+                        ),
                     selected = selected,
                     icon = {
-                        ImageBottomBar(
-                            icon = if (selected) item.iconOnSelected else item.icon,
-                            description = stringResource(id = item.title)
-                        )
+                        if (item == HomeSection.SCAN) {
+                            ScanButton(navController = navController, visible = true)
+                        } else {
+                            ImageBottomBar(
+                                icon = if (selected) item.iconOnSelected else item.icon,
+                                description = stringResource(id = item.title)
+                            )
+                        }
                     },
                     label = {
                         Text(
@@ -153,7 +164,7 @@ fun RavierBottomBar(
                                 }
                             }
                         }
-                    },
+                    }
                 )
             }
         }
@@ -219,6 +230,6 @@ fun ScanButton(
 private val NavGraph.startDestination: NavDestination?
     get() = findNode(startDestinationId)
 
-private tailrec fun findStartDestination(graph: NavDestination): NavDestination {
+tailrec fun findStartDestination(graph: NavDestination): NavDestination {
     return if (graph is NavGraph) findStartDestination(graph.startDestination!!) else graph
 }
