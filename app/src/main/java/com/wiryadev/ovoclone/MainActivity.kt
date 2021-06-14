@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.material.Scaffold
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.wiryadev.ovoclone.ui.components.Dimens.BottomNavigationHeight
@@ -26,6 +28,12 @@ class MainActivity : ComponentActivity() {
             val items = remember { HomeSection.values() }
             val navController = rememberNavController()
 
+            val navBackStackEntry by navController.currentBackStackEntryAsState()
+            val currentRoute = navBackStackEntry?.destination?.route
+
+            val sections = remember { HomeSection.values() }
+            val routes = remember { sections.map { it.route } }
+
             OvoCloneTheme {
                 Scaffold(
                     bottomBar = {
@@ -36,9 +44,11 @@ class MainActivity : ComponentActivity() {
                     },
                 ) { paddingValues ->
 
-                    // paddingBottom should be set to [BottomNavigationHeight]
-                    // if use the default paddingValues, it will left additional space
-                    // that make transparency of the bottomBar does not work
+                    /**
+                     * paddingBottom should be set to [BottomNavigationHeight] when showing MainScreen
+                     * if use the default paddingValues, it will left additional space
+                     * that make transparency of the bottomBar does not work
+                     */
                     RavierNavGraph(
                         navController = navController,
                         paddingValues = PaddingValues(
@@ -49,7 +59,11 @@ class MainActivity : ComponentActivity() {
                                 layoutDirection = LayoutDirection.Ltr
                             ),
                             top = paddingValues.calculateTopPadding(),
-                            bottom = BottomNavigationHeight,
+                            bottom = if (currentRoute in routes) {
+                                BottomNavigationHeight
+                            } else {
+                                paddingValues.calculateBottomPadding()
+                            },
                         ),
                     )
                 }

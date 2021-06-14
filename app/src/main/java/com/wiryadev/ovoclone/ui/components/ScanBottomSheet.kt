@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -24,42 +25,79 @@ import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.R
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
-fun ScanBottomSheet() {
+fun ScanBottomSheet(
+    modifier: Modifier = Modifier
+) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .background(Color.White)
-            .padding(SPACE_X2),
-        verticalArrangement = Arrangement.spacedBy(SPACE_X2),
+            .background(Color.Transparent)
+            .clip(
+                RoundedCornerShape(
+                    topStart = SPACE_X1_HALF,
+                    topEnd = SPACE_X1_HALF,
+                )
+            )
     ) {
-        Text(
-            text = "Bisa juga pakai",
-            color = BlackText,
-            style = MaterialTheme.typography.h4,
-        )
-        BoxWithConstraints {
-            val itemWidth = (this.maxWidth - SPACE_X2) / 2
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White)
+                .padding(SPACE_X2),
+            verticalArrangement = Arrangement.spacedBy(SPACE_X2),
+        ) {
+            Text(
+                text = "Bisa juga pakai",
+                color = BlackText,
+                style = MaterialTheme.typography.h4,
+            )
+            BoxWithConstraints {
+                val itemWidth = (this.maxWidth - SPACE_X2) / 2
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                QrisOption(
-                    icon = R.drawable.ic_finance_invest,
-                    text = "Nomor HP",
-                    width = itemWidth,
-                    onClick = { }
-                )
-                QrisOption(
-                    icon = R.drawable.ic_finance_invest,
-                    text = "Loyalty",
-                    width = itemWidth,
-                    onClick = { }
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    QrisOption(
+                        icon = R.drawable.ic_finance_invest,
+                        text = "Nomor HP",
+                        width = itemWidth,
+                        onClick = { }
+                    )
+                    QrisOption(
+                        icon = R.drawable.ic_finance_invest,
+                        text = "Loyalty",
+                        width = itemWidth,
+                        onClick = { }
+                    )
+                }
             }
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Gray200)
+                .padding(vertical = SPACE_HALF),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+        ) {
+            Text(
+                text = "Scan tiket parkir bermasalah?",
+                color = BlackText,
+                style = MaterialTheme.typography.caption,
+            )
+            Divider(
+                modifier = Modifier.width(SPACE_HALF)
+            )
+            Text(
+                text = "Scan tiket parkir bermasalah?",
+                color = Teal500,
+                style = MaterialTheme.typography.h6,
+            )
         }
     }
 }
@@ -124,19 +162,12 @@ fun PreviewQrisButton() {
     OvoCloneTheme {
         Box(
             modifier = Modifier
-                .background(Color.White)
+                .background(Color.Transparent)
                 .fillMaxSize()
-                .padding(SPACE_X2)
         ) {
-//            BoxWithConstraints {
-//                QrisOption(
-//                    icon = R.drawable.ic_finance_invest,
-//                    text = "Nomor HP",
-//                    width = this.maxWidth / 2,
-//                    onClick = { }
-//                )
-//            }
-            ScanBottomSheet()
+            ScanBottomSheet(
+                modifier = Modifier.align(Alignment.BottomCenter)
+            )
         }
     }
 }

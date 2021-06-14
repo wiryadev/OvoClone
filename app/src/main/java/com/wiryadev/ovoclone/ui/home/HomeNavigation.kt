@@ -25,10 +25,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph
@@ -41,7 +39,6 @@ import com.wiryadev.ovoclone.ui.components.Dimens
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.RavierBottomNavigation
 import com.wiryadev.ovoclone.ui.components.RavierBottomNavigationItem
-import com.wiryadev.ovoclone.ui.theme.RavierFont
 
 enum class HomeSection(
     @StringRes val title: Int,
