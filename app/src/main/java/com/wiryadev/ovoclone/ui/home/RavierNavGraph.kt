@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -32,7 +33,12 @@ fun RavierNavGraph(
             route = startDestination,
             startDestination = HomeSection.HOME.route,
         ) {
-            addHomeGraph()
+            addHomeGraph(navController)
+        }
+        composable(
+            route = "${MainDestinations.DETAIL_ROUTE}/${HomeSection.SCAN.route}",
+        ) {
+            ScanScreen()
         }
     }
 }

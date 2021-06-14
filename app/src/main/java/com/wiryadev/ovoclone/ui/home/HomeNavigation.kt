@@ -27,10 +27,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
-import androidx.navigation.NavGraph
-import androidx.navigation.NavGraphBuilder
+import androidx.navigation.*
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -80,7 +77,9 @@ enum class HomeSection(
 }
 
 @ExperimentalPagerApi
-fun NavGraphBuilder.addHomeGraph() {
+fun NavGraphBuilder.addHomeGraph(
+    navController: NavController
+) {
     composable(HomeSection.HOME.route) {
         HomeScreen()
     }
@@ -88,7 +87,7 @@ fun NavGraphBuilder.addHomeGraph() {
         DealsScreen()
     }
     composable(HomeSection.SCAN.route) {
-        ScanScreen()
+        navController.navigate("${MainDestinations.DETAIL_ROUTE}/${HomeSection.SCAN.route}")
     }
     composable(HomeSection.FINANCE.route) {
         FinanceScreen()
@@ -197,13 +196,7 @@ fun ScanButton(
                 .clickable(
                     indication = null,
                     onClick = {
-                        navController.navigate(HomeSection.SCAN.route) {
-                            launchSingleTop = true
-                            restoreState = true
-                            popUpTo(findStartDestination(navController.graph).id) {
-                                saveState = true
-                            }
-                        }
+                        navController.navigate("${MainDestinations.DETAIL_ROUTE}/${HomeSection.SCAN.route}")
                     },
                     role = Role.Button,
                     interactionSource = remember { MutableInteractionSource() },

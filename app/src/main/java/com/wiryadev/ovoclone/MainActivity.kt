@@ -3,17 +3,17 @@ package com.wiryadev.ovoclone
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.FabPosition
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.wiryadev.ovoclone.ui.home.HomeSection
-import com.wiryadev.ovoclone.ui.home.RavierBottomBar
-import com.wiryadev.ovoclone.ui.home.RavierNavGraph
-import com.wiryadev.ovoclone.ui.home.ScanButton
+import com.wiryadev.ovoclone.ui.home.*
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
 
 @ExperimentalPagerApi
