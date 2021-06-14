@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.zIndex
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import kotlin.math.max
 import kotlin.math.roundToInt
 
@@ -34,7 +35,7 @@ fun RavierBottomNavigation(
     modifier: Modifier = Modifier,
     backgroundColor: Color = Color.White,
     contentColor: Color = contentColorFor(backgroundColor),
-    elevation: Dp = SPACE_X1,
+    elevation: Dp = SPACE_X2,
     content: @Composable RowScope.() -> Unit
 ) {
     Surface(
@@ -120,53 +121,33 @@ private fun BottomNavigationTransition(
 @Composable
 private fun BottomNavigationItemBaselineLayout(
     icon: @Composable () -> Unit,
-    label: @Composable (() -> Unit)?,
+    label: @Composable (() -> Unit),
 ) {
     Layout(
         {
             Box(Modifier.layoutId("icon")) { icon() }
-            if (label != null) {
-                Box(
-                    Modifier
-                        .layoutId("label")
-                        .alpha(IconPositionAnimationProgress)
-                        .padding(horizontal = BottomNavigationItemHorizontalPadding)
-                ) { label() }
-            }
+            Box(
+                Modifier
+                    .layoutId("label")
+                    .alpha(IconPositionAnimationProgress)
+                    .padding(horizontal = BottomNavigationItemHorizontalPadding)
+            ) { label() }
         }
     ) { measurables, constraints ->
         val iconPlaceable = measurables.first { it.layoutId == "icon" }.measure(constraints)
 
-        val labelPlaceable = label?.let {
-            measurables.first { it.layoutId == "label" }.measure(
-                // Measure with loose constraints for height as we don't want the label to take up more
-                // space than it needs
-                constraints.copy(minHeight = 0)
-            )
-        }
+        val labelPlaceable = measurables.first { it.layoutId == "label" }.measure(
+            // Measure with loose constraints for height as we don't want the label to take up more
+            // space than it needs
+            constraints.copy(minHeight = 0)
+        )
 
         // If there is no label, just place the icon.
-        if (label == null) {
-            placeIcon(iconPlaceable, constraints)
-        } else {
-            placeLabelAndIcon(
-                labelPlaceable!!,
-                iconPlaceable,
-                constraints,
-            )
-        }
-    }
-}
-
-
-private fun MeasureScope.placeIcon(
-    iconPlaceable: Placeable,
-    constraints: Constraints
-): MeasureResult {
-    val height = constraints.maxHeight
-    val iconY = (height - iconPlaceable.height) / 2
-    return layout(iconPlaceable.width, height) {
-        iconPlaceable.placeRelative(0, iconY)
+        placeLabelAndIcon(
+            labelPlaceable,
+            iconPlaceable,
+            constraints,
+        )
     }
 }
 
