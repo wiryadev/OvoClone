@@ -21,15 +21,13 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
@@ -38,15 +36,15 @@ fun RavierButton(
     modifier: Modifier = Modifier,
     text: String,
     buttonType: ButtonType = ButtonType.Primary,
-    height: Dp = 48.dp,
-    shape: Shape = RoundedCornerShape(24.dp),
+    height: Dp = SPACE_X6,
+    shape: Shape = RoundedCornerShape(SPACE_X3),
     @DrawableRes icon: Int? = null,
 ) {
     Surface(
         modifier = modifier
             .height(height)
             .clip(shape = shape),
-        elevation = 8.dp,
+        elevation = SPACE_X1,
     ) {
         Row(
             Modifier
@@ -57,14 +55,14 @@ fun RavierButton(
                     onClick = onClick,
                     role = Role.Button,
                     interactionSource = remember { MutableInteractionSource() },
-                    indication = if (buttonType == ButtonType.GhostSecondary) {
+                    indication = if (buttonType == ButtonType.LinkButton) {
                         null
                     } else {
                         rememberRipple()
                     }
                 )
                 .padding(
-                    horizontal = 16.dp
+                    horizontal = SPACE_X2
                 ),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
@@ -78,7 +76,8 @@ fun RavierButton(
             }
             TextButton(
                 text = text,
-                color = buttonType.contentColor
+                color = buttonType.contentColor,
+                paddingHorizontal = if (buttonType == ButtonType.LinkButton) SPACE_X1 else SPACE_X2
             )
         }
     }
@@ -88,12 +87,13 @@ fun RavierButton(
 private fun TextButton(
     text: String,
     color: Color,
+    paddingHorizontal: Dp,
 ) {
     Text(
         text = text,
         color = color,
         style = MaterialTheme.typography.button,
-        modifier = Modifier.padding(horizontal = SPACE_X2),
+        modifier = Modifier.padding(horizontal = paddingHorizontal),
         maxLines = 1,
     )
 }
@@ -122,7 +122,7 @@ sealed class ButtonType(
         contentColor = Gray600,
     )
 
-    object GhostSecondary : ButtonType(
+    object LinkButton : ButtonType(
         backgroundColor = Color.Transparent,
         contentColor = Teal500,
     )
@@ -136,7 +136,7 @@ fun ButtonPreview() {
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color(0xFFF4F4F4))
-                .padding(24.dp),
+                .padding(SPACE_X3),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -188,7 +188,7 @@ fun ButtonPreview() {
                 onClick = {  },
                 modifier = Modifier.wrapContentWidth(),
                 text = "Ghost Medium",
-                buttonType = ButtonType.GhostSecondary,
+                buttonType = ButtonType.LinkButton,
             )
         }
     }

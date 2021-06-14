@@ -131,7 +131,7 @@ fun ExcitingUpdateItem(
                 RavierButton(
                     onClick = { },
                     text = actionText,
-                    buttonType = ButtonType.GhostSecondary,
+                    buttonType = ButtonType.LinkButton,
                     height = SPACE_X4,
                 )
             }

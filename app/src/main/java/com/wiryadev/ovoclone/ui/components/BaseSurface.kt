@@ -64,7 +64,7 @@ fun BaseSurface(
                 RavierButton(
                     onClick = { },
                     text = "Lihat Semua",
-                    buttonType = ButtonType.GhostSecondary,
+                    buttonType = ButtonType.LinkButton,
                     height = Dimens.SPACE_X4,
                 )
             }

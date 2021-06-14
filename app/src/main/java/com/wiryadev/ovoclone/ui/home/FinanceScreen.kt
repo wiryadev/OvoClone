@@ -4,15 +4,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
 import com.google.accompanist.insets.statusBarsHeight
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.ActionBar
@@ -20,7 +17,6 @@ import com.wiryadev.ovoclone.ui.components.Dimens
 import com.wiryadev.ovoclone.ui.components.FinanceBox
 import com.wiryadev.ovoclone.ui.theme.Gray200
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
-import com.wiryadev.ovoclone.ui.theme.RavierFont
 
 @Composable
 fun FinanceScreen() {
@@ -58,13 +54,7 @@ fun FinanceScreen() {
             content = {
                 Text(
                     text = "Finance",
-                    style = TextStyle(
-                        color = Color.White,
-                        fontFamily = RavierFont,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp,
-                        lineHeight = 22.sp,
-                    ),
+                    style = MaterialTheme.typography.h4,
                     modifier = Modifier
                         .padding(start = Dimens.SPACE_X2),
                 )

@@ -3,23 +3,27 @@ package com.wiryadev.ovoclone.ui.components
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X5
-import com.wiryadev.ovoclone.ui.theme.*
+import com.wiryadev.ovoclone.ui.theme.BlackText
+import com.wiryadev.ovoclone.ui.theme.Gray200
+import com.wiryadev.ovoclone.ui.theme.Gray600
+import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
 
 @Composable
 fun FinanceBox(
@@ -30,7 +34,9 @@ fun FinanceBox(
     @DrawableRes sponsorImage: Int,
     sponsorName: String,
 ) {
-    Card {
+    Card(
+        shape = RoundedCornerShape(SPACE_HALF),
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -48,20 +54,20 @@ fun FinanceBox(
                     painter = painterResource(id = image),
                     contentDescription = title,
                 )
-                Text(
-                    text = title,
-                    style = TextStyle(
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(SPACE_X1),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = title,
                         color = BlackText,
-                        fontFamily = RavierFont,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 16.sp,
-                        lineHeight = 22.sp,
-                    ),
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.ic_new_red_big),
-                    contentDescription = "Baru",
-                )
+                        style = MaterialTheme.typography.h4
+                    )
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_new_red_big),
+                        contentDescription = "Baru",
+                    )
+                }
             }
             Divider(thickness = 1.dp, color = Gray200)
             Row(
@@ -69,12 +75,8 @@ fun FinanceBox(
             ) {
                 Text(
                     text = body,
-                    style = TextStyle(
-                        color = BlackText,
-                        fontFamily = RavierFont,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Normal,
-                    ),
+                    color = BlackText,
+                    style = MaterialTheme.typography.caption,
                     maxLines = 3,
                     modifier = Modifier.padding(start = SPACE_X5),
                 )
@@ -91,15 +93,11 @@ fun FinanceBox(
                 ) {
                     Text(
                         text = "Powered by",
-                        style = TextStyle(
-                            color = Gray600,
-                            fontFamily = RavierFont,
-                            fontWeight = FontWeight.Normal,
-                            fontSize = 14.sp,
-                        )
+                        color = Gray600,
+                        style = MaterialTheme.typography.body2,
                     )
                     Spacer(
-                        modifier = Modifier.width(Dimens.SPACE_X1)
+                        modifier = Modifier.width(SPACE_X1)
                     )
                     Image(
                         painter = painterResource(id = sponsorImage),
