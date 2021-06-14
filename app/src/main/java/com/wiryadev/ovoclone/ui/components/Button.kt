@@ -6,10 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -24,9 +21,12 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.wiryadev.ovoclone.R
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
 import com.wiryadev.ovoclone.ui.theme.*
 
@@ -73,11 +73,19 @@ fun RavierButton(
                     contentDescription = text,
                     tint = buttonType.contentColor
                 )
+                Divider(
+                    modifier = Modifier.width(
+                        if (height > SPACE_X4) {
+                            SPACE_X1_HALF
+                        } else {
+                            SPACE_HALF
+                        }
+                    )
+                )
             }
             TextButton(
                 text = text,
                 color = buttonType.contentColor,
-                paddingHorizontal = if (buttonType == ButtonType.LinkButton) SPACE_X1 else SPACE_X2
             )
         }
     }
@@ -87,13 +95,11 @@ fun RavierButton(
 private fun TextButton(
     text: String,
     color: Color,
-    paddingHorizontal: Dp,
 ) {
     Text(
         text = text,
         color = color,
         style = MaterialTheme.typography.button,
-        modifier = Modifier.padding(horizontal = paddingHorizontal),
         maxLines = 1,
     )
 }
@@ -141,51 +147,51 @@ fun ButtonPreview() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             RavierButton(
-                onClick = {  },
+                onClick = { },
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(id = R.string.primary_button),
                 buttonType = ButtonType.Primary,
             )
             RavierButton(
-                onClick = {  },
+                onClick = { },
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(R.string.primary_image),
                 buttonType = ButtonType.Primary,
                 icon = R.drawable.ic_24_edit,
             )
             RavierButton(
-                onClick = {  },
+                onClick = { },
                 modifier = Modifier.wrapContentSize(),
                 text = "Primary Medium",
                 buttonType = ButtonType.Primary,
             )
             RavierButton(
-                onClick = {  },
+                onClick = { },
                 modifier = Modifier.wrapContentSize(),
                 text = stringResource(id = R.string.primary_image),
                 buttonType = ButtonType.Primary,
                 icon = R.drawable.ic_24_edit,
             )
             RavierButton(
-                onClick = {  },
+                onClick = { },
                 modifier = Modifier.wrapContentWidth(),
                 text = "Secondary Medium",
                 buttonType = ButtonType.Secondary,
             )
             RavierButton(
-                onClick = {  },
+                onClick = { },
                 modifier = Modifier.wrapContentWidth(),
                 text = "Tertiary Medium",
                 buttonType = ButtonType.Tertiary,
             )
             RavierButton(
-                onClick = {  },
+                onClick = { },
                 modifier = Modifier.wrapContentWidth(),
                 text = "Ghost Medium",
                 buttonType = ButtonType.Ghost,
             )
             RavierButton(
-                onClick = {  },
+                onClick = { },
                 modifier = Modifier.wrapContentWidth(),
                 text = "Ghost Medium",
                 buttonType = ButtonType.LinkButton,

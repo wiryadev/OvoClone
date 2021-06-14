@@ -2,6 +2,7 @@ package com.wiryadev.ovoclone.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -53,12 +54,8 @@ fun BaseSurface(
             Text(
                 text = title,
                 color = BlackText,
-                style = TextStyle(
-                    fontFamily = RavierFont,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
-                    lineHeight = 24.sp,
-                ),
+                style = MaterialTheme.typography.h4,
+                maxLines = 1,
             )
             if (viewAllEnable) {
                 RavierButton(

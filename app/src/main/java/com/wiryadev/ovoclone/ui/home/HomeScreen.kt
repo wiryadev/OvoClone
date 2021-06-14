@@ -232,7 +232,6 @@ fun ExcitingUpdateSection() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-
                 ExcitingUpdateItem(
                     image = R.drawable.help,
                     title = "Pusat Bantuan",
