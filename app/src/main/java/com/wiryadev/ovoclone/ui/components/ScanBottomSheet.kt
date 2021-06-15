@@ -81,7 +81,7 @@ fun ScanBottomSheet(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Gray200)
-                .padding(vertical = SPACE_HALF),
+                .padding(vertical = SPACE_X1),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
         ) {
@@ -94,7 +94,7 @@ fun ScanBottomSheet(
                 modifier = Modifier.width(SPACE_HALF)
             )
             Text(
-                text = "Scan tiket parkir bermasalah?",
+                text = "Input Manual",
                 color = Teal500,
                 style = MaterialTheme.typography.h6,
             )

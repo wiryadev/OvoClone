@@ -14,7 +14,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.ui.theme.BlackText
-import com.wiryadev.ovoclone.ui.theme.RavierFont
 
 @Composable
 fun BaseSurface(

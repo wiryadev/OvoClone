@@ -26,7 +26,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph
@@ -37,6 +36,8 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.Dimens
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X10_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X7
 import com.wiryadev.ovoclone.ui.components.RavierBottomNavigation
 import com.wiryadev.ovoclone.ui.components.RavierBottomNavigationItem
 
@@ -50,46 +51,41 @@ enum class HomeSection(
         title = R.string.home,
         icon = R.drawable.ic_nav_home_inactive,
         iconOnSelected = R.drawable.ic_nav_home_active,
-        route = "home",
+        route = "main/home",
     ),
     DEALS(
         title = R.string.deals,
         icon = R.drawable.ic_nav_deals_inactive,
         iconOnSelected = R.drawable.ic_nav_deals_active,
-        route = "deals",
+        route = "main/deals",
     ),
     SCAN(
         title = R.string.scan,
         icon = R.drawable.ic_qris,
         iconOnSelected = R.drawable.ic_qris,
-        route = "scan",
+        route = "main/scan",
     ),
     FINANCE(
         title = R.string.finance,
         icon = R.drawable.ic_nav_finance_inactive,
         iconOnSelected = R.drawable.ic_nav_finance_active,
-        route = "finance",
+        route = "main/finance",
     ),
     PROFILE(
         title = R.string.profile,
         icon = R.drawable.ic_nav_profile_inactive,
         iconOnSelected = R.drawable.ic_nav_profile_active,
-        route = "profile",
+        route = "main/profile",
     ),
 }
 
 @ExperimentalPagerApi
-fun NavGraphBuilder.addHomeGraph(
-    navController: NavController
-) {
+fun NavGraphBuilder.addHomeGraph() {
     composable(HomeSection.HOME.route) {
         HomeScreen()
     }
     composable(HomeSection.DEALS.route) {
         DealsScreen()
-    }
-    composable(HomeSection.SCAN.route) {
-        navController.navigate("${MainDestinations.MAIN_ROUTE}/${HomeSection.SCAN.route}")
     }
     composable(HomeSection.FINANCE.route) {
         FinanceScreen()
@@ -108,7 +104,13 @@ fun RavierBottomBar(
     val currentRoute = navBackStackEntry?.destination?.route
 
     val sections = remember { HomeSection.values() }
-    val routes = remember { sections.map { it.route } }
+    val routes = remember {
+        sections.filter {
+            it != HomeSection.SCAN
+        }.map {
+            it.route
+        }
+    }
 
     if (currentRoute in routes) {
 
@@ -123,7 +125,7 @@ fun RavierBottomBar(
                         .align(Alignment.Bottom)
                         .then(
                             Modifier.height(
-                                if (item == HomeSection.SCAN) 84.dp else 56.dp
+                                if (item == HomeSection.SCAN) SPACE_X10_HALF else SPACE_X7
                             )
                         ),
                     selected = selected,
@@ -150,7 +152,7 @@ fun RavierBottomBar(
                         )
                     },
                     onSelected = {
-                        if (item.route != currentRoute && item != HomeSection.SCAN) {
+                        if (item.route != currentRoute) {
                             navController.navigate(item.route) {
                                 launchSingleTop = true
                                 restoreState = true
@@ -204,7 +206,7 @@ fun ScanButton(
                     .clickable(
                         indication = null,
                         onClick = {
-                            navController.navigate("${MainDestinations.MAIN_ROUTE}/${HomeSection.SCAN.route}")
+                            navController.navigate(HomeSection.SCAN.route)
                         },
                         role = Role.Button,
                         interactionSource = remember { MutableInteractionSource() },

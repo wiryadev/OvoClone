@@ -32,7 +32,13 @@ class MainActivity : ComponentActivity() {
             val currentRoute = navBackStackEntry?.destination?.route
 
             val sections = remember { HomeSection.values() }
-            val routes = remember { sections.map { it.route } }
+            val routes = remember {
+                sections.filter {
+                    it != HomeSection.SCAN
+                }.map {
+                    it.route
+                }
+            }
 
             OvoCloneTheme {
                 Scaffold(
