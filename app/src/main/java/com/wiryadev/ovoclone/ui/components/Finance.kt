@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X5
 import com.wiryadev.ovoclone.ui.theme.BlackText
@@ -41,7 +40,7 @@ fun FinanceBox(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = SPACE_X2),
-            verticalArrangement = Arrangement.spacedBy(SPACE_X1_HALF),
+            verticalArrangement = Arrangement.spacedBy(SPACE_X2),
         ) {
             Row(
                 modifier = Modifier
@@ -86,7 +85,8 @@ fun FinanceBox(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = SPACE_X2),
-                horizontalArrangement = Arrangement.SpaceBetween
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -108,6 +108,7 @@ fun FinanceBox(
                     onClick = onClick,
                     text = "Mulai",
                     height = Dimens.SPACE_X4,
+                    modifier = Modifier.fillMaxWidth(0.8f)
                 )
             }
         }

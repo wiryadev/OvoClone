@@ -1,6 +1,7 @@
 package com.wiryadev.ovoclone.ui.components
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -13,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
@@ -40,11 +42,17 @@ fun RavierButton(
     shape: Shape = RoundedCornerShape(SPACE_X3),
     @DrawableRes icon: Int? = null,
 ) {
-    Surface(
+    Box(
         modifier = modifier
-            .height(height)
-            .clip(shape = shape),
-        elevation = SPACE_X1,
+            .height(height = height)
+            .clip(shape = shape)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = LocalIndication.current,
+                enabled = true,
+                onClick = onClick
+            ),
+        propagateMinConstraints = true,
     ) {
         Row(
             Modifier
