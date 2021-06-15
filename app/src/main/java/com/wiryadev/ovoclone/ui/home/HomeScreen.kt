@@ -262,7 +262,6 @@ fun SpecialPromoSection() {
     BaseSurface(
         title = "Info dan Promo Spesial",
         viewAllEnable = true,
-        contentHorizontalPadding = 0.dp,
     ) {
         BoxWithConstraints {
             SpecialPromos(

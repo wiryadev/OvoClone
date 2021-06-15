@@ -23,14 +23,8 @@ fun BaseSurface(
     subtitle: String? = null,
     viewAllEnable: Boolean = false,
     verticalPadding: Dp = SPACE_X2,
-    contentHorizontalPadding: Dp? = null,
     content: @Composable () -> Unit,
 ) {
-    val contentPaddingValues = if (contentHorizontalPadding != null) {
-        PaddingValues(start = SPACE_X2)
-    } else {
-        PaddingValues(all = 0.dp)
-    }
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -44,18 +38,13 @@ fun BaseSurface(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(
-                    horizontal = if (contentHorizontalPadding != null) {
-                        0.dp
-                    } else {
-                        SPACE_X2
-                    },
+                    horizontal = SPACE_X2,
                 ),
             verticalArrangement = Arrangement.spacedBy(SPACE_X1_HALF),
         ) {
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(contentPaddingValues),
+                    .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
