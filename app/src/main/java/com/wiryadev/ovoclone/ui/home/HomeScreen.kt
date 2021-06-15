@@ -23,6 +23,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.*
 import com.wiryadev.ovoclone.ui.components.Dimens.CardShadowElevation
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_QUARTER
@@ -225,7 +226,11 @@ fun ExcitingUpdateSection() {
         subtitle = "Jangan ngaku update kalau belum coba fitur ini",
         verticalPadding = SPACE_X3,
     ) {
-        BoxWithConstraints {
+        BoxWithConstraints(
+            modifier = Modifier
+                .padding(horizontal = SPACE_X2)
+                .padding(bottom = SPACE_HALF)
+        ) {
             val itemWidth = (this.maxWidth - SPACE_X2) / 2
 
             Row(
@@ -275,6 +280,8 @@ fun YourFinancialSection() {
         Card(
             shape = Shapes.medium,
             elevation = CardShadowElevation,
+            modifier = Modifier
+                .padding(horizontal = SPACE_X2)
         ) {
             Column(
                 modifier = Modifier
