@@ -17,15 +17,16 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.theme.Gray200
 import com.wiryadev.ovoclone.ui.theme.Teal500
 
 val dealsImages = listOf(
-    "https://images-loyalty.ovo.id/public/deal/51/79/l/28111.jpg?ver=1",
-    "https://images-loyalty.ovo.id/public/deal/50/80/l/28593.jpg?ver=1",
-    "https://images-loyalty.ovo.id/public/deal/70/80/l/28601.jpg?ver=1",
-    "https://images-loyalty.ovo.id/public/deal/39/64/l/28042.jpg?ver=1",
     "https://images-loyalty.ovo.id/public/deal/00/80/l/28578.jpg?ver=1",
+    "https://images-loyalty.ovo.id/public/deal/57/76/l/27940.jpg?ver=1",
+    "https://images-loyalty.ovo.id/public/deal/30/80/l/28585.jpg?ver=1",
+    "https://images-loyalty.ovo.id/public/deal/51/79/l/28111.jpg?ver=1",
+    "https://images-loyalty.ovo.id/public/deal/84/78/l/28543.jpg?ver=1",
 )
 
 @Composable
@@ -61,7 +62,7 @@ fun SpecialPromos(
     ) {
         HorizontalPager(
             state = pagerState,
-            itemSpacing = 16.dp,
+            itemSpacing = SPACE_X2,
             modifier = Modifier
                 .fillMaxWidth(),
         ) { page ->
@@ -79,9 +80,9 @@ fun SpecialPromos(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(
-                    start = 16.dp,
-                    end = 16.dp,
-                    top = 16.dp,
+                    start = SPACE_X2,
+                    end = SPACE_X2,
+                    top = SPACE_X2,
                 )
         )
     }

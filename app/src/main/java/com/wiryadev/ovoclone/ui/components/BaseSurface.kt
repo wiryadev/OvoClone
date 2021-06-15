@@ -9,13 +9,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.theme.BlackText
+import com.wiryadev.ovoclone.ui.theme.Gray600
 
 @Composable
 fun BaseSurface(
@@ -23,6 +21,8 @@ fun BaseSurface(
     subtitle: String? = null,
     viewAllEnable: Boolean = false,
     verticalPadding: Dp = SPACE_X2,
+    titleTextStyle: TextStyle = MaterialTheme.typography.h3,
+    subtitleTextStyle: TextStyle = MaterialTheme.typography.caption,
     content: @Composable () -> Unit,
 ) {
     Column(
@@ -32,7 +32,7 @@ fun BaseSurface(
             .padding(
                 vertical = verticalPadding,
             ),
-        verticalArrangement = Arrangement.spacedBy(SPACE_X1_HALF),
+        verticalArrangement = Arrangement.spacedBy(SPACE_X2),
     ) {
         Column(
             modifier = Modifier
@@ -40,7 +40,7 @@ fun BaseSurface(
                 .padding(
                     horizontal = SPACE_X2,
                 ),
-            verticalArrangement = Arrangement.spacedBy(SPACE_X1_HALF),
+            verticalArrangement = Arrangement.spacedBy(SPACE_X1),
         ) {
             Row(
                 modifier = Modifier
@@ -51,7 +51,7 @@ fun BaseSurface(
                 Text(
                     text = title,
                     color = BlackText,
-                    style = MaterialTheme.typography.h4,
+                    style = titleTextStyle,
                     maxLines = 1,
                 )
                 if (viewAllEnable) {
@@ -66,12 +66,8 @@ fun BaseSurface(
             if (subtitle != null) {
                 Text(
                     text = subtitle,
-                    color = BlackText,
-                    style = TextStyle(
-                        fontWeight = FontWeight.Normal,
-                        fontSize = 12.sp,
-                        lineHeight = 18.sp,
-                    ),
+                    color = Gray600,
+                    style = subtitleTextStyle,
                 )
             }
         }

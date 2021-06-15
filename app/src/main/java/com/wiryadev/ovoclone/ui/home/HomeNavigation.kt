@@ -113,7 +113,6 @@ fun RavierBottomBar(
     }
 
     if (currentRoute in routes) {
-
         val currentSection = sections.first { it.route == currentRoute }
 
         RavierBottomNavigation {
