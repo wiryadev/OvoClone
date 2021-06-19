@@ -1,9 +1,6 @@
 package com.wiryadev.ovoclone.ui.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.TopAppBar
@@ -21,30 +18,37 @@ import com.wiryadev.ovoclone.ui.theme.Purple600
 
 @Composable
 fun ActionBar(
-    content: @Composable () -> Unit
+    headerContent: @Composable () -> Unit,
+    bodyContent: @Composable (() -> Unit)? = null,
 ) {
-    TopAppBar(
+    Column(
         modifier = Modifier.statusBarsPadding(),
-        backgroundColor = Purple600,
-        contentColor = Color.White,
-        elevation = 0.dp,
     ) {
-        Row(
-            modifier = Modifier.fillMaxSize(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
+        TopAppBar(
+            backgroundColor = Purple600,
+            contentColor = Color.White,
+            elevation = 0.dp,
         ) {
-            content()
-            IconButton(
-                onClick = {  },
-                modifier = Modifier.align(Alignment.CenterVertically)
+            Row(
+                modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_notification_dark_normal),
-                    contentDescription = "Notification",
-                    tint = Color.White,
-                )
+                headerContent()
+                IconButton(
+                    onClick = {  },
+                    modifier = Modifier.align(Alignment.CenterVertically)
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_notification_dark_normal),
+                        contentDescription = "Notification",
+                        tint = Color.White,
+                    )
+                }
             }
+        }
+        if (bodyContent != null) {
+            bodyContent()
         }
     }
 }
@@ -52,12 +56,14 @@ fun ActionBar(
 @Preview
 @Composable
 fun PreviewActionBar() {
-    ActionBar {
-        Icon(
-            painter = painterResource(id = R.drawable.ic_logo_ovo_white),
-            contentDescription = "Ovo Logo",
-            modifier = Modifier
-                .padding(start = SPACE_X1),
-        )
-    }
+    ActionBar(
+        headerContent = {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_logo_ovo_white),
+                contentDescription = "Ovo Logo",
+                modifier = Modifier
+                    .padding(start = SPACE_X1),
+            )
+        }
+    )
 }

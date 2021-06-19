@@ -51,7 +51,7 @@ fun FinanceScreen() {
             )
         }
         ActionBar(
-            content = {
+            headerContent = {
                 Text(
                     text = "Finance",
                     style = MaterialTheme.typography.h4,

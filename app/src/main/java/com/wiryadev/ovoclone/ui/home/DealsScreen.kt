@@ -1,25 +1,34 @@
 package com.wiryadev.ovoclone.ui.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import com.google.accompanist.insets.statusBarsHeight
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.ActionBar
 import com.wiryadev.ovoclone.ui.components.BaseSurface
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X10_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X5
 import com.wiryadev.ovoclone.ui.components.PromoImage
 import com.wiryadev.ovoclone.ui.theme.Gray200
 
@@ -80,6 +89,39 @@ fun CashbackSection() {
     }
 }
 
+@Composable
+fun SearchDeals() {
+    Row(
+        modifier = Modifier
+            .background(Color.White)
+            .fillMaxWidth()
+            .padding(horizontal = SPACE_X2, vertical = SPACE_X1),
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(0.8f)
+                .height(SPACE_X5)
+                .clip(RoundedCornerShape(SPACE_X1_HALF))
+                .background(Gray200),
+            contentAlignment = Alignment.Center,
+            propagateMinConstraints = true,
+        ) {
+            Text(
+                text = "Cari Merchants",
+                color = Color(0xFFC3C3C3),
+                style = MaterialTheme.typography.body2,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.wrapContentHeight()
+            )
+        }
+        Image(
+            painter = painterResource(id = R.drawable.ic_my_vouchers),
+            contentDescription = "My Vouchers",
+        )
+    }
+}
+
 @ExperimentalPagerApi
 @Composable
 fun DealsScreen() {
@@ -94,16 +136,19 @@ fun DealsScreen() {
             verticalArrangement = Arrangement.spacedBy(SPACE_X1),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Spacer(Modifier.statusBarsHeight(additional = SPACE_X6))
+            Spacer(Modifier.statusBarsHeight(additional = SPACE_X10_HALF))
             CashbackSection()
         }
-        ActionBar {
-            Text(
-                text = "Deals",
-                style = MaterialTheme.typography.h4,
-                modifier = Modifier
-                    .padding(start = SPACE_X2),
-            )
-        }
+        ActionBar(
+            headerContent = {
+                Text(
+                    text = "Deals",
+                    style = MaterialTheme.typography.h4,
+                    modifier = Modifier
+                        .padding(start = SPACE_X2),
+                )
+            },
+            bodyContent = { SearchDeals() }
+        )
     }
 }
