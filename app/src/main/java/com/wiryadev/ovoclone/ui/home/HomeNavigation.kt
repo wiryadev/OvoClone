@@ -184,7 +184,7 @@ fun ScanButton(
             modifier = Modifier
                 .clip(CircleShape)
                 .background(
-                    brush = Brush.horizontalGradient(
+                    brush = Brush.linearGradient(
                         colors = listOf(
                             Color(0xffa056e9),
                             Color(0xff361dc0)

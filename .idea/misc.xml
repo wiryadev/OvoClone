@@ -8,6 +8,7 @@
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/account_svg.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/air_icon_svg.xml" value="0.3712962962962963" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/bank_svg.xml" value="0.3592592592592593" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/bg_splash_screen.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/bottom_state.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/bpjs_icon_svg.xml" value="0.37592592592592594" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/deals_svg.xml" value="0.37592592592592594" />
@@ -52,8 +53,11 @@
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rico_action_transfer_s.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rico_system_capital.xml" value="0.3712962962962963" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rico_system_phone.xml" value="0.3592592592592593" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rima_header_bottom.xml" value="0.3592592592592593" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rima_header_bottom_eid.xml" value="0.37592592592592594" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rima_header_top.xml" value="0.3592592592592593" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rima_header_top_eid.xml" value="0.37592592592592594" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rima_logo_ovo.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/shape.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/tf_svg.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/topup_icon_svg.xml" value="0.2703125" />

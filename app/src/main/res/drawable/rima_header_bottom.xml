@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:height="61.0dip" android:width="375.0dip" android:viewportWidth="375.0" android:viewportHeight="61.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt">
+    <group>
+        <clip-path android:pathData="M0,-84h375v145h-375z" />
+        <path android:fillColor="@color/rima_header_bottom__0" android:pathData="M0,-84h375v145h-375z" />
+        <group>
+            <clip-path android:pathData="M187.519,60C257.866,60 322.777,47.913 375,27L375,-169H0L0,27C52.224,47.915 117.169,60 187.519,60Z" android:fillType="evenOdd" />
+            <path android:fillColor="#ff48268c" android:pathData="M187.519,60C257.866,60 322.777,47.913 375,27V-169H0L0,27C52.224,47.915 117.169,60 187.519,60Z" android:fillType="evenOdd" />
+            <path android:fillColor="@color/rima_header_bottom__1" android:pathData="M187.519,60C257.866,60 322.777,47.913 375,27V-169H0L0,27C52.224,47.915 117.169,60 187.519,60Z" android:fillType="evenOdd" />
+            <path android:fillColor="#ff5338a2" android:pathData="M315.897,-68.699C218.008,-61.69 119.912,29.931 -29.391,-95.456L-27.118,50.874L335.758,110.645C354.459,86.932 385.681,79.594 400.253,50.874C405.751,40.037 413.786,-75.709 315.897,-68.699Z" />
+            <path android:fillColor="@color/rima_header_bottom__2" android:pathData="M316.209,-79.678C218.32,-72.668 120.212,51.984 -29.091,-73.403L-29.091,46.929L333.785,106.7C352.487,82.988 383.709,75.649 398.281,46.929C403.779,36.093 414.098,-86.687 316.209,-79.678Z" />
+            <path android:fillColor="#ff432383" android:pathData="M356.614,-65.321C260.843,-86.75 102.403,97.688 -1.891,12.915L47.302,138.056L296.593,165.77C321.323,148.436 376.335,107.938 398.549,84.619C426.317,55.471 452.386,-43.891 356.614,-65.321Z" />
+            <path android:fillColor="@color/rima_header_bottom__3" android:pathData="M357.842,-29.588C262.071,-51.018 159.718,78.875 -27.951,-4.228L29.873,136.448L299.878,169.339C324.608,152.005 349.142,146.639 371.355,123.321C399.123,94.173 453.614,-8.158 357.842,-29.588Z" />
+            <path android:fillColor="@color/rima_header_bottom__4" android:pathData="M344.225,-24.082C248.453,-45.512 238.926,71.708 109.559,53.623L54.679,167.397L303.971,195.111C328.7,177.777 383.713,137.278 405.927,113.96C433.694,84.812 439.996,-2.652 344.225,-24.082Z" />
+            <path android:fillColor="@color/rima_header_bottom__5" android:pathData="M379.012,-4.889C283.241,-26.319 273.714,90.9 144.346,72.816L89.467,186.59L338.758,214.304C363.488,196.969 418.5,156.471 440.714,133.153C468.481,104.005 474.784,16.541 379.012,-4.889Z" />
+            <path android:fillColor="@color/rima_header_bottom__6" android:pathData="M187.519,60C257.866,60 322.777,47.913 375,27V-169H0L0,27C52.224,47.915 117.169,60 187.519,60Z" android:fillType="evenOdd" />
+        </group>
+    </group>
+</vector>

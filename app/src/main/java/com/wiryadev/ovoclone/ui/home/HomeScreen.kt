@@ -170,7 +170,7 @@ fun BalanceTransactionSection() {
         ) {
             Image(
                 painter = painterResource(
-                    id = R.drawable.rima_header_top_eid
+                    id = R.drawable.rima_header_top
                 ),
                 contentDescription = "Background Image",
                 contentScale = ContentScale.FillBounds,
@@ -180,7 +180,7 @@ fun BalanceTransactionSection() {
             )
             Image(
                 painter = painterResource(
-                    id = R.drawable.rima_header_bottom_eid
+                    id = R.drawable.rima_header_bottom
                 ),
                 contentDescription = "Background Image",
                 contentScale = ContentScale.FillBounds,
