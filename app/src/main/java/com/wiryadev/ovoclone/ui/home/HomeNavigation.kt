@@ -132,9 +132,11 @@ fun RavierBottomBar(
                         if (item == HomeSection.SCAN) {
                             ScanButton(navController = navController, visible = true)
                         } else {
-                            ImageBottomBar(
-                                icon = if (selected) item.iconOnSelected else item.icon,
-                                description = stringResource(id = item.title)
+                            Image(
+                                painter = painterResource(
+                                    id = if (selected) item.iconOnSelected else item.icon
+                                ),
+                                contentDescription = stringResource(id = item.title)
                             )
                         }
                     },
@@ -165,17 +167,6 @@ fun RavierBottomBar(
             }
         }
     }
-}
-
-@Composable
-fun ImageBottomBar(
-    @DrawableRes icon: Int,
-    description: String,
-) {
-    Image(
-        painter = painterResource(id = icon),
-        contentDescription = description,
-    )
 }
 
 @Composable
@@ -214,9 +205,9 @@ fun ScanButton(
                     .align(Alignment.Center),
                 contentAlignment = Alignment.Center,
             ) {
-                ImageBottomBar(
-                    icon = HomeSection.SCAN.icon,
-                    description = stringResource(id = HomeSection.SCAN.title)
+                Image(
+                    painter = painterResource(id = HomeSection.SCAN.icon),
+                    contentDescription = stringResource(id = HomeSection.SCAN.title)
                 )
             }
         }

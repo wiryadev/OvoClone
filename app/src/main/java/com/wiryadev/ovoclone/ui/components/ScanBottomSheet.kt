@@ -63,13 +63,13 @@ fun ScanBottomSheet(
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     QrisOption(
-                        icon = R.drawable.ic_finance_invest,
+                        icon = R.drawable.ic_phone,
                         text = "Nomor HP",
                         width = itemWidth,
                         onClick = { }
                     )
                     QrisOption(
-                        icon = R.drawable.ic_finance_invest,
+                        icon = R.drawable.ic_barcode,
                         text = "Loyalty",
                         width = itemWidth,
                         onClick = { }
@@ -91,7 +91,9 @@ fun ScanBottomSheet(
                 style = MaterialTheme.typography.caption,
             )
             Divider(
-                modifier = Modifier.width(SPACE_HALF)
+                modifier = Modifier
+                    .width(SPACE_HALF),
+                color = Color.Transparent,
             )
             Text(
                 text = "Input Manual",
@@ -144,7 +146,8 @@ fun QrisOption(
                 contentDescription = text,
             )
             Divider(
-                modifier = Modifier.width(SPACE_X1_HALF)
+                modifier = Modifier.width(SPACE_X1_HALF),
+                color = Color.Transparent,
             )
             Text(
                 text = text,

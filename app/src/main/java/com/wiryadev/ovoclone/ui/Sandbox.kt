@@ -1,5 +1,6 @@
 package com.wiryadev.ovoclone.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectableGroup
@@ -9,6 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -18,7 +20,10 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.wiryadev.ovoclone.ui.home.*
+import com.wiryadev.ovoclone.ui.home.FinanceScreen
+import com.wiryadev.ovoclone.ui.home.HomeSection
+import com.wiryadev.ovoclone.ui.home.ScanButton
+import com.wiryadev.ovoclone.ui.home.findStartDestination
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
 import com.wiryadev.ovoclone.ui.theme.RavierFont
 
@@ -66,9 +71,11 @@ fun TestBottomNav(
                         if (item == HomeSection.SCAN) {
                             ScanButton(navController = navController, visible = true)
                         } else {
-                            ImageBottomBar(
-                                icon = if (selected) item.iconOnSelected else item.icon,
-                                description = stringResource(id = item.title)
+                            Image(
+                                painter = painterResource(
+                                    id = if (selected) item.iconOnSelected else item.icon
+                                ),
+                                contentDescription = stringResource(id = item.title)
                             )
                         }
                     },
