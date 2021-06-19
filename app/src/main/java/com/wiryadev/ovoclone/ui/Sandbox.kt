@@ -69,7 +69,7 @@ fun TestBottomNav(
                     selected = selected,
                     icon = {
                         if (item == HomeSection.SCAN) {
-                            ScanButton(navController = navController, visible = true)
+                            ScanButton(navController = navController)
                         } else {
                             Image(
                                 painter = painterResource(

@@ -130,7 +130,7 @@ fun RavierBottomBar(
                     selected = selected,
                     icon = {
                         if (item == HomeSection.SCAN) {
-                            ScanButton(navController = navController, visible = true)
+                            ScanButton(navController = navController)
                         } else {
                             Image(
                                 painter = painterResource(
@@ -172,44 +172,41 @@ fun RavierBottomBar(
 @Composable
 fun ScanButton(
     navController: NavController,
-    visible: Boolean,
     modifier: Modifier = Modifier,
 ) {
-    if (visible) {
+    Box(
+        modifier = modifier
+            .clip(CircleShape)
+            .background(Color.White)
+            .padding(Dimens.SPACE_HALF)
+    ) {
         Box(
-            modifier = modifier
+            modifier = Modifier
                 .clip(CircleShape)
-                .background(Color.White)
-                .padding(Dimens.SPACE_HALF)
-        ) {
-            Box(
-                modifier = Modifier
-                    .clip(CircleShape)
-                    .background(
-                        brush = Brush.horizontalGradient(
-                            colors = listOf(
-                                Color(0xffa056e9),
-                                Color(0xff361dc0)
-                            )
+                .background(
+                    brush = Brush.horizontalGradient(
+                        colors = listOf(
+                            Color(0xffa056e9),
+                            Color(0xff361dc0)
                         )
                     )
-                    .clickable(
-                        indication = null,
-                        onClick = {
-                            navController.navigate(HomeSection.SCAN.route)
-                        },
-                        role = Role.Button,
-                        interactionSource = remember { MutableInteractionSource() },
-                    )
-                    .padding(SPACE_X1)
-                    .align(Alignment.Center),
-                contentAlignment = Alignment.Center,
-            ) {
-                Image(
-                    painter = painterResource(id = HomeSection.SCAN.icon),
-                    contentDescription = stringResource(id = HomeSection.SCAN.title)
                 )
-            }
+                .clickable(
+                    indication = null,
+                    onClick = {
+                        navController.navigate(HomeSection.SCAN.route)
+                    },
+                    role = Role.Button,
+                    interactionSource = remember { MutableInteractionSource() },
+                )
+                .padding(SPACE_X1)
+                .align(Alignment.Center),
+            contentAlignment = Alignment.Center,
+        ) {
+            Image(
+                painter = painterResource(id = HomeSection.SCAN.icon),
+                contentDescription = stringResource(id = HomeSection.SCAN.title)
+            )
         }
     }
 }
