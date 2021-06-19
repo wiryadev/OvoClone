@@ -12,8 +12,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
-import com.wiryadev.ovoclone.ui.theme.BlackText
-import com.wiryadev.ovoclone.ui.theme.Gray600
+import com.wiryadev.ovoclone.ui.theme.ShallotDarkest
+import com.wiryadev.ovoclone.ui.theme.PepperDark
 
 @Composable
 fun BaseSurface(
@@ -50,7 +50,7 @@ fun BaseSurface(
             ) {
                 Text(
                     text = title,
-                    color = BlackText,
+                    color = ShallotDarkest,
                     style = titleTextStyle,
                     maxLines = 1,
                 )
@@ -66,7 +66,7 @@ fun BaseSurface(
             if (subtitle != null) {
                 Text(
                     text = subtitle,
-                    color = Gray600,
+                    color = PepperDark,
                     style = subtitleTextStyle,
                 )
             }

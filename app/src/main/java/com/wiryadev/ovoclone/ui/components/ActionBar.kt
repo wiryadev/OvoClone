@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.insets.statusBarsPadding
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
-import com.wiryadev.ovoclone.ui.theme.Purple600
+import com.wiryadev.ovoclone.ui.theme.TaroDark
 
 @Composable
 fun ActionBar(
@@ -25,7 +25,7 @@ fun ActionBar(
         modifier = Modifier.statusBarsPadding(),
     ) {
         TopAppBar(
-            backgroundColor = Purple600,
+            backgroundColor = TaroDark,
             contentColor = Color.White,
             elevation = 0.dp,
         ) {

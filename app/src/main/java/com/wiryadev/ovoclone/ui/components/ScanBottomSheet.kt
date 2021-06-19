@@ -51,7 +51,7 @@ fun ScanBottomSheet(
         ) {
             Text(
                 text = "Bisa juga pakai",
-                color = BlackText,
+                color = ShallotDarkest,
                 style = MaterialTheme.typography.h4,
             )
             BoxWithConstraints {
@@ -79,14 +79,14 @@ fun ScanBottomSheet(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Gray200)
+                .background(PepperLighter)
                 .padding(vertical = SPACE_X1),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
         ) {
             Text(
                 text = "Scan tiket parkir bermasalah?",
-                color = BlackText,
+                color = ShallotDarkest,
                 style = MaterialTheme.typography.caption,
             )
             Spacer(
@@ -95,7 +95,7 @@ fun ScanBottomSheet(
             )
             Text(
                 text = "Input Manual",
-                color = Teal500,
+                color = SeaSalt,
                 style = MaterialTheme.typography.h6,
             )
         }
@@ -148,7 +148,7 @@ fun QrisOption(
             )
             Text(
                 text = text,
-                color = BlackText,
+                color = ShallotDarkest,
                 style = MaterialTheme.typography.h4,
                 maxLines = 1,
             )

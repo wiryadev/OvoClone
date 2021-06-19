@@ -14,7 +14,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
@@ -24,7 +23,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
@@ -117,28 +115,28 @@ sealed class ButtonType(
     val contentColor: Color,
 ) {
     object Primary : ButtonType(
-        backgroundColor = Purple500,
+        backgroundColor = Taro,
         contentColor = Color.White,
     )
 
     object Secondary : ButtonType(
-        backgroundColor = Purple150,
-        contentColor = Purple500,
+        backgroundColor = TaroLighter,
+        contentColor = Taro,
     )
 
     object Tertiary : ButtonType(
         backgroundColor = Color.White,
-        contentColor = Purple500,
+        contentColor = Taro,
     )
 
     object Ghost : ButtonType(
         backgroundColor = Color.Transparent,
-        contentColor = Gray600,
+        contentColor = PepperDark,
     )
 
     object LinkButton : ButtonType(
         backgroundColor = Color.Transparent,
-        contentColor = Teal500,
+        contentColor = SeaSalt,
     )
 }
 

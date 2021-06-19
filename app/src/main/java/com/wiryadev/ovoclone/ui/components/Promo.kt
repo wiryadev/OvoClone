@@ -18,8 +18,8 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
-import com.wiryadev.ovoclone.ui.theme.Gray200
-import com.wiryadev.ovoclone.ui.theme.Teal500
+import com.wiryadev.ovoclone.ui.theme.PepperLighter
+import com.wiryadev.ovoclone.ui.theme.SeaSalt
 
 val dealsImages = listOf(
     "https://images-loyalty.ovo.id/public/deal/00/80/l/28578.jpg?ver=1",
@@ -75,8 +75,8 @@ fun SpecialPromos(
 
         HorizontalPagerIndicator(
             pagerState = pagerState,
-            activeColor = Teal500,
-            inactiveColor = Gray200,
+            activeColor = SeaSalt,
+            inactiveColor = PepperLighter,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(

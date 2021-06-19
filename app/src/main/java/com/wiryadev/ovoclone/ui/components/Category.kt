@@ -30,9 +30,9 @@ import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
-import com.wiryadev.ovoclone.ui.theme.Gray700
+import com.wiryadev.ovoclone.ui.theme.PepperDarker
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
-import com.wiryadev.ovoclone.ui.theme.Purple600
+import com.wiryadev.ovoclone.ui.theme.TaroDark
 import com.wiryadev.ovoclone.ui.theme.Shapes
 
 private val CategoryGridIconSize = SPACE_X6
@@ -41,7 +41,7 @@ private val CategoryGridIconSize = SPACE_X6
 fun TransactionSection(
     modifier: Modifier = Modifier
 ) {
-    val textColor = Purple600
+    val textColor = TaroDark
 
     Card(
         modifier = modifier
@@ -86,7 +86,7 @@ fun CategoryGridItem(
     onClick: () -> Unit,
     @DrawableRes image: Int,
     text: String,
-    textColor: Color = Gray700,
+    textColor: Color = PepperDarker,
     size: Dp = SPACE_X4,
 ) {
     Column(
@@ -229,7 +229,7 @@ fun CategoryItemRow(
         ) {
             Text(
                 text = text,
-                color = Gray700,
+                color = PepperDarker,
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier.padding(horizontal = SPACE_X2),
             )

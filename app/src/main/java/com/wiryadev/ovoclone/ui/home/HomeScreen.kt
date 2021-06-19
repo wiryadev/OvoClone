@@ -44,7 +44,7 @@ fun BalanceSection(
     ) {
         Text(
             text = "OVO Cash",
-            color = Purple150,
+            color = TaroLighter,
             style = MaterialTheme.typography.h6,
         )
         Row {
@@ -64,7 +64,7 @@ fun BalanceSection(
         ) {
             Text(
                 text = "OVO Points",
-                color = Purple150,
+                color = TaroLighter,
                 style = MaterialTheme.typography.h6,
             )
             Text(
@@ -118,13 +118,13 @@ fun ExcitingUpdateItem(
                 ) {
                     Text(
                         text = title,
-                        color = BlackText,
+                        color = ShallotDarkest,
                         style = MaterialTheme.typography.h5,
                         modifier = Modifier.fillMaxWidth(),
                     )
                     Text(
                         text = subtitle,
-                        color = BlackText,
+                        color = ShallotDarkest,
                         style = MaterialTheme.typography.caption,
                         maxLines = 3,
                     )
@@ -282,7 +282,7 @@ fun YourFinancialSection() {
                         )
                     }
                 }
-                Divider(thickness = 1.dp, color = Gray200)
+                Divider(thickness = 1.dp, color = PepperLighter)
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -292,7 +292,7 @@ fun YourFinancialSection() {
                 ) {
                     Text(
                         text = "Saatnya kamu mulai investasi dengan yang aman dan pasti",
-                        color = Gray600,
+                        color = PepperDark,
                         style = MaterialTheme.typography.caption,
                         modifier = Modifier.fillMaxWidth(0.6f),
                     )
@@ -353,7 +353,7 @@ fun HomeScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Gray200)
+                .background(PepperLighter)
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(SPACE_X1),
             horizontalAlignment = Alignment.CenterHorizontally,

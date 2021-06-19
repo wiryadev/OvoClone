@@ -19,9 +19,9 @@ import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X5
-import com.wiryadev.ovoclone.ui.theme.BlackText
-import com.wiryadev.ovoclone.ui.theme.Gray200
-import com.wiryadev.ovoclone.ui.theme.Gray600
+import com.wiryadev.ovoclone.ui.theme.ShallotDarkest
+import com.wiryadev.ovoclone.ui.theme.PepperLighter
+import com.wiryadev.ovoclone.ui.theme.PepperDark
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
 
 @Composable
@@ -59,7 +59,7 @@ fun FinanceBox(
                 ) {
                     Text(
                         text = title,
-                        color = BlackText,
+                        color = ShallotDarkest,
                         style = MaterialTheme.typography.h4
                     )
                     Image(
@@ -68,19 +68,19 @@ fun FinanceBox(
                     )
                 }
             }
-            Divider(thickness = 1.dp, color = Gray200)
+            Divider(thickness = 1.dp, color = PepperLighter)
             Row(
                 modifier = Modifier.padding(horizontal = SPACE_X2),
             ) {
                 Text(
                     text = body,
-                    color = BlackText,
+                    color = ShallotDarkest,
                     style = MaterialTheme.typography.caption,
                     maxLines = 3,
                     modifier = Modifier.padding(start = SPACE_X5),
                 )
             }
-            Divider(thickness = 1.dp, color = Gray200)
+            Divider(thickness = 1.dp, color = PepperLighter)
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -93,7 +93,7 @@ fun FinanceBox(
                 ) {
                     Text(
                         text = "Powered by",
-                        color = Gray600,
+                        color = PepperDark,
                         style = MaterialTheme.typography.body2,
                     )
                     Spacer(

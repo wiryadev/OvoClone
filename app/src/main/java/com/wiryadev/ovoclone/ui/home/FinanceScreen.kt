@@ -16,7 +16,7 @@ import com.wiryadev.ovoclone.ui.components.ActionBar
 import com.wiryadev.ovoclone.ui.components.Dimens
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X7
 import com.wiryadev.ovoclone.ui.components.FinanceBox
-import com.wiryadev.ovoclone.ui.theme.Gray200
+import com.wiryadev.ovoclone.ui.theme.PepperLighter
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
 
 @Composable
@@ -27,7 +27,7 @@ fun FinanceScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Gray200)
+                .background(PepperLighter)
                 .padding(horizontal = Dimens.SPACE_X2)
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(Dimens.SPACE_X2),

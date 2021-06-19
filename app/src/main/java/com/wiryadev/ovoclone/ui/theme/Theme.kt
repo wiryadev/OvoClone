@@ -11,15 +11,15 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    primary = TaroLighter,
+    primaryVariant = TaroDarker,
+    secondary = SeaSaltLighter
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    primary = Taro,
+    primaryVariant = TaroDarker,
+    secondary = SeaSaltLighter
 
     /* Other default colors to override
     background = Color.White,
@@ -43,7 +43,7 @@ fun OvoCloneTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composab
 
     SideEffect {
         sysUiController.setStatusBarColor(
-            color = Purple600
+            color = TaroDark
         )
         sysUiController.setNavigationBarColor(
             color = Color.White,
