@@ -5,7 +5,6 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -21,11 +20,11 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.wiryadev.ovoclone.R
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
-import com.wiryadev.ovoclone.R
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
@@ -90,10 +89,9 @@ fun ScanBottomSheet(
                 color = BlackText,
                 style = MaterialTheme.typography.caption,
             )
-            Divider(
+            Spacer(
                 modifier = Modifier
                     .width(SPACE_HALF),
-                color = Color.Transparent,
             )
             Text(
                 text = "Input Manual",
@@ -145,9 +143,8 @@ fun QrisOption(
                 painter = painterResource(id = icon),
                 contentDescription = text,
             )
-            Divider(
+            Spacer(
                 modifier = Modifier.width(SPACE_X1_HALF),
-                color = Color.Transparent,
             )
             Text(
                 text = text,

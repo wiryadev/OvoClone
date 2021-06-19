@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -24,13 +25,15 @@ import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.ActionBar
 import com.wiryadev.ovoclone.ui.components.BaseSurface
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X10_HALF
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X14_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X5
 import com.wiryadev.ovoclone.ui.components.PromoImage
 import com.wiryadev.ovoclone.ui.theme.Gray200
+import com.wiryadev.ovoclone.ui.theme.Purple200
+import com.wiryadev.ovoclone.ui.theme.Purple500
 
 val cashbackImages = listOf(
     "https://images-loyalty.ovo.id/public/deal/62/80/l/28162.jpg?ver=1",
@@ -44,6 +47,92 @@ val cashbackImages = listOf(
     "https://images-loyalty.ovo.id/public/deal/84/78/l/28543.jpg?ver=1",
     "https://images-loyalty.ovo.id/public/deal/08/79/l/28555.jpg?ver=1",
 )
+
+@Composable
+fun SearchDeals() {
+    Row(
+        modifier = Modifier
+            .background(Color.White)
+            .fillMaxWidth()
+            .padding(
+                horizontal = SPACE_X2,
+                vertical = SPACE_X1,
+            ),
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        BoxWithConstraints {
+            val textFieldWidth = this.maxWidth - (SPACE_X5 + SPACE_X2)
+            Box(
+                modifier = Modifier
+                    .width(textFieldWidth)
+                    .height(SPACE_X5)
+                    .clip(RoundedCornerShape(SPACE_X1_QUARTER))
+                    .background(Gray200),
+                contentAlignment = Alignment.Center,
+                propagateMinConstraints = true,
+            ) {
+                Text(
+                    text = "Cari Merchants",
+                    color = Color(0xFFC3C3C3),
+                    style = MaterialTheme.typography.body2,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .wrapContentHeight()
+                )
+            }
+        }
+        Spacer(modifier = Modifier.width(SPACE_X2))
+        Image(
+            painter = painterResource(id = R.drawable.ic_my_vouchers),
+            contentDescription = "My Vouchers",
+            modifier = Modifier.size(SPACE_X5),
+        )
+    }
+}
+
+@Composable
+fun ViewDealsNearby() {
+    Row(
+        modifier = Modifier
+            .padding(SPACE_X2)
+            .clip(RoundedCornerShape(SPACE_X1))
+            .background(
+                brush = Brush.horizontalGradient(
+                    listOf(
+                        Purple500,
+                        Purple200,
+                    )
+                )
+            )
+            .padding(SPACE_X1),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        BoxWithConstraints {
+            val itemWidth = this.maxWidth - (SPACE_X5)
+            Row(
+                modifier = Modifier.width(itemWidth),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(SPACE_X1),
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_near_me),
+                    contentDescription = "View Deals Nearby",
+                )
+                Text(
+                    text = "1 Langkah menuju deals WAH!",
+                    color = Color.White,
+                    style = MaterialTheme.typography.h4,
+                    maxLines = 2,
+                )
+            }
+        }
+        Image(
+            painter = painterResource(id = R.drawable.ic_arrow_right),
+            contentDescription = "Voew Deals Nearby",
+        )
+    }
+}
 
 @ExperimentalPagerApi
 @Composable
@@ -89,39 +178,6 @@ fun CashbackSection() {
     }
 }
 
-@Composable
-fun SearchDeals() {
-    Row(
-        modifier = Modifier
-            .background(Color.White)
-            .fillMaxWidth()
-            .padding(horizontal = SPACE_X2, vertical = SPACE_X1),
-        horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .height(SPACE_X5)
-                .clip(RoundedCornerShape(SPACE_X1_HALF))
-                .background(Gray200),
-            contentAlignment = Alignment.Center,
-            propagateMinConstraints = true,
-        ) {
-            Text(
-                text = "Cari Merchants",
-                color = Color(0xFFC3C3C3),
-                style = MaterialTheme.typography.body2,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.wrapContentHeight()
-            )
-        }
-        Image(
-            painter = painterResource(id = R.drawable.ic_my_vouchers),
-            contentDescription = "My Vouchers",
-        )
-    }
-}
-
 @ExperimentalPagerApi
 @Composable
 fun DealsScreen() {
@@ -136,7 +192,8 @@ fun DealsScreen() {
             verticalArrangement = Arrangement.spacedBy(SPACE_X1),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Spacer(Modifier.statusBarsHeight(additional = SPACE_X10_HALF))
+            Spacer(Modifier.statusBarsHeight(additional = SPACE_X14_HALF))
+            ViewDealsNearby()
             CashbackSection()
         }
         ActionBar(

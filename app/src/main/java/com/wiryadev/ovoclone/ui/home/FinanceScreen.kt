@@ -14,6 +14,7 @@ import com.google.accompanist.insets.statusBarsHeight
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.ActionBar
 import com.wiryadev.ovoclone.ui.components.Dimens
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X7
 import com.wiryadev.ovoclone.ui.components.FinanceBox
 import com.wiryadev.ovoclone.ui.theme.Gray200
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
@@ -32,7 +33,7 @@ fun FinanceScreen() {
             verticalArrangement = Arrangement.spacedBy(Dimens.SPACE_X2),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Spacer(Modifier.statusBarsHeight(additional = Dimens.SPACE_X7))
+            Spacer(Modifier.statusBarsHeight(additional = SPACE_X7))
             FinanceBox(
                 onClick = { },
                 image = R.drawable.rico_system_capital,
