@@ -1,110 +1,65 @@
 package com.wiryadev.ovoclone.ui
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.compose.ui.zIndex
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
-import com.wiryadev.ovoclone.ui.home.FinanceScreen
-import com.wiryadev.ovoclone.ui.home.HomeSection
-import com.wiryadev.ovoclone.ui.home.ScanButton
-import com.wiryadev.ovoclone.ui.home.findStartDestination
+import androidx.compose.ui.unit.Dp
+import com.google.accompanist.coil.rememberCoilPainter
+import com.wiryadev.ovoclone.data.HappinessDeal
+import com.wiryadev.ovoclone.data.happinessDeals
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X12
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
-import com.wiryadev.ovoclone.ui.theme.RavierFont
+import com.wiryadev.ovoclone.ui.theme.PepperDark
+import com.wiryadev.ovoclone.ui.theme.TaroLight
 
 @Composable
-fun TestBottomNav(
-    navController: NavController,
-    items: Array<HomeSection>,
-    currentSection: HomeSection,
-    currentRoute: String?,
-    modifier: Modifier = Modifier
+private fun DealsCard(
+    item: HappinessDeal,
+    width: Dp,
 ) {
-    BoxWithConstraints(
-        modifier = modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .background(Color.Transparent)
+    Card(
+        modifier = Modifier.width(width = width),
+        shape = RoundedCornerShape(SPACE_HALF)
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp)
-                .background(Color.White)
-                .align(Alignment.BottomCenter)
-        )
-        Row(
-            modifier = Modifier
-                .zIndex(56.dp.value)
-                .fillMaxWidth()
-                .selectableGroup(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-            items.forEach { item ->
-                val selected = item == currentSection
-
-                BottomNavigationItem(
-                    modifier = Modifier
-                        .align(Alignment.Bottom)
-                        .then(
-                            Modifier.height(
-                                if (item == HomeSection.SCAN) 84.dp else 56.dp
-                            )
-                        ),
-                    selected = selected,
-                    icon = {
-                        if (item == HomeSection.SCAN) {
-                            ScanButton(navController = navController)
-                        } else {
-                            Image(
-                                painter = painterResource(
-                                    id = if (selected) item.iconOnSelected else item.icon
-                                ),
-                                contentDescription = stringResource(id = item.title)
-                            )
-                        }
-                    },
-                    label = {
-                        Text(
-                            text = stringResource(item.title),
-                            color = if (selected) Color(0xFF361DC0) else LocalContentColor.current.copy(
-                                alpha = LocalContentAlpha.current
-                            ),
-                            style = TextStyle(
-                                fontFamily = RavierFont,
-                                fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
-                                fontSize = 12.sp,
-                                lineHeight = 18.sp,
-                            ),
-                            maxLines = 1,
-                        )
-                    },
-                    onClick = {
-                        if (item.route != currentRoute && item != HomeSection.SCAN) {
-                            navController.navigate(item.route) {
-                                launchSingleTop = true
-                                restoreState = true
-                                popUpTo(findStartDestination(navController.graph).id) {
-                                    saveState = true
-                                }
-                            }
-                        }
-                    }
+        Column {
+            Image(
+                painter = rememberCoilPainter(
+                    request = item.banner,
+                ),
+                contentDescription = "Deals Banner",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(SPACE_X12),
+            )
+            Column(
+                modifier = Modifier.padding(SPACE_X1),
+                verticalArrangement = Arrangement.spacedBy(SPACE_HALF)
+            ) {
+                Text(
+                    text = item.title,
+                    style = MaterialTheme.typography.h4,
+                )
+                Text(
+                    text = item.provider,
+                    style = MaterialTheme.typography.body2,
+                )
+                Text(
+                    text = "Tersedia ${item.available} vouchers",
+                    color = PepperDark,
+                    style = MaterialTheme.typography.caption,
+                )
+                Text(
+                    text = "Rp${item.price}",
+                    color = TaroLight,
+                    style = MaterialTheme.typography.h5,
                 )
             }
         }
@@ -115,42 +70,15 @@ fun TestBottomNav(
 @Composable
 fun TestBottomNav() {
     OvoCloneTheme {
-        val items = remember { HomeSection.values() }
-        val currentSection = HomeSection.HOME
-
         Column(
             Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Bottom
         ) {
-            TestBottomNav(
-                rememberNavController(),
-                items,
-                currentSection,
-                currentRoute = null,
-            )
-        }
-    }
-}
-
-@Preview
-@Composable
-fun TestBottomNavScaffold() {
-    OvoCloneTheme {
-        val items = remember { HomeSection.values() }
-        val currentSection = HomeSection.HOME
-
-        Scaffold(
-            bottomBar = {
-                TestBottomNav(
-                    rememberNavController(),
-                    items,
-                    currentSection,
-                    currentRoute = null,
+            BoxWithConstraints {
+                DealsCard(
+                    item = happinessDeals[0],
+                    width = this.maxWidth * 0.6f
                 )
-            },
-            backgroundColor = Color.Transparent
-        ) {
-            FinanceScreen()
+            }
         }
     }
 }
