@@ -20,7 +20,7 @@ fun BaseSurface(
     title: String,
     subtitle: String? = null,
     viewAllEnable: Boolean = false,
-    verticalPadding: Dp = SPACE_X2,
+    paddingValues: PaddingValues = PaddingValues(vertical = SPACE_X2),
     titleTextStyle: TextStyle = MaterialTheme.typography.h3,
     subtitleTextStyle: TextStyle = MaterialTheme.typography.caption,
     content: @Composable () -> Unit,
@@ -29,9 +29,7 @@ fun BaseSurface(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
-            .padding(
-                vertical = verticalPadding,
-            ),
+            .padding(paddingValues),
         verticalArrangement = Arrangement.spacedBy(SPACE_X2),
     ) {
         Column(

@@ -313,7 +313,7 @@ fun ExcitingUpdateSection() {
     BaseSurface(
         title = "Yang Menarik di OVO",
         subtitle = "Jangan ngaku update kalau belum coba fitur ini",
-        verticalPadding = SPACE_X3,
+        paddingValues = PaddingValues(vertical = SPACE_X3),
     ) {
         BoxWithConstraints(
             modifier = Modifier

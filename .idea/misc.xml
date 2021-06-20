@@ -22,8 +22,11 @@
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_bareksa_logo.xml" value="0.37592592592592594" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_bell.xml" value="0.26296296296296295" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_chevron_right_rounded.xml" value="0.3592592592592593" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_chevron_right_shallot.xml" value="0.2175925925925926" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_chevron_right_shallot_wrapped.xml" value="0.2175925925925926" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_data_plan.xml" value="0.2574074074074074" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_deals_svg.xml" value="0.37592592592592594" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_edit_profile.xml" value="0.2351851851851852" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_finance_invest.xml" value="0.3712962962962963" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_home_history.xml" value="0.2351851851851852" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_home_opl_bg.xml" value="0.3769230769230769" />
@@ -50,15 +53,20 @@
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_notification_white_normal.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_ovo_invest_new.xml" value="0.3712962962962963" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_qris.xml" value="0.3769230769230769" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_settings_edit_profile_new.xml" value="0.2351851851851852" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_settings_kode_promo_new.xml" value="0.2351851851851852" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_settings_my_cards_new.xml" value="0.2351851851851852" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_shape.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_taralite_logo.xml" value="0.3712962962962963" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/ic_topup_transparent.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/logo_ovo.xml" value="0.37592592592592594" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/logo_ovo_purple.xml" value="0.37592592592592594" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rico_action_card.xml" value="0.2351851851851852" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rico_action_history_s.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rico_action_topup_s.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rico_action_transfer_s.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rico_system_capital.xml" value="0.3712962962962963" />
+        <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rico_system_editprofile.xml" value="0.2351851851851852" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rico_system_phone.xml" value="0.3592592592592593" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rima_header_bottom.xml" value="0.3592592592592593" />
         <entry key="..\:/AndroidStudioProjects/OvoClone/app/src/main/res/drawable/rima_header_bottom_eid.xml" value="0.37592592592592594" />
