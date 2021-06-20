@@ -197,6 +197,7 @@ fun HappinessList(
 //        )
 //    }
     LazyRow(
+        modifier = Modifier.padding(bottom = SPACE_X1),
         horizontalArrangement = Arrangement.spacedBy(SPACE_X2),
         contentPadding = PaddingValues(horizontal = SPACE_X2),
     ) {

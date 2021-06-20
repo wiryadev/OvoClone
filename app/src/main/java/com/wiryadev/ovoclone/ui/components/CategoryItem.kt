@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.wiryadev.ovoclone.R
+import com.wiryadev.ovoclone.data.Category
 import com.wiryadev.ovoclone.ui.components.Dimens.CardShadowElevation
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
@@ -36,6 +37,12 @@ import com.wiryadev.ovoclone.ui.theme.TaroDark
 import com.wiryadev.ovoclone.ui.theme.Shapes
 
 private val CategoryGridIconSize = SPACE_X6
+
+val transactionCategories = listOf(
+    Category("H1", "Top Up", R.drawable.rico_action_topup_s),
+    Category("H2", "Transfer", R.drawable.rico_action_transfer_s),
+    Category("H3", "History", R.drawable.rico_action_history_s),
+)
 
 @Composable
 fun TransactionSection(
@@ -59,24 +66,14 @@ fun TransactionSection(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceAround,
         ) {
-            CategoryGridItem(
-                onClick = { },
-                image = R.drawable.rico_action_topup_s,
-                text = stringResource(id = R.string.top_up),
-                textColor = textColor,
-            )
-            CategoryGridItem(
-                onClick = { },
-                image = R.drawable.rico_action_transfer_s,
-                text = stringResource(id = R.string.transfer),
-                textColor = textColor,
-            )
-            CategoryGridItem(
-                onClick = { },
-                image = R.drawable.rico_action_history_s,
-                text = stringResource(id = R.string.history),
-                textColor = textColor,
-            )
+            transactionCategories.forEach { category ->
+                CategoryGridItem(
+                    onClick = { },
+                    image = category.icon,
+                    text = category.title,
+                    textColor = textColor,
+                )
+            }
         }
     }
 }

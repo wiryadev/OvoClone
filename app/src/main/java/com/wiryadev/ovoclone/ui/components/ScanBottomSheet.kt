@@ -42,6 +42,7 @@ fun ScanBottomSheet(
                 )
             )
     ) {
+        // Main Section
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -76,6 +77,8 @@ fun ScanBottomSheet(
                 }
             }
         }
+
+        // Footer
         Row(
             modifier = Modifier
                 .fillMaxWidth()
