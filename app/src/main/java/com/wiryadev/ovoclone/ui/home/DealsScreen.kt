@@ -1,11 +1,10 @@
 package com.wiryadev.ovoclone.ui.home
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -24,16 +23,14 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.data.happinessDeals
-import com.wiryadev.ovoclone.ui.components.ActionBar
-import com.wiryadev.ovoclone.ui.components.BaseSurface
-import com.wiryadev.ovoclone.ui.components.DealsCard
+import com.wiryadev.ovoclone.ui.components.*
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X14
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X5
-import com.wiryadev.ovoclone.ui.components.PromoImage
 import com.wiryadev.ovoclone.ui.theme.PepperLighter
 import com.wiryadev.ovoclone.ui.theme.Taro
 import com.wiryadev.ovoclone.ui.theme.TaroLighter
@@ -98,7 +95,7 @@ fun ViewDealsNearby() {
     Row(
         modifier = Modifier
             .padding(SPACE_X2)
-            .clip(RoundedCornerShape(SPACE_X1))
+            .clip(RoundedCornerShape(SPACE_HALF))
             .background(
                 brush = Brush.horizontalGradient(
                     listOf(
@@ -107,6 +104,7 @@ fun ViewDealsNearby() {
                     )
                 )
             )
+            .clickable(onClick = {})
             .padding(
                 vertical = SPACE_X1,
                 horizontal = SPACE_X2,
@@ -154,7 +152,7 @@ fun Cashbacks(
             .fillMaxWidth(),
     ) { page ->
         // Our page content
-        PromoImage(
+        CashbackImage(
             imageUrl = cashbackImages[page],
             width = itemWidth,
         )
@@ -185,18 +183,26 @@ fun CashbackSection() {
 fun HappinessList(
     itemWidth: Dp,
 ) {
-    val pagerState = rememberPagerState(pageCount = happinessDeals.size)
-    HorizontalPager(
-        state = pagerState,
-        itemSpacing = SPACE_X2,
-        modifier = Modifier
-            .fillMaxWidth(),
-    ) { page ->
-        // Our page content
-        DealsCard(
-            item = happinessDeals[page],
-            width = itemWidth,
-        )
+//    val pagerState = rememberPagerState(pageCount = happinessDeals.size)
+//    HorizontalPager(
+//        state = pagerState,
+//        itemSpacing = SPACE_X2,
+//        modifier = Modifier
+//            .fillMaxWidth(),
+//    ) { page ->
+//        // Our page content
+//        DealsCard(
+//            item = happinessDeals[page],
+//            width = itemWidth,
+//        )
+//    }
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(SPACE_X2),
+        contentPadding = PaddingValues(horizontal = SPACE_X2),
+    ) {
+        items(happinessDeals) { deal ->
+            DealsCard(item = deal, width = itemWidth)
+        }
     }
 }
 

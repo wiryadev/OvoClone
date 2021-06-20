@@ -228,7 +228,8 @@ fun SpecialPromoSection() {
     ) {
         BoxWithConstraints {
             SpecialPromos(
-                itemWidth = this.maxWidth - SPACE_X4
+                itemWidth = this.maxWidth - SPACE_X4,
+                pageCount = dealsImages.size
             )
         }
     }

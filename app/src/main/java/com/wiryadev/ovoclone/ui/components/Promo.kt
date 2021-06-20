@@ -20,8 +20,13 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.wiryadev.ovoclone.data.HappinessDeal
+import com.wiryadev.ovoclone.ui.components.Dimens.CardShadowElevation
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X16
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X18
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
 import com.wiryadev.ovoclone.ui.theme.PepperDark
 import com.wiryadev.ovoclone.ui.theme.PepperLighter
 import com.wiryadev.ovoclone.ui.theme.SeaSalt
@@ -44,7 +49,7 @@ fun PromoImage(
         painter = rememberCoilPainter(
             request = imageUrl,
             requestBuilder = {
-                transformations(RoundedCornersTransformation(24.dp.value))
+                transformations(RoundedCornersTransformation(SPACE_X3.value))
             }
         ),
         contentDescription = "Promotion Image",
@@ -60,8 +65,9 @@ fun PromoImage(
 @Composable
 fun SpecialPromos(
     itemWidth: Dp,
+    pageCount: Int,
 ) {
-    val pagerState = rememberPagerState(pageCount = dealsImages.size)
+    val pagerState = rememberPagerState(pageCount = pageCount)
 
     Column(
         modifier = Modifier.fillMaxWidth()
@@ -94,7 +100,26 @@ fun SpecialPromos(
     }
 }
 
-
+@Composable
+fun CashbackImage(
+    imageUrl: String,
+    width: Dp,
+) {
+    Image(
+        painter = rememberCoilPainter(
+            request = imageUrl,
+            requestBuilder = {
+                transformations(RoundedCornersTransformation(SPACE_X1.value))
+            }
+        ),
+        contentDescription = "Promotion Image",
+        modifier = Modifier
+            .size(
+                height = SPACE_X18,
+                width = width,
+            ),
+    )
+}
 
 @Composable
 fun DealsCard(
@@ -103,7 +128,8 @@ fun DealsCard(
 ) {
     Card(
         modifier = Modifier.width(width = width),
-        shape = RoundedCornerShape(Dimens.SPACE_HALF)
+        shape = RoundedCornerShape(SPACE_X1),
+        elevation = CardShadowElevation,
     ) {
         Column {
             Image(
@@ -116,8 +142,8 @@ fun DealsCard(
                 contentScale = ContentScale.FillBounds,
             )
             Column(
-                modifier = Modifier.padding(Dimens.SPACE_X1),
-                verticalArrangement = Arrangement.spacedBy(Dimens.SPACE_HALF)
+                modifier = Modifier.padding(SPACE_X1),
+                verticalArrangement = Arrangement.spacedBy(SPACE_HALF)
             ) {
                 Text(
                     text = item.title,
@@ -146,5 +172,5 @@ fun DealsCard(
 @Preview
 @Composable
 fun PreviewPromos() {
-    SpecialPromos(300.dp)
+    SpecialPromos(itemWidth = 300.dp, pageCount = dealsImages.size)
 }

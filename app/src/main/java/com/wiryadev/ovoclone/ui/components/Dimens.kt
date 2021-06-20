@@ -22,6 +22,7 @@ object Dimens {
     val SPACE_X14 = 112.dp
     val SPACE_X14_HALF = 116.dp
     val SPACE_X16 = 128.dp
+    val SPACE_X18 = 144.dp
 
     val CardShadowElevation = 6.dp
     val BottomNavigationHeight = SPACE_X7
