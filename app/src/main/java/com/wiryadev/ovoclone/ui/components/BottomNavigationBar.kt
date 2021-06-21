@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.zIndex
 import com.wiryadev.ovoclone.ui.components.Dimens.BottomNavigationHeight
 import com.wiryadev.ovoclone.ui.components.Dimens.CardShadowElevation
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import kotlin.math.max
 import kotlin.math.roundToInt
@@ -49,7 +49,7 @@ fun RavierBottomNavigation(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(BottomNavigationHeight + SPACE_HALF)
+                .height(BottomNavigationHeight + SPACE_X1)
                 .align(Alignment.BottomCenter)
                 .shadow(
                     elevation = CardShadowElevation * 5
