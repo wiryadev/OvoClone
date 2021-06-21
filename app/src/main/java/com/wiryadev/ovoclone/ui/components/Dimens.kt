@@ -3,6 +3,7 @@ package com.wiryadev.ovoclone.ui.components
 import androidx.compose.ui.unit.dp
 
 object Dimens {
+    val SPACE_QUARTER = 2.dp
     val SPACE_HALF = 4.dp
     val SPACE_X1 = 8.dp
     val SPACE_X1_QUARTER = 10.dp

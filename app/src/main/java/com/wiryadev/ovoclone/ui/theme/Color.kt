@@ -24,6 +24,7 @@ val SeaSaltDarkest = Color(0xFF003033)
 // Pepper
 val PepperLighter = Color(0xFFF4F4F4)
 val PepperLight = Color(0xFFAAAAAA)
+val Pepper = Color(0xFF888888)
 val PepperDark = Color(0xFF666666)
 val PepperDarker = Color(0xFF444444)
 

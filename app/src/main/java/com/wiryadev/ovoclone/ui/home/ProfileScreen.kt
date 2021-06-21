@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
@@ -11,23 +12,30 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.data.Category
 import com.wiryadev.ovoclone.ui.components.BaseSurface
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
 import com.wiryadev.ovoclone.ui.components.QrisOption
 import com.wiryadev.ovoclone.ui.theme.*
-import com.wiryadev.ovoclone.ui.theme.PepperDark
 
 @Composable
-private fun ProfileDivider() {
+private fun ProfileDivider(
+    modifier: Modifier = Modifier,
+) {
     Divider(
         color = PepperLighter,
-        modifier = Modifier.padding(horizontal = SPACE_X2),
+        modifier = modifier,
     )
 }
 
@@ -37,24 +45,74 @@ fun OverviewSection() {
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
+            .padding(horizontal = SPACE_X2)
     ) {
         Row(
+            modifier = Modifier.padding(vertical = SPACE_X1_HALF),
             verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(SPACE_X2),
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_default),
-                contentDescription = "Profile Picture",
-            )
-            Column {
+            Box(
+                modifier = Modifier.size(SPACE_X6).clip(CircleShape),
+                contentAlignment = Alignment.Center,
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.rima_splash_default),
+                    contentDescription = "Profile Picture",
+                    contentScale = ContentScale.FillBounds,
+                )
+            }
+            Column(
+                verticalArrangement = Arrangement.spacedBy(SPACE_QUARTER)
+            ) {
                 Text(
                     text = "Abrar Wiryawan",
                     color = ShallotDarkest,
-                    style = MaterialTheme.typography.h6,
+                    style = MaterialTheme.typography.h5,
                 )
                 Text(
                     text = "0812-1234-5678",
                     color = PepperDark,
                     style = MaterialTheme.typography.caption,
+                )
+            }
+        }
+        ProfileDivider()
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = SPACE_X1_HALF),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(SPACE_X2),
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_status_premier_new),
+                    contentDescription = "Status Premier",
+                )
+                Text(
+                    text = "OVO Premier",
+                    color = ShallotDarkest,
+                    style = MaterialTheme.typography.h5,
+                )
+            }
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(SPACE_HALF),
+            ) {
+                Text(
+                    text = "Lihat Detail",
+                    color = Pepper,
+                    style = MaterialTheme.typography.h6,
+                )
+                Image(
+                    painter = painterResource(
+                        id = R.drawable.ic_chevron_right_shallot
+                    ),
+                    contentDescription = "Status Premier",
                 )
             }
         }
@@ -106,7 +164,7 @@ fun ProfileItemRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(SPACE_X2),
+            .padding(vertical = SPACE_X2),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
@@ -146,7 +204,9 @@ fun AccountSection() {
         titleTextStyle = MaterialTheme.typography.h4,
         paddingValues = PaddingValues(top = SPACE_X2)
     ) {
-        Column {
+        Column(
+            modifier = Modifier.padding(horizontal = SPACE_X2),
+        ) {
             accountCategories.forEachIndexed { index, category ->
                 ProfileItemRow(item = category)
 
@@ -169,7 +229,9 @@ fun SecuritySection() {
         titleTextStyle = MaterialTheme.typography.h4,
         paddingValues = PaddingValues(top = SPACE_X2)
     ) {
-        Column {
+        Column(
+            modifier = Modifier.padding(horizontal = SPACE_X2),
+        ) {
             securityCategories.forEachIndexed { index, category ->
                 ProfileItemRow(item = category)
 
@@ -196,7 +258,9 @@ fun AboutSection() {
         titleTextStyle = MaterialTheme.typography.h4,
         paddingValues = PaddingValues(top = SPACE_X2)
     ) {
-        Column {
+        Column(
+            modifier = Modifier.padding(horizontal = SPACE_X2),
+        ) {
             aboutCategories.forEachIndexed { index, category ->
                 ProfileItemRow(item = category)
 
