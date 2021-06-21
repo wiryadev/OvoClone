@@ -17,17 +17,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.google.accompanist.insets.statusBarsHeight
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.data.Category
-import com.wiryadev.ovoclone.ui.components.BaseSurface
+import com.wiryadev.ovoclone.ui.components.*
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
-import com.wiryadev.ovoclone.ui.components.QrisOption
-import com.wiryadev.ovoclone.ui.components.RavierButton
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
@@ -299,28 +298,46 @@ private fun FooterRow(
 }
 
 @Composable
-fun ProfileScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(PepperLighter)
-            .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.spacedBy(SPACE_X1),
-    ) {
-        OverviewSection()
-        OvoIdSection()
-        AccountSection()
-        SecuritySection()
-        AboutSection()
-        FooterRow("3.37.0 (330)")
-        RavierButton(
-            onClick = { },
-            text = "Sign Out",
-            modifier = Modifier
-                .padding(SPACE_X2)
-                .fillMaxWidth()
+fun ProfileScreen(
+    modifier: Modifier = Modifier
+) {
+    Box {
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .background(PepperLighter)
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(SPACE_X1),
+        ) {
+            Spacer(Modifier.statusBarsHeight(additional = SPACE_X6))
+            OverviewSection()
+            OvoIdSection()
+            AccountSection()
+            SecuritySection()
+            AboutSection()
+            FooterRow("3.37.0 (330)")
+            RavierButton(
+                onClick = { },
+                text = "Sign Out",
+                modifier = Modifier
+                    .padding(SPACE_X2)
+                    .fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(SPACE_X2))
+        }
+        ActionBar(
+            headerContent = {
+                Text(
+                    text = "Profile",
+                    color = ShallotDarkest,
+                    style = MaterialTheme.typography.h4,
+                    modifier = Modifier
+                        .padding(start = SPACE_X2),
+                )
+            },
+            backgroundColor = Color.White,
+            contentColor = Shallot,
         )
-        Spacer(modifier = Modifier.height(SPACE_X2))
     }
 }
 

@@ -20,13 +20,15 @@ import com.wiryadev.ovoclone.ui.theme.TaroDark
 fun ActionBar(
     headerContent: @Composable () -> Unit,
     bodyContent: @Composable (() -> Unit)? = null,
+    backgroundColor: Color = TaroDark,
+    contentColor: Color = Color.White
 ) {
     Column(
         modifier = Modifier.statusBarsPadding(),
     ) {
         TopAppBar(
-            backgroundColor = TaroDark,
-            contentColor = Color.White,
+            backgroundColor = backgroundColor,
+            contentColor = contentColor,
             elevation = 0.dp,
         ) {
             Row(
@@ -42,7 +44,6 @@ fun ActionBar(
                     Icon(
                         painter = painterResource(id = R.drawable.ic_notification_dark_normal),
                         contentDescription = "Notification",
-                        tint = Color.White,
                     )
                 }
             }
@@ -64,6 +65,6 @@ fun PreviewActionBar() {
                 modifier = Modifier
                     .padding(start = SPACE_X1),
             )
-        }
+        },
     )
 }
