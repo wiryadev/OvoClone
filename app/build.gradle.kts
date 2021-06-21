@@ -70,4 +70,7 @@ dependencies {
     implementation("com.google.accompanist:accompanist-pager:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-pager-indicators:$accompanistVersion")
     implementation("com.google.accompanist:accompanist-flowlayout:$accompanistVersion")
+
+    // Collapsing Toolbar
+    implementation("me.onebone:toolbar-compose:2.0.1")
 }

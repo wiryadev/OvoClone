@@ -278,7 +278,7 @@ fun AboutSection() {
 }
 
 @Composable
-private fun FooterRow(
+fun FooterRow(
     version: String,
 ) {
     Row(
