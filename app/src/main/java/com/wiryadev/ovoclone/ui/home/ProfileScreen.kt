@@ -3,9 +3,6 @@ package com.wiryadev.ovoclone.ui.home
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
@@ -17,16 +14,52 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.data.Category
 import com.wiryadev.ovoclone.ui.components.BaseSurface
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.QrisOption
-import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
-import com.wiryadev.ovoclone.ui.theme.PepperLighter
-import com.wiryadev.ovoclone.ui.theme.ShallotDarkest
+import com.wiryadev.ovoclone.ui.theme.*
+import com.wiryadev.ovoclone.ui.theme.PepperDark
+
+@Composable
+private fun ProfileDivider() {
+    Divider(
+        color = PepperLighter,
+        modifier = Modifier.padding(horizontal = SPACE_X2),
+    )
+}
+
+@Composable
+fun OverviewSection() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.White)
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_default),
+                contentDescription = "Profile Picture",
+            )
+            Column {
+                Text(
+                    text = "Abrar Wiryawan",
+                    color = ShallotDarkest,
+                    style = MaterialTheme.typography.h6,
+                )
+                Text(
+                    text = "0812-1234-5678",
+                    color = PepperDark,
+                    style = MaterialTheme.typography.caption,
+                )
+            }
+        }
+    }
+}
 
 @Composable
 fun OvoIdSection() {
@@ -118,9 +151,7 @@ fun AccountSection() {
                 ProfileItemRow(item = category)
 
                 if (index != (accountCategories.size - 1)) {
-                    Divider(
-                        modifier = Modifier.padding(horizontal = SPACE_X2)
-                    )
+                    ProfileDivider()
                 }
             }
         }
@@ -128,7 +159,7 @@ fun AccountSection() {
 }
 
 val securityCategories = listOf(
-    Category("S1", "Ubah Security Code", R.drawable.ic_settings_security_code_new)
+    Category("S1", "Ubah Security Code", R.drawable.ic_settings_security_code_new),
 )
 
 @Composable
@@ -143,9 +174,7 @@ fun SecuritySection() {
                 ProfileItemRow(item = category)
 
                 if (index != (securityCategories.size - 1)) {
-                    Divider(
-                        modifier = Modifier.padding(horizontal = SPACE_X2)
-                    )
+                    ProfileDivider()
                 }
             }
         }
@@ -157,12 +186,13 @@ val aboutCategories = listOf(
     Category("T2", "Panduan OVO", R.drawable.ic_settings_panduan_ovo_new),
     Category("T3", "Syarat dan Ketentuan", R.drawable.ic_settings_ovo_terms),
     Category("T4", "Kebijakan Privasi", R.drawable.ic_settings_kebijakan_privasi_new),
+    Category("T5", "Pusat Bantuan", R.drawable.ic_settings_pusat_bantuan_new),
 )
 
 @Composable
 fun AboutSection() {
     BaseSurface(
-        title = "Keamanan",
+        title = "Tentang",
         titleTextStyle = MaterialTheme.typography.h4,
         paddingValues = PaddingValues(top = SPACE_X2)
     ) {
@@ -171,9 +201,7 @@ fun AboutSection() {
                 ProfileItemRow(item = category)
 
                 if (index != (aboutCategories.size - 1)) {
-                    Divider(
-                        modifier = Modifier.padding(horizontal = SPACE_X2)
-                    )
+                    ProfileDivider()
                 }
             }
         }
@@ -189,6 +217,7 @@ fun ProfileScreen() {
             .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(SPACE_X1),
     ) {
+        OverviewSection()
         OvoIdSection()
         AccountSection()
         SecuritySection()
