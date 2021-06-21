@@ -20,13 +20,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.google.accompanist.insets.statusBarsHeight
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.data.Category
-import com.wiryadev.ovoclone.ui.components.*
+import com.wiryadev.ovoclone.ui.components.ActionBar
+import com.wiryadev.ovoclone.ui.components.BaseSurface
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
+import com.wiryadev.ovoclone.ui.components.QrisOption
+import com.wiryadev.ovoclone.ui.components.RavierButton
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
@@ -143,7 +146,7 @@ fun OvoIdSection() {
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 QrisOption(
-                    icon = R.drawable.ic_phone,
+                    icon = R.drawable.rico_system_qrcode,
                     text = "QR Code",
                     width = itemWidth,
                     onClick = { }
@@ -336,7 +339,7 @@ fun ProfileScreen(
                 )
             },
             backgroundColor = Color.White,
-            contentColor = Shallot,
+            contentColor = ShallotDarker,
         )
     }
 }
