@@ -27,6 +27,7 @@ import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
 import com.wiryadev.ovoclone.ui.components.QrisOption
+import com.wiryadev.ovoclone.ui.components.RavierButton
 import com.wiryadev.ovoclone.ui.theme.*
 
 @Composable
@@ -53,7 +54,9 @@ fun OverviewSection() {
             horizontalArrangement = Arrangement.spacedBy(SPACE_X2),
         ) {
             Box(
-                modifier = Modifier.size(SPACE_X6).clip(CircleShape),
+                modifier = Modifier
+                    .size(SPACE_X6)
+                    .clip(CircleShape),
                 contentAlignment = Alignment.Center,
             ) {
                 Image(
@@ -273,6 +276,29 @@ fun AboutSection() {
 }
 
 @Composable
+private fun FooterRow(
+    version: String,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = SPACE_X2),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        Text(
+            text = "Version $version",
+            style = MaterialTheme.typography.caption,
+        )
+        Text(
+            text = "#pakeOVOaja",
+            color = PepperDarker,
+            style = MaterialTheme.typography.h6,
+        )
+    }
+}
+
+@Composable
 fun ProfileScreen() {
     Column(
         modifier = Modifier
@@ -286,6 +312,15 @@ fun ProfileScreen() {
         AccountSection()
         SecuritySection()
         AboutSection()
+        FooterRow("3.37.0 (330)")
+        RavierButton(
+            onClick = { },
+            text = "Sign Out",
+            modifier = Modifier
+                .padding(SPACE_X2)
+                .fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.height(SPACE_X2))
     }
 }
 

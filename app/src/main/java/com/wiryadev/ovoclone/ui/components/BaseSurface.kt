@@ -9,11 +9,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.Dp
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
-import com.wiryadev.ovoclone.ui.theme.ShallotDarkest
 import com.wiryadev.ovoclone.ui.theme.PepperDark
+import com.wiryadev.ovoclone.ui.theme.ShallotDarkest
 
 @Composable
 fun BaseSurface(
@@ -56,6 +55,7 @@ fun BaseSurface(
                     RavierButton(
                         onClick = { },
                         text = "Lihat Semua",
+                        textStyle = MaterialTheme.typography.h6,
                         buttonType = ButtonType.LinkButton,
                         height = Dimens.SPACE_X4,
                     )

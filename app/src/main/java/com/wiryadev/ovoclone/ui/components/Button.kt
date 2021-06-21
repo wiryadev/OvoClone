@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.wiryadev.ovoclone.R
@@ -35,6 +36,7 @@ fun RavierButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     text: String,
+    textStyle: TextStyle? = null,
     buttonType: ButtonType = ButtonType.Primary,
     height: Dp = SPACE_X6,
     shape: Shape = RoundedCornerShape(SPACE_X3),
@@ -92,6 +94,7 @@ fun RavierButton(
             TextButton(
                 text = text,
                 color = buttonType.contentColor,
+                style = textStyle ?: MaterialTheme.typography.h4,
             )
         }
     }
@@ -101,11 +104,12 @@ fun RavierButton(
 private fun TextButton(
     text: String,
     color: Color,
+    style: TextStyle,
 ) {
     Text(
         text = text,
         color = color,
-        style = MaterialTheme.typography.button,
+        style = style,
         maxLines = 1,
     )
 }
