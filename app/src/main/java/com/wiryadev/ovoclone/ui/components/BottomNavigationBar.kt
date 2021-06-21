@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.layout.*
@@ -24,6 +25,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.zIndex
 import com.wiryadev.ovoclone.ui.components.Dimens.BottomNavigationHeight
+import com.wiryadev.ovoclone.ui.components.Dimens.CardShadowElevation
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_HALF
 import kotlin.math.max
 import kotlin.math.roundToInt
@@ -42,6 +45,16 @@ fun RavierBottomNavigation(
             .background(Color.Transparent)
             .wrapContentHeight()
     ) {
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(BottomNavigationHeight + SPACE_HALF)
+                .align(Alignment.BottomCenter)
+                .shadow(
+                    elevation = CardShadowElevation * 5
+                )
+        )
 
         // Background for the container, height should be set to [BottomNavigationHeight]
         Box(
