@@ -36,7 +36,6 @@ fun RavierButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     text: String,
-    textStyle: TextStyle? = null,
     buttonType: ButtonType = ButtonType.Primary,
     height: Dp = SPACE_X6,
     shape: Shape = RoundedCornerShape(SPACE_X3),
@@ -70,7 +69,11 @@ fun RavierButton(
                     }
                 )
                 .padding(
-                    horizontal = SPACE_X2
+                    horizontal = if (height >= SPACE_X6) {
+                        SPACE_X4
+                    } else {
+                        SPACE_X3
+                    }
                 ),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
@@ -94,7 +97,11 @@ fun RavierButton(
             TextButton(
                 text = text,
                 color = buttonType.contentColor,
-                style = textStyle ?: MaterialTheme.typography.h4,
+                style = if (height >= SPACE_X6) {
+                    MaterialTheme.typography.h4
+                } else {
+                    MaterialTheme.typography.h6
+                },
             )
         }
     }

@@ -6,7 +6,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -15,7 +14,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -27,10 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.data.Category
-import com.wiryadev.ovoclone.ui.components.Dimens.CardShadowElevation
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
-import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
@@ -51,27 +47,12 @@ val transactionCategories = listOf(
 fun TransactionSection(
     modifier: Modifier = Modifier
 ) {
-    val textColor = TaroDark
     val shape = Shapes.medium
+    val textColor = TaroDark
 
-    BoxWithConstraints(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(Color.Transparent)
-            .wrapContentHeight()
+    RavierCard(
+        modifier = modifier,
     ) {
-        Box(
-            modifier = Modifier
-                .padding(horizontal = SPACE_HALF - 1.dp)
-                .fillMaxWidth()
-                .height(Dimens.BottomNavigationHeight + SPACE_X2)
-                .align(Alignment.Center)
-                .shadow(
-                    elevation = Dimens.CardShadowElevation + 1.dp,
-                    shape = shape,
-                    clip = false
-                )
-        )
         Row(
             modifier = Modifier
                 .zIndex(SPACE_HALF.value)

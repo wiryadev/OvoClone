@@ -126,10 +126,9 @@ fun DealsCard(
     item: HappinessDeal,
     width: Dp,
 ) {
-    Card(
+    RavierCard(
         modifier = Modifier.width(width = width),
         shape = RoundedCornerShape(SPACE_X1),
-        elevation = CardShadowElevation,
     ) {
         Column {
             Image(

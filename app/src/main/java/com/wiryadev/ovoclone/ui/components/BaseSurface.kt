@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X4
 import com.wiryadev.ovoclone.ui.theme.PepperDark
 import com.wiryadev.ovoclone.ui.theme.ShallotDarkest
 
@@ -55,9 +56,8 @@ fun BaseSurface(
                     RavierButton(
                         onClick = { },
                         text = "Lihat Semua",
-                        textStyle = MaterialTheme.typography.h6,
                         buttonType = ButtonType.LinkButton,
-                        height = Dimens.SPACE_X4,
+                        height = SPACE_X4,
                     )
                 }
             }

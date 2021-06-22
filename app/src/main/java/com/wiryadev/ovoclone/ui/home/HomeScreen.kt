@@ -84,7 +84,7 @@ fun ExcitingUpdateItem(
     actionText: String,
     width: Dp,
 ) {
-    Card(
+    RavierCard(
         modifier = Modifier
             .width(width),
         shape = Shapes.medium,
@@ -134,7 +134,6 @@ fun ExcitingUpdateItem(
                     text = actionText,
                     buttonType = ButtonType.LinkButton,
                     height = SPACE_X4,
-                    textStyle = MaterialTheme.typography.h6,
                 )
             }
         }
@@ -241,9 +240,14 @@ fun YourFinancialSection() {
     BaseSurface(
         title = "Finansial Kamu",
     ) {
-        Card(
+        RavierCard(
             shape = Shapes.medium,
-            elevation = CardShadowElevation,
+            shadowPadding = PaddingValues(
+                top = 0.dp,
+                bottom = SPACE_HALF,
+                start = SPACE_HALF,
+                end = SPACE_HALF
+            ),
             modifier = Modifier
                 .padding(horizontal = SPACE_X2)
         ) {
@@ -302,7 +306,6 @@ fun YourFinancialSection() {
                         onClick = { },
                         text = "Mulai",
                         height = SPACE_X4,
-                        textStyle = MaterialTheme.typography.h6,
                     )
                 }
             }
