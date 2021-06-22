@@ -1,11 +1,8 @@
 package com.wiryadev.ovoclone.ui.home
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -38,7 +35,7 @@ private fun ProfileDivider(
 ) {
     Divider(
         color = PepperLighter,
-        modifier = modifier,
+        modifier = modifier.padding(horizontal = SPACE_X2),
     )
 }
 
@@ -165,11 +162,15 @@ fun OvoIdSection() {
 @Composable
 fun ProfileItemRow(
     item: Category,
+    onClick: () -> Unit,
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = SPACE_X2),
+            .clickable(
+                onClick = onClick
+            )
+            .padding(all = SPACE_X2),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
@@ -209,11 +210,12 @@ fun AccountSection() {
         titleTextStyle = MaterialTheme.typography.h4,
         paddingValues = PaddingValues(top = SPACE_X2)
     ) {
-        Column(
-            modifier = Modifier.padding(horizontal = SPACE_X2),
-        ) {
+        Column {
             accountCategories.forEachIndexed { index, category ->
-                ProfileItemRow(item = category)
+                ProfileItemRow(
+                    item = category,
+                    onClick = {},
+                )
 
                 if (index != (accountCategories.size - 1)) {
                     ProfileDivider()
@@ -234,11 +236,12 @@ fun SecuritySection() {
         titleTextStyle = MaterialTheme.typography.h4,
         paddingValues = PaddingValues(top = SPACE_X2)
     ) {
-        Column(
-            modifier = Modifier.padding(horizontal = SPACE_X2),
-        ) {
+        Column {
             securityCategories.forEachIndexed { index, category ->
-                ProfileItemRow(item = category)
+                ProfileItemRow(
+                    item = category,
+                    onClick = { }
+                )
 
                 if (index != (securityCategories.size - 1)) {
                     ProfileDivider()
@@ -263,11 +266,12 @@ fun AboutSection() {
         titleTextStyle = MaterialTheme.typography.h4,
         paddingValues = PaddingValues(top = SPACE_X2)
     ) {
-        Column(
-            modifier = Modifier.padding(horizontal = SPACE_X2),
-        ) {
+        Column {
             aboutCategories.forEachIndexed { index, category ->
-                ProfileItemRow(item = category)
+                ProfileItemRow(
+                    item = category,
+                    onClick = {},
+                )
 
                 if (index != (aboutCategories.size - 1)) {
                     ProfileDivider()
