@@ -134,6 +134,7 @@ fun ExcitingUpdateItem(
                     text = actionText,
                     buttonType = ButtonType.LinkButton,
                     height = SPACE_X4,
+                    textStyle = MaterialTheme.typography.h6,
                 )
             }
         }
@@ -301,6 +302,7 @@ fun YourFinancialSection() {
                         onClick = { },
                         text = "Mulai",
                         height = SPACE_X4,
+                        textStyle = MaterialTheme.typography.h6,
                     )
                 }
             }

@@ -14,6 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -22,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.data.Category
 import com.wiryadev.ovoclone.ui.components.Dimens.CardShadowElevation
@@ -49,19 +52,34 @@ fun TransactionSection(
     modifier: Modifier = Modifier
 ) {
     val textColor = TaroDark
+    val shape = Shapes.medium
 
-    Card(
+    BoxWithConstraints(
         modifier = modifier
-            .fillMaxWidth(),
-        shape = Shapes.medium,
-        elevation = CardShadowElevation,
+            .fillMaxWidth()
+            .background(Color.Transparent)
+            .wrapContentHeight()
     ) {
+        Box(
+            modifier = Modifier
+                .padding(horizontal = SPACE_HALF - 1.dp)
+                .fillMaxWidth()
+                .height(Dimens.BottomNavigationHeight + SPACE_X2)
+                .align(Alignment.Center)
+                .shadow(
+                    elevation = Dimens.CardShadowElevation + 1.dp,
+                    shape = shape,
+                    clip = false
+                )
+        )
         Row(
             modifier = Modifier
+                .zIndex(SPACE_HALF.value)
                 .fillMaxWidth()
+                .clip(shape)
                 .background(Color.White)
                 .padding(
-                    vertical = SPACE_X1_QUARTER
+                    vertical = Dimens.SPACE_X1_QUARTER
                 ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceAround,

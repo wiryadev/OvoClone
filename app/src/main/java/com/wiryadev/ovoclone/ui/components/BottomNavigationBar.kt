@@ -46,6 +46,7 @@ fun RavierBottomNavigation(
             .wrapContentHeight()
     ) {
 
+        // Add shadow effect for [BottomNavigation]
         Box(
             modifier = Modifier
                 .fillMaxWidth()
