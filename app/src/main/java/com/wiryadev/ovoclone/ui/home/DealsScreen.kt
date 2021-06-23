@@ -40,7 +40,7 @@ val cashbackImages = listOf(
     "https://images-loyalty.ovo.id/public/deal/12/81/l/28349.jpg?ver=1",
     "https://images-loyalty.ovo.id/public/deal/70/80/l/28601.jpg?ver=1",
     "https://images-loyalty.ovo.id/public/deal/04/80/l/28211.jpg?ver=1",
-    "https://images-loyalty.ovo.id/public/deal/51/81/l/28214.jpg?ver=1",
+    "https://images-loyalty.ovo.id/public/deal/74/81/l/28637.jpg?ver=1",
     "https://images-loyalty.ovo.id/public/deal/52/80/l/28364.jpg?ver=1",
     "https://images-loyalty.ovo.id/public/deal/20/81/l/28369.jpg?ver=1",
     "https://images-loyalty.ovo.id/public/deal/02/80/l/28446.jpg?ver=1",
@@ -183,19 +183,6 @@ fun CashbackSection() {
 fun HappinessList(
     itemWidth: Dp,
 ) {
-//    val pagerState = rememberPagerState(pageCount = happinessDeals.size)
-//    HorizontalPager(
-//        state = pagerState,
-//        itemSpacing = SPACE_X2,
-//        modifier = Modifier
-//            .fillMaxWidth(),
-//    ) { page ->
-//        // Our page content
-//        DealsCard(
-//            item = happinessDeals[page],
-//            width = itemWidth,
-//        )
-//    }
     LazyRow(
         modifier = Modifier.padding(bottom = SPACE_X1),
         horizontalArrangement = Arrangement.spacedBy(SPACE_X2),

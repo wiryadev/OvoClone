@@ -9,15 +9,18 @@ import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.wiryadev.ovoclone.ui.components.Dimens.BottomNavigationHeight
 import com.wiryadev.ovoclone.ui.home.HomeSection
 import com.wiryadev.ovoclone.ui.home.RavierBottomBar
 import com.wiryadev.ovoclone.ui.home.RavierNavGraph
 import com.wiryadev.ovoclone.ui.theme.OvoCloneTheme
+import com.wiryadev.ovoclone.ui.theme.TaroDark
 
 @ExperimentalPagerApi
 class MainActivity : ComponentActivity() {
@@ -31,14 +34,29 @@ class MainActivity : ComponentActivity() {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentRoute = navBackStackEntry?.destination?.route
 
-            val sections = remember { HomeSection.values() }
             val routes = remember {
-                sections.filter {
+                items.filter {
                     it != HomeSection.SCAN
                 }.map {
                     it.route
                 }
             }
+
+            // Filter the only routes that need [TaroDark] color for statusBar
+            val taroStatusBarRoute = remember {
+                routes.filter {
+                    it != HomeSection.PROFILE.route
+                }.map {
+                    it
+                }
+            }
+
+            // Make statusBar color only set to [TaroDark] when in Home, Deals, and Finance
+            // For other screen set statusBar color to white
+            val systemUiController = rememberSystemUiController()
+            systemUiController.setStatusBarColor(
+                if (currentRoute in taroStatusBarRoute) TaroDark else Color.White
+            )
 
             OvoCloneTheme {
                 Scaffold(

@@ -9,8 +9,6 @@ data class HappinessDeal(
     val detail: String,
 )
 
-
-
 val happinessDeals = listOf(
     HappinessDeal(
         "https://images-loyalty.ovo.id/public/deal/10/80/l/28579.jpg?ver=1",
@@ -29,7 +27,7 @@ val happinessDeals = listOf(
         "Dalam upaya mendukung pemerintah untuk menekan laju penyebaran Covid-19, Siloam Hospitals Group menghadirkan paket Swab Antingen C19 dengan harga lebih hemat cukup dengan Rp 174.000 di OVO Deals (harga terbaru), paket sudah termasuk tes Swab Antigen dan surat keterangan hasil. Yuk, cek sekarang untuk bantu pemerintah dalam usaha menghentikan penyebaran Covid-19."
     ),
     HappinessDeal(
-        "https://images-loyalty.ovo.id/public/deal/59/77/l/28392.jpg?ver=1",
+        "https://images-loyalty.ovo.id/public/deal/43/82/l/28392.jpg?ver=1",
         "Bakmi GM Paket Single",
         "Bakmi GM",
         479,

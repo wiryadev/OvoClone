@@ -39,13 +39,10 @@ fun OvoCloneTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composab
         LightColorPalette
     }
 
-    val sysUiController = rememberSystemUiController()
+    val systemUiController = rememberSystemUiController()
 
     SideEffect {
-        sysUiController.setStatusBarColor(
-            color = TaroDark
-        )
-        sysUiController.setNavigationBarColor(
+        systemUiController.setNavigationBarColor(
             color = Color.White,
             darkIcons = true,
         )

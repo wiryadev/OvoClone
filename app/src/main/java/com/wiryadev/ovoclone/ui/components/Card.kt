@@ -23,7 +23,7 @@ fun RavierCard(
     modifier: Modifier = Modifier,
     shape: Shape = Shapes.medium,
     elevation: Dp = CardShadowElevation,
-    shadowPadding: PaddingValues = PaddingValues(SPACE_HALF - 1.dp),
+    shadowPadding: PaddingValues = PaddingValues(SPACE_HALF),
     content: @Composable () -> Unit,
 ) {
     ConstraintLayout(
