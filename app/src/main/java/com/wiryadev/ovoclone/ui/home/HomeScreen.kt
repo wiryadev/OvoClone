@@ -375,6 +375,7 @@ fun HomeScreen() {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_logo_ovo_white),
                     contentDescription = "Ovo Logo",
+                    tint = Color.White,
                     modifier = Modifier
                         .height(SPACE_X2_HALF)
                         .padding(start = SPACE_X1_QUARTER),

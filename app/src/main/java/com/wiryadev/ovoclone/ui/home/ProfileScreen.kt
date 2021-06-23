@@ -3,9 +3,7 @@ package com.wiryadev.ovoclone.ui.home
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,11 +12,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.google.accompanist.insets.statusBarsHeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.data.Category
-import com.wiryadev.ovoclone.ui.components.ActionBar
 import com.wiryadev.ovoclone.ui.components.BaseSurface
+import com.wiryadev.ovoclone.ui.components.Dimens
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
@@ -28,6 +27,9 @@ import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X6
 import com.wiryadev.ovoclone.ui.components.QrisOption
 import com.wiryadev.ovoclone.ui.components.RavierButton
 import com.wiryadev.ovoclone.ui.theme.*
+import me.onebone.toolbar.CollapsingToolbarScaffold
+import me.onebone.toolbar.ScrollStrategy
+import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
 
 @Composable
 private fun ProfileDivider(
@@ -45,10 +47,12 @@ fun OverviewSection() {
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
-            .padding(horizontal = SPACE_X2)
     ) {
         Row(
-            modifier = Modifier.padding(vertical = SPACE_X1_HALF),
+            modifier = Modifier.padding(
+                vertical = SPACE_X1_HALF,
+                horizontal = SPACE_X2,
+            ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(SPACE_X2),
         ) {
@@ -88,6 +92,8 @@ fun OverviewSection() {
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Row(
+                modifier = Modifier
+                    .padding(horizontal = SPACE_X2),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(SPACE_X2),
             ) {
@@ -308,7 +314,55 @@ fun FooterRow(
 fun ProfileScreen(
     modifier: Modifier = Modifier
 ) {
-    Box {
+    val state = rememberCollapsingToolbarScaffoldState()
+    val progress = state.toolbarState.progress
+    val textSize = (16 + 8 * progress).sp
+
+    CollapsingToolbarScaffold(
+        modifier = Modifier
+            .fillMaxSize(),
+        scrollStrategy = ScrollStrategy.ExitUntilCollapsed,
+        state = state,
+        toolbar = {
+            Box(
+                modifier = Modifier
+                    .background(MaterialTheme.colors.surface)
+                    .fillMaxWidth()
+                    .height(104.dp)
+                    .pin(),
+            )
+
+            Text(
+                text = "Profile",
+                modifier = Modifier
+                    .padding(
+                        vertical = if (progress > 0f) SPACE_X1 else Dimens.SPACE_X3,
+                        horizontal = SPACE_X2,
+                    )
+                    .road(
+                        whenCollapsed = Alignment.CenterStart,
+                        whenExpanded = Alignment.BottomStart,
+                    ),
+                color = ShallotDarkest,
+                style = MaterialTheme.typography.h4,
+                fontSize = textSize,
+            )
+            IconButton(
+                onClick = { },
+                modifier = Modifier
+                    .road(
+                        whenCollapsed = Alignment.TopEnd,
+                        whenExpanded = Alignment.TopEnd,
+                    ),
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_notification_light_normal),
+                    contentDescription = "Notification",
+                    tint = ShallotDark,
+                )
+            }
+        }
+    ) {
         Column(
             modifier = modifier
                 .fillMaxSize()
@@ -316,7 +370,6 @@ fun ProfileScreen(
                 .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(SPACE_X1),
         ) {
-            Spacer(Modifier.statusBarsHeight(additional = SPACE_X6))
             OverviewSection()
             OvoIdSection()
             AccountSection()
@@ -332,19 +385,6 @@ fun ProfileScreen(
             )
             Spacer(modifier = Modifier.height(SPACE_X2))
         }
-        ActionBar(
-            headerContent = {
-                Text(
-                    text = "Profile",
-                    color = ShallotDarkest,
-                    style = MaterialTheme.typography.h4,
-                    modifier = Modifier
-                        .padding(start = SPACE_X2),
-                )
-            },
-            backgroundColor = Color.White,
-            contentColor = ShallotDarker,
-        )
     }
 }
 

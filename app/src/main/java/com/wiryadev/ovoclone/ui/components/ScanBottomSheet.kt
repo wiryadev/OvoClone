@@ -137,7 +137,8 @@ fun QrisOption(
                     indication = rememberRipple()
                 )
                 .padding(
-                    all = SPACE_X2
+                    vertical = SPACE_X1_HALF,
+                    horizontal = SPACE_X2,
                 ),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,

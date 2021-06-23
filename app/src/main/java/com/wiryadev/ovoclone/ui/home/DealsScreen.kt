@@ -247,6 +247,7 @@ fun DealsScreen() {
             headerContent = {
                 Text(
                     text = "Deals",
+                    color = Color.White,
                     style = MaterialTheme.typography.h4,
                     modifier = Modifier
                         .padding(start = SPACE_X2),

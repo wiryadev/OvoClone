@@ -72,5 +72,5 @@ dependencies {
     implementation("com.google.accompanist:accompanist-flowlayout:$accompanistVersion")
 
     // Collapsing Toolbar
-    implementation("me.onebone:toolbar-compose:2.0.1")
+    implementation("me.onebone:toolbar-compose:2.1.0")
 }

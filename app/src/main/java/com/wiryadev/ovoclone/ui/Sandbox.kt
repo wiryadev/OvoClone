@@ -7,25 +7,32 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.wiryadev.ovoclone.R
 import com.wiryadev.ovoclone.ui.components.*
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
 import com.wiryadev.ovoclone.ui.home.*
 import com.wiryadev.ovoclone.ui.theme.*
+import me.onebone.toolbar.*
 import me.onebone.toolbar.AppBarContainer
-import me.onebone.toolbar.CollapsingToolbar
-import me.onebone.toolbar.ScrollStrategy
-import me.onebone.toolbar.rememberCollapsingToolbarState
+import me.onebone.toolbar.CollapsingToolbarScopeInstance.pin
+import me.onebone.toolbar.CollapsingToolbarScopeInstance.road
 
-
-@Preview
 @Composable
 fun TransactionSectionSoft(
     modifier: Modifier = Modifier
@@ -62,76 +69,86 @@ fun TransactionSectionSoft(
 
 @Composable
 private fun TestCollapsing() {
-    val state = rememberCollapsingToolbarState()
-    val textSize = (18 + (30 - 18) * state.progress).sp
+    val state = rememberCollapsingToolbarScaffoldState()
+    val progress = state.toolbarState.progress
+    val textSize = (16 + 8 * progress).sp
 
-    AppBarContainer(
+    CollapsingToolbarScaffold(
+        modifier = Modifier
+            .fillMaxSize(),
         scrollStrategy = ScrollStrategy.ExitUntilCollapsed,
-        collapsingToolbarState = state,
-    ) {
-        CollapsingToolbar(collapsingToolbarState = state) {
-//            Row(
-//                modifier = Modifier.fillMaxSize(),
-//                verticalAlignment = Alignment.CenterVertically,
-//                horizontalArrangement = Arrangement.SpaceBetween,
-//            ) {
-//                Text(
-//                    text = "Profile",
-//                    color = ShallotDarkest,
-//                    style = MaterialTheme.typography.h4,
-//                    fontSize = textSize,
-//                    modifier = Modifier
-//                        .padding(start = Dimens.SPACE_X2),
-//                )
-//                IconButton(
-//                    onClick = {  },
-//                    modifier = Modifier.align(Alignment.CenterVertically)
-//                ) {
-//                    Icon(
-//                        painter = painterResource(id = R.drawable.ic_notification_dark_normal),
-//                        contentDescription = "Notification",
-//                    )
-//                }
-//            }
+        state = state,
+        toolbar = {
             Box(
                 modifier = Modifier
-                    .background(MaterialTheme.colors.primary)
+                    .background(MaterialTheme.colors.surface)
                     .fillMaxWidth()
-                    .height(150.dp)
-                    .pin()
+                    .height(104.dp)
+                    .pin(),
             )
 
             Text(
-                text = "Title",
+                text = "Profile",
                 modifier = Modifier
-                    .road(Alignment.CenterStart, Alignment.BottomEnd)
-                    .padding(60.dp, 16.dp, 16.dp, 16.dp),
-                color = Color.White,
-                fontSize = textSize
+                    .padding(
+                        vertical = if (progress > 0f) SPACE_X1 else SPACE_X3,
+                        horizontal = SPACE_X2,
+                    )
+                    .road(
+                        whenCollapsed = Alignment.CenterStart,
+                        whenExpanded = Alignment.BottomStart,
+                    ),
+                color = ShallotDarkest,
+                style = MaterialTheme.typography.h4,
+                fontSize = textSize,
             )
-        }
-
-//        ProfileScreenTest(modifier = Modifier.appBarBody())
-
-        LazyColumn(modifier = Modifier.appBarBody()) {
-            items(50) { index ->
-                Text(
-                    "I'm item $index", modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
+            IconButton(
+                onClick = { },
+                modifier = Modifier
+                    .road(
+                        whenCollapsed = Alignment.TopEnd,
+                        whenExpanded = Alignment.TopEnd,
+                    ),
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_notification_light_normal),
+                    contentDescription = "Notification",
+                    tint = ShallotDark,
                 )
             }
         }
+    ) {
+
+        ProfileScreenTest()
+
+//        LazyColumn {
+//            items(50) { index ->
+//                Text(
+//                    "I'm item $index", modifier = Modifier
+//                        .fillMaxWidth()
+//                        .padding(16.dp)
+//                )
+//            }
+//        }
     }
 }
 
-//@Preview
-//@Composable
-//fun TestSandbox() {
-//    OvoCloneTheme {
-//        TestCollapsing()
-//    }
-//}
+@Preview
+@Composable
+fun TestSandbox() {
+    OvoCloneTheme {
+
+        val sysUiController = rememberSystemUiController()
+
+        SideEffect {
+            sysUiController.setStatusBarColor(Color.White)
+        }
+
+        ProvideWindowInsets {
+            TestCollapsing()
+        }
+    }
+}
 
 @Composable
 private fun ProfileScreenTest(
