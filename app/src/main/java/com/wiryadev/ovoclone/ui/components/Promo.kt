@@ -20,6 +20,7 @@ import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.wiryadev.ovoclone.data.HappinessDeal
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
+import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X16
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X18
@@ -127,6 +128,10 @@ fun DealsCard(
     RavierCard(
         modifier = Modifier.width(width = width),
         shape = RoundedCornerShape(SPACE_X1),
+        shadowPadding = PaddingValues(
+            vertical = SPACE_HALF + SPACE_QUARTER,
+            horizontal = SPACE_QUARTER
+        ),
     ) {
         Column {
             Image(
