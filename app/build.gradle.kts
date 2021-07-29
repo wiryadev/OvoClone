@@ -40,12 +40,12 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = rootProject.extra["compose_version"] as String
+        kotlinCompilerExtensionVersion = rootProject.extra["composeVersion"] as String
     }
 }
 
 dependencies {
-    val composeVersion = rootProject.extra["compose_version"] as String
+    val composeVersion = rootProject.extra["composeVersion"] as String
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("com.google.android.material:material:1.4.0")
@@ -73,6 +73,6 @@ dependencies {
     implementation("com.google.accompanist:accompanist-flowlayout:$accompanistVersion")
 
     // 3rd party libs
-    implementation("me.onebone:toolbar-compose:2.1.0")
+    implementation("me.onebone:toolbar-compose:2.1.2")
     implementation("io.coil-kt:coil-compose:1.3.1")
 }
