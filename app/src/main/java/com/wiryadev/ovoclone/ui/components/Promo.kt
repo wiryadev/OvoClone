@@ -12,13 +12,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
 import coil.transform.RoundedCornersTransformation
-import com.google.accompanist.coil.rememberCoilPainter
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import com.wiryadev.ovoclone.data.HappinessDeal
+import com.wiryadev.ovoclone.data.happinessDeals
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_HALF
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_QUARTER
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X1
@@ -26,6 +27,7 @@ import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X16
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X18
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X2
 import com.wiryadev.ovoclone.ui.components.Dimens.SPACE_X3
+import com.wiryadev.ovoclone.ui.home.cashbackImages
 import com.wiryadev.ovoclone.ui.theme.PepperDark
 import com.wiryadev.ovoclone.ui.theme.PepperLighter
 import com.wiryadev.ovoclone.ui.theme.SeaSalt
@@ -45,9 +47,9 @@ fun PromoImage(
     width: Dp,
 ) {
     Image(
-        painter = rememberCoilPainter(
-            request = imageUrl,
-            requestBuilder = {
+        painter = rememberImagePainter(
+            data = imageUrl,
+            builder = {
                 transformations(RoundedCornersTransformation(SPACE_X3.value))
             }
         ),
@@ -105,9 +107,9 @@ fun CashbackImage(
     width: Dp,
 ) {
     Image(
-        painter = rememberCoilPainter(
-            request = imageUrl,
-            requestBuilder = {
+        painter = rememberImagePainter(
+            data = imageUrl,
+            builder = {
                 transformations(RoundedCornersTransformation(SPACE_X1.value))
             }
         ),
@@ -135,12 +137,13 @@ fun DealsCard(
     ) {
         Column {
             Image(
-                painter = rememberCoilPainter(
-                    request = item.banner,
+                painter = rememberImagePainter(
+                    data = item.banner,
                 ),
                 contentDescription = "Deals Banner",
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .height(width / 2.5f),
                 contentScale = ContentScale.FillBounds,
             )
             Column(

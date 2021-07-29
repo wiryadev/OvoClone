@@ -36,7 +36,7 @@ import com.wiryadev.ovoclone.ui.theme.Taro
 import com.wiryadev.ovoclone.ui.theme.TaroLighter
 
 val cashbackImages = listOf(
-    "https://images-loyalty.ovo.id/public/deal/62/80/l/28162.jpg?ver=1",
+    "https://images-loyalty.ovo.id/public/deal/17/83/l/28673.jpg?ver=1",
     "https://images-loyalty.ovo.id/public/deal/12/81/l/28349.jpg?ver=1",
     "https://images-loyalty.ovo.id/public/deal/70/80/l/28601.jpg?ver=1",
     "https://images-loyalty.ovo.id/public/deal/04/80/l/28211.jpg?ver=1",
