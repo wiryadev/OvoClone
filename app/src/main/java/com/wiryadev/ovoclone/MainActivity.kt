@@ -55,7 +55,8 @@ class MainActivity : ComponentActivity() {
             // For other screen set statusBar color to white
             val systemUiController = rememberSystemUiController()
             systemUiController.setStatusBarColor(
-                if (currentRoute in taroStatusBarRoute) TaroDark else Color.White
+                color = if (currentRoute in taroStatusBarRoute) TaroDark else Color.White,
+                darkIcons = currentRoute !in taroStatusBarRoute,
             )
 
             OvoCloneTheme {
